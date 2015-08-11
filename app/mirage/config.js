@@ -1,7 +1,7 @@
 export default function() {
 
   this.namespace = 'api' // make this `api`, for example, if your API is namespaced
-  this.timing    = 0   // delay for each request, automatically set to 0 during testing
+  this.timing    = 400   // delay for each request, automatically set to 0 during testing
 
   this.get('/hosts', function(db, req) {
     let { offset = 0, limit = 10 } = req.queryParams

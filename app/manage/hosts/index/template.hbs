@@ -1,0 +1,72 @@
+<div>
+  <div class="grid">
+    <div class="grid-cell flex-grow">
+      {{#link-to 'manage.hosts.new' class='btn btn-success'}}
+        <i class="fa fa-plus"></i>&nbsp;New host
+      {{/link-to}}
+      &nbsp;
+      <a class="btn">
+        <i class="fa fa-exclamation-circle"></i>&nbsp;Alert schedules
+      </a>
+    </div>
+
+    <form class="grid-cell form-inline text-right">
+      <div class="form-group">
+        <label for="search" hidden>Search:</label>
+        <input id="search" type="text" class="form-control" placeholder="Search...">
+      </div>
+    </form>
+  </div>
+</div>
+
+<table class="table table--striped">
+  <thead>
+    <tr>
+      <th width="250" class="visible-sm">Customer</th>
+      <th>Hostname</th>
+      <th class="visible-lg">Description</th>
+      <th>Wiki</th>
+      <th width="100"></th>
+    </tr>
+  </thead>
+  <tfoot>
+    <tr>
+      <td colspan="5">
+        {{pagination-pager page=1 count=10}}
+      </td>
+    </tr>
+  </tfoot>
+  <tbody>
+    {{#each model.hosts as |host|}}
+      <tr>
+        <td class="visible-sm">{{host.customer}}</td>
+        <td>
+          {{#link-to 'manage.hosts.host' host.id}}
+            {{host.hostname}}
+          {{/link-to}}
+          <br>
+          {{host.ipv4}}
+        </td>
+        <td class="visible-lg">
+          {{host.description}}
+        </td>
+        <td>
+          <a href="#"><i class="fa fa-wikipedia-w"></i></a>
+        </td>
+        <td>
+          <div class="flex-grow">
+            <button class="btn">
+              <i class="fa fa-refresh"></i>
+            </button>
+            <button class="btn">
+              <i class="fa fa-moon-o"></i>
+            </button>
+            <button class="btn">
+              <i class="fa fa-trash-o"></i>
+            </button>
+          </div>
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>

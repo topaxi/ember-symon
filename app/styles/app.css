@@ -1,0 +1,27 @@
+* {
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.text-right {
+  text-align: right !important;
+}
+
+.page-content > .nav-side--sub {
+  display: flex;
+  border-radius: 4px;
+}
+
+.page-content > .nav-side--sub .nav-side-header-title {
+  display: block;
+  font-size: 2rem;
+  text-align: center;
+  flex-grow: 1;
+  margin-top: 0.5rem;
+}

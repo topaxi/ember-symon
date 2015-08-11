@@ -1,0 +1,267 @@
+<div id="placeholder-body">
+  <form method="post">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Host information <small>Host ID {{model.id}}</small></h3>
+      </div>
+      <table class="table table--striped">
+        <tbody>
+          <tr>
+            <td>
+              <label for="hostname">
+                Hostname:
+              </label>
+            </td>
+            <td colspan="3">
+              <input class="form-control" id="hostname" name="hostname" maxlength="255" value={{model.hostname}} type="text" required>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="description">
+                Description:
+              </label>
+            </td>
+            <td colspan="3">
+              <input class="form-control" id="description" name="description" maxlength="255" value={{model.description}} type="text" required>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="typeId">
+                Type:
+              </label>
+            </td>
+            <td>
+              <select class="form-control" id="typeId" name="typeId">
+                <option value="0">-- none --</option>
+                <option value="5">Accesspoint</option>
+                <option value="4">Drucker</option>
+                <option value="15">Dynamischer Client</option>
+                <option value="3">Firewall</option>
+                <option value="13">Fixe Workstation</option>
+                <option value="10">Hostsystem</option>
+                <option value="6">IP-Telefon</option>
+                <option value="7">Management Interfaces</option>
+                <option value="8">Monitoringhardware</option>
+                <option value="14">Notebook</option>
+                <option value="2">Router</option>
+                <option value="9" selected="selected">Server</option>
+                <option value="16">Storage-Geräte</option>
+                <option value="1">Switch</option>
+                <option value="11">Thinclient</option>
+                <option value="12">Virtueller Server</option>
+              </select>
+            </td>
+            <td>
+              <label for="wiki">
+                Wiki:
+              </label>
+            </td>
+            <td>
+              <input id="wiki" name="wiki" class="form-control" value={{model.wiki}}>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="IPv4">
+                IPv4:
+              </label>
+            </td>
+            <td>
+              <input class="form-control" id="IPv4" name="IPv4" value={{model.ipv4}} type="text" required>
+            </td>
+            <td>
+              <label for="IPv6">
+                IPv6:
+              </label>
+            </td>
+            <td>
+              <input class="form-control" id="IPv6" name="IPv6" value={{model.ipv6}} type="text">
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="osId">
+                Operating System:
+              </label>
+            </td>
+            <td>
+              <select class="form-control" id="osId" name="osId" required>
+                <option value="">Please choose</option>
+                <option value="1">AIX</option>
+                <option value="2">Amiga</option>
+                <option value="3">Apple</option>
+                <option value="4">BeOS</option>
+                <option value="22">Citrix</option>
+                <option value="5">Debian</option>
+                <option value="6">FreeBSD</option>
+                <option value="24">Gentoo</option>
+                <option value="7">HP-UX</option>
+                <option value="8">IRIX</option>
+                <option value="9" selected="selected">Linux</option>
+                <option value="10">Mac</option>
+                <option value="11">Mandrake</option>
+                <option value="12">Novell</option>
+                <option value="13">OpenBSD</option>
+                <option value="23">Other</option>
+                <option value="14">Red Hat</option>
+                <option value="15">Router</option>
+                <option value="16">Slackware</option>
+                <option value="17">Sun</option>
+                <option value="21">SuSE</option>
+                <option value="18">Switch</option>
+                <option value="19">Ubuntu</option>
+                <option value="20">Windows</option>
+              </select>
+            </td>
+            <td>
+              <label for="osVersionId">
+                OS version:
+              </label>
+            </td>
+            <td id="osVersion">
+              <select id="osVersionId" name="osVersionId" class="form-control">
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="dependencyId">
+                Depends on:
+              </label>
+            </td>
+            <td>
+              <select class="form-control" id="dependencyId" name="dependencyId">
+                <option label="none" value="0">-- none --</option>
+                <option value="18">BehindSatelliteTest</option>
+                <option value="4">Host 1</option>
+                <option value="5">Host 1.1</option>
+                <option value="6">Host 2</option>
+                <option value="7">Host 2.1</option>
+                <option value="8">Host 3</option>
+                <option value="9">Host 3.1</option>
+                <option value="10">Host 3.2</option>
+                <option value="11">Host 4</option>
+                <option value="12">Host 5</option>
+                <option value="17">NewSatelliteTest</option>
+                <option value="16">vm-test-haaans-02.adfinis-sygroup.ch</option>
+              </select>
+            </td>
+            <td>
+              <label for="satelliteId">
+                Behind satellite:
+              </label>
+            </td>
+            <td>
+              <select class="form-control" id="satelliteId" name="satelliteId">
+                <option label="none" value="0">-- none --</option>
+                <option value="17">NewSatelliteTest</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="isSatellite">
+                Is a satellite:
+              </label>
+            </td>
+            <td>
+              <input id="isSatellite" name="isSatellite" class="form-control" type="checkbox">
+            </td>
+            <td>
+              <label for="itemEnabled">
+                Is enabled:
+              </label>
+            </td>
+            <td>
+              <input id="itemEnabled" name="isEnabled" class="form-control" type="checkbox" checked>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Contract</h3>
+      </div>
+      <table class="table table-striped">
+        <tbody><tr>
+            <td>
+              <label for="customerId">Customer</label>
+            </td>
+            <td>
+              <select class="form-control" id="customerId" name="customerId" required>
+                <option value="1" selected="selected">All customers</option>
+              </select>
+            </td>
+            <td>
+              <label for="slaId">
+                Alert Scheduler:
+              </label>
+            </td>
+            <td id="SLADropdown">
+              <select class="form-control" id="slaId" name="slaId" required>
+                <option value="0">Inherit (No Alarm)</option>
+                <option value="3">Nightshift</option>
+                <option value="1">No Alarm</option>
+                <option value="2" selected>Premium</option>
+
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="checkHostAlive" title="">
+                Check host alive:
+              </label>
+            </td>
+            <td>
+              <input id="checkHostAlive" name="checkHostAlive" class="form-control" type="checkbox" checked>
+            </td>
+            <td colspan="2">
+              Whether to check the availability of the host.
+            </td>
+          </tr>
+        </tbody></table>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Comment&nbsp;<i title="" data-original-title="" class="fa fa-info-circle add-popover" data-toggle="popover" data-content="Anything special with this host?"></i></h3>
+      </div>
+      <div class="panel-body">
+        <textarea name="comment" id="hostComment" class="form-control"></textarea>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Password&nbsp;<i title="" data-original-title="" class="fa fa-info-circle add-popover" data-toggle="popover" data-content="The host password is required to download nrpe and satellite export files"></i></h3>
+      </div>
+      <table class="table table-striped">
+        <tbody><tr>
+            <td>
+              The current password is: <span id="hostsFormPassword">6frnj10IaBXFXGuRGq192WTYDf9eCvnJ</span>
+            </td>
+            <td class="text-right">
+              Set a new one:
+              <a href="#" class="fa fa-refresh" id="host-4" data-sy-event-click="require" data-sy-url="index.php?page=hosts&amp;action=setPassword" data-sy-from="#host-4" data-sy-for="#hostsFormPassword" data-sy-data="{ &quot;id&quot;:4}" data-sy-method="post" data-sy-growl="You've set a new host password. Don't forget to update the cronjob scripts."></a>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <span class="label label-danger">Caution</span> If you change this password you most probably need to login to the server and configure the new one.
+            </td>
+          </tr>
+        </tbody></table>
+    </div>
+    <div class="modal-footer">
+      {{#link-to 'manage.hosts.index' class='btn'}}
+        Cancel
+      {{/link-to}}
+      <button type="submit" class="btn btn-primary">Save</button>
+    </div>
+  </form>
+</div>

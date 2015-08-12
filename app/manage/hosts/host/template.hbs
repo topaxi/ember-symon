@@ -1,4 +1,4 @@
-<h1>Host ID {{model.id}}</h1>
+<h1>Host ID {{model.id}} <small>{{model.hostname}}</small></h1>
 
 <ul class="nav nav-tabs">
   <li>
@@ -12,6 +12,4 @@
     {{/link-to}}
   </li>
 </ul>
-<div class="tab-content">
-  {{outlet}}
-</div>
+<div class="tab-content">{{liquid-outlet}}</div>

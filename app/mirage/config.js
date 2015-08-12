@@ -4,12 +4,19 @@ export default function() {
   this.timing    = 400   // delay for each request, automatically set to 0 during testing
 
   this.get('/hosts', function(db, req) {
-    let { offset = 0, limit = 10 } = req.queryParams
+    let { page = 1, limit = 10 } = req.queryParams
 
-    offset = Number(offset)
-    limit  = Number(limit)
+    page  = page  | 0
+    limit = limit | 0
 
-    return { hosts: db.hosts.slice(offset, offset + limit) }
+    return {
+      hosts: db.hosts.slice((page - 1) * limit, (page - 1) * limit + limit),
+      meta:  {
+        page:  page,
+        limit: limit,
+        total: db.hosts.length
+      }
+    }
   })
 
   this.get('/hosts/:id')

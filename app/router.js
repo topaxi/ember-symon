@@ -8,6 +8,9 @@ let Router = Ember.Router.extend({
 Router.map(function() {
   this.route('manage', function() {
     this.route('hosts', function() {
+      this.modal('sy-alert-schedule', {
+        withParams: 'alert-schedule'
+      })
       this.route('new')
       this.route('host', { path: '/:host_id' }, function() {
         this.route('edit',     { path: '/' })

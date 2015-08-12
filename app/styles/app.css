@@ -5,6 +5,10 @@
   hyphens: auto;
 }
 
+[hidden] {
+  display: none !important;
+}
+
 .pointer {
   cursor: pointer;
 }
@@ -24,4 +28,61 @@
   text-align: center;
   flex-grow: 1;
   margin-top: 0.5rem;
+}
+
+.liquid-modal {
+  z-index: 10;
+}
+
+.lf-dialog {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  border: none;
+  border-radius: 4px;
+  box-shadow: 0 0 0 5px rgba(255,255,255,.3);
+}
+
+.dialog-content {
+  max-height: calc(100vh - 5rem);
+  overflow: auto;
+  margin-bottom: 1rem;
+}
+
+.dialog-content--small {
+  font-size: smaller;
+}
+
+.dialog-footer {
+  height: 2rem;
+  display: flex;
+  justify-content: flex-end
+}
+
+.block {
+  display: block;
+}
+
+dt, dd {
+  display: inline;
+}
+
+dt {
+  font-weight: 700;
+}
+
+dt::before {
+  display: block;
+  content: '';
+}
+
+dt::after {
+  content: ':';
+}
+
+dd {
+  margin: 0;
+}
+
+dd + dd::before {
+  content: ', ';
 }

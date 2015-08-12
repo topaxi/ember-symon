@@ -5,9 +5,9 @@
         <i class="fa fa-plus"></i>&nbsp;New host
       {{/link-to}}
       &nbsp;
-      <a class="btn">
+      {{#link-to (query-params alert-schedule='show') class='btn'}}
         <i class="fa fa-exclamation-circle"></i>&nbsp;Alert schedules
-      </a>
+      {{/link-to}}
     </div>
 
     <form class="grid-cell form-inline text-right">
@@ -19,7 +19,7 @@
   </div>
 </div>
 
-<table class="table table--striped">
+<table class="host-table table table--striped">
   <thead>
     <tr>
       <th width="250" class="visible-sm">Customer</th>
@@ -32,12 +32,12 @@
   <tfoot>
     <tr>
       <td colspan="5">
-        {{pagination-pager page=1 count=10}}
+        {{pagination-pager current=page count=totalPages}}
       </td>
     </tr>
   </tfoot>
-  <tbody>
-    {{#each model.hosts as |host|}}
+  <tbody class={{if loading 'loading-mask'}}>
+    {{#each model as |host|}}
       <tr>
         <td class="visible-sm">{{host.customer}}</td>
         <td>

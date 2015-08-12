@@ -9,6 +9,12 @@
   <section class="nav-side-body">
     <ul class="nav-side-list">
       <li class="nav-side-list-item">
+        {{#link-to 'index'}}
+          <i class="fa fa-home"></i>
+          Home
+        {{/link-to}}
+      </li>
+      <li class="nav-side-list-item">
         {{#link-to 'manage' class='hidden-sm'}}
           <i class="fa fa-server"></i>
           Manage

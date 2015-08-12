@@ -1,0 +1,17 @@
+<h1>Host ID {{model.id}}</h1>
+
+<ul class="nav nav-tabs">
+  <li>
+    {{#link-to 'manage.hosts.host.edit' model}}
+      Information
+    {{/link-to}}
+  </li>
+  <li>
+    {{#link-to 'manage.hosts.host.services' model}}
+      Services
+    {{/link-to}}
+  </li>
+</ul>
+<div class="tab-content">
+  {{outlet}}
+</div>

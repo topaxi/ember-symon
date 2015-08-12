@@ -39,6 +39,7 @@
     "ember-disable-proxy-controllers": "^1.0.0",
     "ember-export-application-global": "^1.0.3",
     "font-awesome": "FortAwesome/Font-Awesome#v4.4.0",
+    "liquid-fire": "0.21.2",
     "pagination-pager": "2.1.0"
   }
 }

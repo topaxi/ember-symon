@@ -1,17 +1,12 @@
 {{#sy-list model=model loading=loading as |section model|}}
   {{#if (equal section 'actions')}}
-    {{#link-to 'manage.hosts.new' class='btn btn-success'}}
-      <i class="fa fa-plus"></i>&nbsp;New host
-    {{/link-to}}
-    &nbsp;
-    {{#link-to (query-params alert-schedule='show') class='btn'}}
-      <i class="fa fa-exclamation-circle"></i>&nbsp;Alert schedules
+    {{#link-to 'manage.host-groups.new' class='btn btn-success'}}
+      <i class="fa fa-plus"></i>&nbsp;New host group
     {{/link-to}}
   {{else if (equal section 'header')}}
     <th width="250" class="visible-sm">Customer</th>
-    <th>Hostname</th>
+    <th>Host group name</th>
     <th class="visible-lg">Description</th>
-    <th>Wiki</th>
     <th width="100"></th>
   {{else if (equal section 'footer')}}
     <td colspan="5">
@@ -21,8 +16,8 @@
     <tr>
       <td class="visible-sm">{{model.customer.name}}</td>
       <td>
-        {{#link-to 'manage.hosts.host' model}}
-          {{model.hostname}}
+        {{#link-to 'manage.host-groups.host-group' model.id}}
+          {{model.name}}
         {{/link-to}}
         <br>
         {{model.ipv4}}
@@ -31,16 +26,7 @@
         {{model.description}}
       </td>
       <td>
-        <a href="#"><i class="fa fa-wikipedia-w"></i></a>
-      </td>
-      <td>
         <div class="flex-grow">
-          <button class="btn">
-            <i class="fa fa-refresh"></i>
-          </button>
-          <button class="btn">
-            <i class="fa fa-moon-o"></i>
-          </button>
           <button class="btn">
             <i class="fa fa-trash-o"></i>
           </button>

@@ -7,14 +7,33 @@ let Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('manage', function() {
+    this.route('index')
+
     this.route('hosts', function() {
       this.modal('sy-alert-schedule', {
         withParams: 'alert-schedule'
       })
       this.route('new')
-      this.route('host', { path: '/:host_id' }, function() {
+      this.route('host', { path: '/:hostname' }, function() {
         this.route('edit',     { path: '/' })
         this.route('services', { path: '/services' })
+      })
+    })
+
+    this.route('host-groups', function() {
+      this.route('new')
+      this.route('host-group', { path: '/:host-group_id' }, function() {
+        this.route('edit',  { path: '/' })
+        this.route('hosts', { path: '/hosts' })
+      })
+    })
+
+    this.route('customers', function() {
+      this.route('new')
+      this.route('customer', { path: '/:customer_id' }, function() {
+        this.route('edit',        { path: '/' })
+        this.route('info',        { path: '/info' })
+        this.route('permissions', { path: '/permissions' })
       })
     })
   })

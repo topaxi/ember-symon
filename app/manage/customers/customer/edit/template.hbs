@@ -1,0 +1,261 @@
+<form method="post">
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Customer information <small>Customer ID 1</small></h3>
+  </div>
+  <table class="table">
+    <tbody><tr>
+        <td><label for="name">Name:</label></td>
+        <td colspan="3"><input class="form-control required nagiosname" id="name" name="name" maxlength="255" value="All customers" type="text"></td>
+      </tr>
+      <tr>
+        <td><label for="wiki">Wiki:</label></td>
+        <td><input class="form-control url" id="wiki" name="wiki" value="" type="text"></td>
+        <td><label for="slaId">Alert scheduler:</label></td>
+        <td>
+          <select class="required form-control" id="slaId" name="slaId">
+            <option value="3">Nightshift</option>
+            <option value="1" selected="selected">No Alarm</option>
+            <option value="2">Premium</option>
+
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td><label for="email">eMail:</label></td>
+        <td><input class="email form-control" id="email" name="email" value="denis.simonet@adfinis-sygroup.ch" type="text"></td>
+        <td><label for="warnHoster">Warn hoster:</label></td>
+        <td><input class="form-control" id="warnHoster" name="warnHoster" type="checkbox"></td>
+      </tr>
+      <tr>
+        <td>Information password:</td>
+        <td colspan="3"></td>
+      </tr>
+      <tr>
+        <td>Maintenance password:</td>
+        <td colspan="3"></td>
+      </tr>
+      <tr>
+        <td><label for="comment">Comment:</label></td>
+        <td colspan="3"><textarea id="comment" name="comment" class="form-control">Root customer: All customers are subcustomers of this one</textarea></td>
+      </tr>
+      <tr>
+        <td>Emergency default:</td>
+        <td colspan="3">
+          <ol>
+            <li id="member-3">
+              Administrator (MYSQL)
+              <button data-sy-growl="The default emergency 'Administrator' was successfully deleted" data-sy-hide="#member-3" data-sy-for="#member-3" data-sy-method="post" data-sy-data="{ &quot;id&quot;:3 }" data-sy-require="dialog/confirm" data-sy-url="index.php?page=customers&amp;action=deleteMember" data-sy-confirm="Do you really want to delete the default emergency 'Administrator'?" data-sy-confirm-title="Delete default emergengy 'Administrator'?" data-sy-dialog-click="require" class="btn btn-default btn-sm" title="Delete default emergency" type="button">
+                <i class="fa fa-trash-o"></i>
+              </button>
+            </li>
+          </ol>
+        </td>
+      </tr>
+      <tr>
+        <td><label for="bsmSelectbsmContainer0">Set new default:</label></td>
+        <td colspan="3">
+          <div id="bsmContainer0" class="bsmContainer"><select id="bsmSelectbsmContainer0" name="bsmSelectbsmContainer0" class="bsmSelect"><option value="">Select...</option><option value="1">MYSQL - Administrator</option><option value="8">LDAP - Cyrill von Wattenwyl</option><option value="7">LDAP - Damian Senn</option><option value="3">LDAP - Nicolas Christener</option><option value="4">LDAP - Philipp Schaerer</option><option value="9">LDAP - Sandro Koechli</option><option value="2">LDAP - Sven Osterwalder</option><option value="6">LDAP - Thomas Koechli</option></select><ol class="bsmList bsmListSortableCustom ui-sortable" id="bsmListbsmContainer0"></ol><select style="display: none;" class="multiSort" id="users" name="users[]" multiple="multiple"><option value="1">MYSQL - Administrator</option>
+              <option value="8">LDAP - Cyrill von Wattenwyl</option>
+              <option value="7">LDAP - Damian Senn</option>
+              <option value="3">LDAP - Nicolas Christener</option>
+              <option value="4">LDAP - Philipp Schaerer</option>
+              <option value="9">LDAP - Sandro Koechli</option>
+              <option value="2">LDAP - Sven Osterwalder</option>
+              <option value="6">LDAP - Thomas Koechli</option>
+            </select></div>
+        </td>
+      </tr>
+    </tbody></table>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Ldap mapping</h3>
+  </div>
+  <table class="table table-striped">
+    <tbody><tr>
+        <th>Role</th>
+        <th>Description</th>
+        <th>Ldap group</th>
+      </tr>
+      <tr>
+        <td>
+          Administrator
+          <input name="roleId[]" value="1" type="hidden">
+        </td>
+        <td>
+          All permissions except 'Emergency alert' and 'Maintenance master'
+        </td>
+        <td>
+          <input class="form-control" id="ldapGroup-1" name="ldapGroup[1]" value="" type="text">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Cacti
+          <input name="roleId[]" value="4" type="hidden">
+        </td>
+        <td>
+          Access Cacti
+        </td>
+        <td>
+          <input class="form-control" id="ldapGroup-4" name="ldapGroup[4]" value="" type="text">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Downtimes verwalten
+          <input name="roleId[]" value="6" type="hidden">
+        </td>
+        <td>
+          Manage downtimes
+        </td>
+        <td>
+          <input class="form-control" id="ldapGroup-6" name="ldapGroup[6]" value="" type="text">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Emergency team
+          <input name="roleId[]" value="5" type="hidden">
+        </td>
+        <td>
+          Users with this role can be put into emergency teams
+        </td>
+        <td>
+          <input class="form-control" id="ldapGroup-5" name="ldapGroup[5]" value="" type="text">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Icinga web
+          <input name="roleId[]" value="8" type="hidden">
+        </td>
+        <td>
+          Access to the Icinga web interface
+        </td>
+        <td>
+          <input class="form-control" id="ldapGroup-8" name="ldapGroup[8]" value="" type="text">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Kunden-Benutzer
+          <input name="roleId[]" value="7" type="hidden">
+        </td>
+        <td>
+          Allows a user to see Alerts, Downtimes, Hosts and Reports
+        </td>
+        <td>
+          <input class="form-control" id="ldapGroup-7" name="ldapGroup[7]" value="" type="text">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Maintenance
+          <input name="roleId[]" value="2" type="hidden">
+        </td>
+        <td>
+          Maintenance write access with downtimes
+        </td>
+        <td>
+          <input class="form-control" id="ldapGroup-2" name="ldapGroup[2]" value="" type="text">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Maintenance master
+          <input name="roleId[]" value="3" type="hidden">
+        </td>
+        <td>
+          Adds the 'Maintenance master' permission
+        </td>
+        <td>
+          <input class="form-control" id="ldapGroup-3" name="ldapGroup[3]" value="" type="text">
+        </td>
+      </tr>
+    </tbody></table>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Alert Settings</h3>
+  </div>
+
+
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Enabled</th>
+      </tr>
+    </thead>
+
+
+    <tbody><tr>
+        <td>e-mail</td>
+        <td>
+          <select class="form-control" name="alerttype_3_enabled">
+            <option value="0" selected="">Inherit</option>
+            <option value="1">Forced</option>
+            <option value="2">Optional</option>
+          </select>
+        </td>
+
+      </tr>
+
+
+
+
+      <tr>
+        <td>jabber</td>
+        <td>
+          <select class="form-control" name="alerttype_4_enabled">
+            <option value="0" selected="">Inherit</option>
+            <option value="1">Forced</option>
+            <option value="2">Optional</option>
+          </select>
+        </td>
+
+      </tr>
+
+
+
+
+      <tr>
+        <td>phone</td>
+        <td>
+          <select class="form-control" name="alerttype_2_enabled">
+            <option value="0" selected="">Inherit</option>
+            <option value="1">Forced</option>
+            <option value="2">Optional</option>
+          </select>
+        </td>
+
+      </tr>
+
+
+
+
+      <tr>
+        <td>SMS</td>
+        <td>
+          <select class="form-control" name="alerttype_1_enabled">
+            <option value="0" selected="">Inherit</option>
+            <option value="1">Forced</option>
+            <option value="2">Optional</option>
+          </select>
+        </td>
+
+      </tr>
+
+    </tbody>
+  </table>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+  <button type="submit" class="btn btn-primary">Save</button>
+</div>
+</form>

@@ -1,0 +1,24 @@
+<div>
+  <div class="grid">
+    <div class="grid-cell flex-grow">{{yield 'actions' model}}</div>
+
+    {{#unless disableSearch}}
+      <form class="grid-cell form-inline text-right">
+        <div class="form-group">
+          <label for="search" class="sr-only">Search:</label>
+          <input id="search" type="text" class="form-control" placeholder="Search...">
+        </div>
+      </form>
+    {{/unless}}
+  </div>
+</div>
+
+<table class="host-table table table--striped">
+  <thead><tr>{{yield 'header' model}}</tr></thead>
+  <tfoot><tr>{{yield 'footer' model}}</tr></tfoot>
+  <tbody class={{if loading 'loading-mask'}}>
+    {{#each model as |row|}}
+      {{yield 'row' row}}
+    {{/each}}
+  </tbody>
+</table>

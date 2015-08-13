@@ -13,7 +13,7 @@ export default Ember.Route.extend({
   },
 
   model(params) {
-    return this.store.query('host', params)
+    return this.store.query('customer', params)
   },
 
   actions: {

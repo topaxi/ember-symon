@@ -1,9 +1,9 @@
 import DS from 'ember-data'
 
-const { attr } = DS
+const { attr, belongsTo } = DS
 
 export default DS.Model.extend({
-  customer:       attr('string'),
+  customer:       belongsTo('customer', { async: true }),
   name:           attr('string'),
   hostname:       attr('string'),
   description:    attr('string'),

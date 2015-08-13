@@ -5,8 +5,9 @@
   hyphens: auto;
 }
 
-[hidden] {
-  display: none !important;
+[href='#']:not([data-ember-action]) {
+  opacity: 0.3;
+  pointer-events: none;
 }
 
 .pointer {

@@ -31,7 +31,9 @@
         {{model.description}}
       </td>
       <td>
-        <a href="#"><i class="fa fa-wikipedia-w"></i></a>
+        {{#if model.wiki}}
+          <a href={{model.wiki}}><i class="fa fa-wikipedia-w"></i></a>
+        {{/if}}
       </td>
       <td>
         <div class="flex-grow">

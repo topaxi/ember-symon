@@ -5,7 +5,11 @@
   hyphens: auto;
 }
 
-[href='#']:not([data-ember-action]) {
+textarea {
+  min-height: 4em;
+}
+
+[href='#']:not([data-ember-action]), .not-ready {
   opacity: 0.3;
   pointer-events: none;
 }

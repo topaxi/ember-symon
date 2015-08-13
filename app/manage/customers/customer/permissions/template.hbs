@@ -1,0 +1,60 @@
+<div class="panel-heading">
+  <h3 class="panel-title">Customer Permission</h3>
+</div>
+<div class="panel-body chosen-nonblock">
+  <form id="customerPermissions" class="flex-grow">
+    <select class="form-control" id="userId" name="userId" required>
+      <option value="1">admin</option>
+      <option value="5">Test Menu</option>
+    </select>
+
+    <select class="form-control" id="roleId" name="roleId">
+      <option value="1">Administrator</option>
+      <option value="4">Cacti</option>
+      <option value="6">Downtimes verwalten</option>
+      <option value="5">Emergency team</option>
+      <option value="8">Icinga web</option>
+      <option value="7">Kunden-Benutzer</option>
+      <option value="2">Maintenance</option>
+      <option value="3">Maintenance master</option>
+    </select>
+
+    <a class="btn">
+      <i class="fa fa-plus"></i> Add customer permission
+    </a>
+  </form>
+</div>
+
+<div id="subcontent">
+  <table class="customer-rights table table-striped">
+    <tbody>
+      <tr>
+        <th>User</th>
+        <th>Role</th>
+        <th>&nbsp;</th>
+      </tr>
+      <tr id="right-item1">
+        <td>admin</td>
+        <td>
+          Administrator
+        </td>
+        <td class="text-right">
+          <button type="button">
+            <i class="fa fa-trash-o"></i>
+          </button>
+        </td>
+      </tr>
+      <tr id="right-item13">
+        <td>Test Menu</td>
+        <td>
+          Downtimes verwalten
+        </td>
+        <td class="text-right">
+          <button type="button">
+            <i class="fa fa-trash-o"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

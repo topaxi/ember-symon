@@ -7,8 +7,6 @@ let Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('manage', function() {
-    this.route('index')
-
     this.route('hosts', function() {
       this.modal('sy-alert-schedule', {
         withParams: 'alert-schedule'
@@ -38,8 +36,12 @@ Router.map(function() {
     })
   })
 
-  this.route('monitoring')
-  this.route('maintenance')
+  this.route('monitoring', function() {
+  })
+
+  this.route('maintenance', function() {
+  })
+
   this.route('analysis', function() {
     this.route('reports')
     this.route('hosts-hierarchy')

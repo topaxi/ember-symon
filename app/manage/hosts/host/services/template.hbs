@@ -1,46 +1,37 @@
-<h3 class="panel-title">Add a service</h3>
-<table class="table">
-  <tbody>
-    <tr>
-      <td>
-        <label for="serviceId">Service:</label>
-      </td>
-      <td>
-        <select id="serviceId" class="combobox" name="serviceId">
-          <option value="6">check_raid</option>
-          <option value="3">http</option>
-        </select>
-      </td>
-      <td>
-        <a class="btn btn-default">
-          <i class="fa fa-plus"></i> Add service
-        </a>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <label for="groupId">Service group:</label>
-      </td>
-      <td colspan="2"><i>None</i></td>
-    </tr>
-  </tbody>
-</table>
-
 <form method="post">
-  <h3>Assigned services for host <strong>Host 1</strong></h3>
+  <div class="form-group">
+    <label for="serviceId">Service:</label>
+    <div class="flex-grow">
+      <select id="serviceId" class="form-control">
+        <option value="6">check_raid</option>
+        <option value="3">http</option>
+      </select>
+      &nbsp;
+      <a class="btn btn-success">
+        <i class="fa fa-plus"></i>&nbsp;Add service
+      </a>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="groupId">Service group:</label>
+    <i>None</i>
+  </div>
+
+  <h3>Assigned services</h3>
   <div>
     <div>
       <div class="panel panel-default">
         <input name="serviceId[]" value="3" type="hidden">
         <div class="panel-heading">
-          <h3 class="panel-title">
+          <h4 class="panel-title">
             http
             <p class="pull-right">
             <button type="button" class="btn btn-link">
               <i class="fa fa-plus"></i> Add instance
             </button>
             </p>
-          </h3>
+          </h4>
         </div>
         <table id="instanceTable-3" class="table table-striped services-instance">
           <thead>
@@ -90,12 +81,15 @@
                 <input class="form-control" name="isEnabled[old-9]" checked="checked" type="checkbox">
               </td>
               <td class="text-right break-none">
-                <button type="button" class="btn btn-default btn-sm" title="Check service instance 'http' for host 'Host 1' now">
-                  <i class="fa fa-refresh"></i>
-                </button>
-                <button type="button" class="btn btn-default btn-sm" title="Delete this service instance">
-                  <i class="fa fa-trash-o"></i>
-                </button>
+                <div class="flex-grow">
+                  <button type="button" class="btn btn-default btn-sm" title="Check service instance 'http' for host 'Host 1' now">
+                    <i class="fa fa-refresh"></i>
+                  </button>
+                  &nbsp;
+                  <button type="button" class="btn btn-default btn-sm" title="Delete this service instance">
+                    <i class="fa fa-trash-o"></i>
+                  </button>
+                </div>
               </td>
             </tr>
             <tr id="instance-10" class="">
@@ -134,12 +128,15 @@
                 <input class="form-control" name="isEnabled[old-10]" checked="checked" type="checkbox">
               </td>
               <td class="text-right break-none">
-                <button type="button" class="btn btn-default btn-sm" title="Check service instance 'http' for host 'Host 1' now">
-                  <i class="fa fa-refresh"></i>
-                </button>
-                <button type="button" class="btn btn-default btn-sm" title="Delete this service instance">
-                  <i class="fa fa-trash-o"></i>
-                </button>
+                <div class="flex-grow">
+                  <button type="button" class="btn btn-default btn-sm" title="Check service instance 'http' for host 'Host 1' now">
+                    <i class="fa fa-refresh"></i>
+                  </button>
+                  &nbsp;
+                  <button type="button" class="btn btn-default btn-sm" title="Delete this service instance">
+                    <i class="fa fa-trash-o"></i>
+                  </button>
+                </div>
               </td>
             </tr>
             <tr id="instance-11" class="">
@@ -178,12 +175,15 @@
                 <input class="form-control" name="isEnabled[old-11]" checked="checked" type="checkbox">
               </td>
               <td class="text-right break-none">
-                <button type="button" class="btn btn-default btn-sm" title="Check service instance 'http' for host 'Host 1' now">
-                  <i class="fa fa-refresh"></i>
-                </button>
-                <button type="button" class="btn btn-default btn-sm" title="Delete this service instance">
-                  <i class="fa fa-trash-o"></i>
-                </button>
+                <div class="flex-grow">
+                  <button type="button" class="btn btn-default btn-sm" title="Check service instance 'http' for host 'Host 1' now">
+                    <i class="fa fa-refresh"></i>
+                  </button>
+                  &nbsp;
+                  <button type="button" class="btn btn-default btn-sm" title="Delete this service instance">
+                    <i class="fa fa-trash-o"></i>
+                  </button>
+                </div>
               </td>
             </tr>
           </tbody>
@@ -191,8 +191,9 @@
       </div>
     </div>
   </div>
-  <div class="modal-footer">
+  <div class="flex-grow">
     <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+    &nbsp;
     <button type="submit" class="btn btn-primary">Save</button>
   </div>
 </form>

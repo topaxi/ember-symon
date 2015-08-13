@@ -1,0 +1,15 @@
+<h1>Host Group {{model.name}} <small>Group ID {{model.id}}</small></h1>
+
+<ul class="nav nav-tabs">
+  <li>
+    {{#link-to 'manage.host-groups.host-group.edit' model}}
+      Edit
+    {{/link-to}}
+  </li>
+  <li>
+    {{#link-to 'manage.host-groups.host-group.hosts' model}}
+      Hosts
+    {{/link-to}}
+  </li>
+</ul>
+<div class="tab-content">{{liquid-outlet}}</div>

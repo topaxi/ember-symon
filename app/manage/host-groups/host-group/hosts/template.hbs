@@ -1,0 +1,52 @@
+<form method="post">
+  <div class="form-group">
+    <label for="groupHostId">Host:</label>
+    <div class="flex-grow">
+      <select id="groupHostId" class="form-control">
+        <option value="18">BehindSatelliteTest</option>
+        <option value="4">Host 1</option>
+        <option value="5">Host 1.1</option>
+        <option value="6">Host 2</option>
+        <option value="7">Host 2.1</option>
+        <option value="8">Host 3</option>
+        <option value="9">Host 3.1</option>
+        <option value="10">Host 3.2</option>
+        <option value="11">Host 4</option>
+        <option value="12">Host 5</option>
+        <option value="17">NewSatelliteTest</option>
+        <option value="16">vm-test-haaans-02.adfinis-sygroup.ch</option>
+      </select>
+      &nbsp;
+      <a class="btn btn-success">
+        <i class="fa fa-plus"></i>&nbsp;Add host to group
+      </a>
+    </div>
+  </div>
+</form>
+
+<h3>Assigned hosts</h3>
+
+<table class="table table--striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr id="host16" class="odd">
+      <td class="break-word-medium">
+        vm-test-haaans-02.adfinis-sygroup.ch
+      </td>
+      <td>
+        Test Haaans2
+      </td>
+      <td class="text-right break-none">
+        <button type="button" title="Remove this host from group" class="btn btn-default btn-sm">
+          <i class="fa fa-trash-o"></i>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -4,7 +4,20 @@ export default function() {
   this.timing    = 400   // delay for each request, automatically set to 0 during testing
 
   this.get('/hosts', list('hosts'))
-  this.get('/hosts/:id')
+  this.get('/hosts/:id', (db, req) => {
+    let id = req.params.id
+    let host
+
+    if (id | 0) {
+      host = db.hosts.find(id)
+    }
+    else {
+      host = db.hosts.where({ hostname: id })[0]
+    }
+
+    return { host }
+  })
+
   this.post('/hosts')
   this.put('/hosts/:id')
   this.del('/hosts/:id')
@@ -16,10 +29,10 @@ export default function() {
   this.del('/customers/:id')
 
   this.get('/hostGroups', list('host-groups'))
-  this.get('/hostGroups/:id')
-  this.post('/hostGroups')
-  this.put('/hostGroups/:id')
-  this.del('/hostGroups/:id')
+  this.get('/hostGroups/:id', 'host-group')
+  this.post('/hostGroups', 'host-group')
+  this.put('/hostGroups/:id', 'host-group')
+  this.del('/hostGroups/:id', 'host-group')
 }
 
 function list(key) {
@@ -31,7 +44,6 @@ function list(key) {
 
     let entries = ids ? db[key].find(ids) : db[key]
 
-    console.log(db)
     return {
       [key]: entries.slice((page - 1) * limit, (page - 1) * limit + limit),
       meta:  {

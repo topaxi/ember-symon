@@ -8,19 +8,27 @@
       <i class="fa fa-exclamation-circle"></i>&nbsp;Alert schedules
     {{/link-to}}
   {{else if (equal section 'header')}}
-    <th width="250" class="visible-sm">Customer</th>
+    {{#unless media.isMo}}
+      <th width="250">Customer</th>
+    {{/unless}}
     <th>Hostname</th>
     <th class="visible-lg">Description</th>
     <th>Wiki</th>
-    <th width="100"></th>
+    <th width="1"></th>
   {{else if (equal section 'footer')}}
     <td colspan="5">
       {{pagination-pager current=page count=totalPages}}
     </td>
   {{else if (equal section 'row')}}
     <tr>
-      <td class="visible-sm">{{model.customer.name}}</td>
+      {{#unless media.isMo}}
+        <td>{{model.customer.name}}</td>
+      {{/unless}}
       <td>
+        {{#if media.isMo}}
+          {{model.customer.name}}
+          <br>
+        {{/if}}
         {{#link-to 'manage.hosts.host' model}}
           {{model.hostname}}
         {{/link-to}}
@@ -36,15 +44,12 @@
         {{/if}}
       </td>
       <td>
-        <div class="flex-grow">
+        <div class={{if media.isSm 'btn-group' 'flex-grow flex-wrap'}}>
           <button class="btn">
             <i class="fa fa-refresh"></i>
           </button>
           <button class="btn">
             <i class="fa fa-moon-o"></i>
-          </button>
-          <button class="btn">
-            <i class="fa fa-trash-o"></i>
           </button>
         </div>
       </td>

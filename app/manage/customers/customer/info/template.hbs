@@ -1,33 +1,43 @@
-<div class="panel-heading">
-  <h3 class="panel-title">Hoster information <small>Customer ID 1</small></h3>
-</div>
-<table class="table">
-  <tbody>
-    <tr>
-      <td><label for="name">Name:</label></td>
-      <td colspan="3"><input class="form-control" id="name" name="name" maxlength="255" value="" type="text"></td>
-    </tr>
-    <tr>
-      <td><label for="address">Address:</label></td>
-      <td><input class="form-control" id="address" name="address" value="" type="text"></td>
-      <td><label for="mayContact">May contact:</label></td>
-      <td><input class="form-control" id="mayContact" name="mayContact" type="checkbox"></td>
-    </tr>
-    <tr>
-      <td><label for="contactTechnical">Technical contact:</label></td>
-      <td><input class="form-control" id="contactTechnical" name="contactTechnical" value="" type="text"></td>
-      <td><label for="contactCommercial">Commercial contact:</label></td>
-      <td><input class="form-control" id="contactCommercial" name="contactCommercial" value="" type="text"></td>
-    </tr>
-    <tr>
-      <td><label for="phoneRegular">Phone regular:</label></td>
-      <td><input class="form-control" id="phoneRegular" name="phoneRegular" value="" type="text"></td>
-      <td><label for="phoneEmergency">Phone emergency:</label></td>
-      <td><input class="form-control" id="phoneEmergency" name="phoneEmergency" value="" type="text"></td>
-    </tr>
-    <tr>
-      <td><label for="comment">Comment:</label></td>
-      <td colspan="3"><textarea name="comment" class="form-control"></textarea></td>
-    </tr>
-  </tbody>
-</table>
+<form method="post" {{action 'save' on='submit'}}>
+  <div class="grid grid--12of12 grid-sm--6of12">
+    <div class="grid-cell grid-cell--12of12 form-group">
+      <label for="name">Name:</label>
+      <input class="form-control" id="name" maxlength="255" value="" type="text">
+    </div>
+
+    <div class="grid-cell form-group">
+      <label for="address">Address:</label>
+      <input class="form-control" id="address" value="" type="text">
+    </div>
+
+    <div class="grid-cell checkbox grid-cell--align-center">
+      <input class="form-control" id="mayContact" type="checkbox">
+      <label for="mayContact">May contact</label>
+    </div>
+
+    <div class="grid-cell form-group">
+      <label for="contactTechnical">Technical contact:</label>
+      <input class="form-control" id="contactTechnical" value="" type="text">
+    </div>
+
+    <div class="grid-cell form-group">
+      <label for="contactCommercial">Commercial contact:</label>
+      <input class="form-control" id="contactCommercial" value="" type="text">
+    </div>
+
+    <div class="grid-cell form-group">
+      <label for="phoneRegular">Phone regular:</label>
+      <input class="form-control" id="phoneRegular" value="" type="text">
+    </div>
+
+    <div class="grid-cell form-group">
+      <label for="phoneEmergency">Phone emergency:</label>
+      <input class="form-control" id="phoneEmergency" value="" type="text">
+    </div>
+
+    <div class="grid-cell grid-cell--12of12 form-group">
+      <label for="comment">Comment:</label>
+      <textarea name="comment" class="form-control"></textarea>
+    </div>
+  </div>
+</form>

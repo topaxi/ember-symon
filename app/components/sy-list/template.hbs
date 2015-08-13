@@ -1,10 +1,12 @@
 <div>
   <div class="grid">
-    <div class="grid-cell flex-grow">{{yield 'actions' model}}</div>
+    <div class="grid-cell flex-grow form-group">
+      {{yield 'actions' model}}
+    </div>
 
     {{#unless disableSearch}}
-      <form class="grid-cell form-inline text-right">
-        <div class="form-group">
+      <form class="grid-cell text-right">
+        <div>
           <label for="search" class="sr-only">Search:</label>
           <input id="search" type="text" class="form-control" placeholder="Search...">
         </div>

@@ -5,9 +5,8 @@
     {{/link-to}}
   {{else if (equal section 'header')}}
     <th>Name</th>
-    <th>Comment</th>
+    <th class="visible-md">Comment</th>
     <th>Wiki</th>
-    <th width="100"></th>
   {{else if (equal section 'footer')}}
     <td colspan="4">
       {{pagination-pager current=page count=totalPages}}
@@ -19,20 +18,13 @@
           {{model.name}}
         {{/link-to}}
       </td>
-      <td>
+      <td class="visible-md">
         {{model.comment}}
       </td>
       <td>
         {{#if model.wiki}}
           <a href={{model.wiki}}><i class="fa fa-wikipedia-w"></i></a>
         {{/if}}
-      </td>
-      <td>
-        <div class="flex-grow">
-          <button class="btn">
-            <i class="fa fa-trash-o"></i>
-          </button>
-        </div>
       </td>
     </tr>
   {{/if}}

@@ -4,17 +4,16 @@
       <i class="fa fa-plus"></i>&nbsp;New host group
     {{/link-to}}
   {{else if (equal section 'header')}}
-    <th width="250" class="visible-sm">Customer</th>
+    <th>Customer</th>
     <th>Host group name</th>
     <th class="visible-lg">Description</th>
-    <th width="100"></th>
   {{else if (equal section 'footer')}}
     <td colspan="5">
       {{pagination-pager current=page count=totalPages}}
     </td>
   {{else if (equal section 'row')}}
     <tr>
-      <td class="visible-sm">{{model.customer.name}}</td>
+      <td>{{model.customer.name}}</td>
       <td>
         {{#link-to 'manage.host-groups.host-group' model.id}}
           {{model.name}}
@@ -24,13 +23,6 @@
       </td>
       <td class="visible-lg">
         {{model.description}}
-      </td>
-      <td>
-        <div class="flex-grow">
-          <button class="btn">
-            <i class="fa fa-trash-o"></i>
-          </button>
-        </div>
       </td>
     </tr>
   {{/if}}

@@ -39,6 +39,16 @@ textarea {
   margin-top: 0.5rem;
 }
 
+.liquid-container {
+  overflow: visible;
+}
+
+.liquid-container, .liquid-child {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+}
+
 .liquid-modal {
   z-index: 10;
 }

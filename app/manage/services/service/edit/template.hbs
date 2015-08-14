@@ -1,0 +1,131 @@
+<form method="post" {{action 'save' on='submit'}}>
+  <div class="grid grid--12of12 grid-sm--6of12">
+    <div class="grid-cell grid-cell--12of12 form-group">
+      <label for="name">Name:</label>
+      <input class="form-control" id="name" maxlength="32" value={{model.name}} type="text" required>
+    </div>
+
+    <div class="grid-cell grid-cell--12of12 form-group">
+      <label for="description">Description:</label>
+      <input class="form-control" id="description" maxlength="255" value={{model.description}} type="text" required>
+    </div>
+
+    <div class="grid-cell form-group">
+      <label for="commandId">Command:</label>
+      <select class="form-control" id="commandId">
+        <option value="2">ftp</option>
+        <option value="4">nrpe</option>
+        <option value="6" selected>nrpe_ssl</option>
+        <option value="3">pingHost</option>
+        <option value="1">tcp</option>
+      </select>
+    </div>
+
+    <div class="grid-cell form-group">
+      <label for="customerId">Customer:</label>
+      <select id="customerId" class="form-control">
+        <option value="0">None</option>
+        <option value="1">All customers</option>
+      </select>
+    </div>
+
+    <div class="grid-cell form-group">
+      <label for="maxCheckAttempts">Max check attempts</label>
+      <input class="form-control" id="maxCheckAttempts" value={{model.maxCheckAttempts}} type="number" min="1" max="10080" required>
+    </div>
+
+    <div class="grid-cell form-group">
+      <label title="Check interval in minutes" for="checkInterval">
+        Check interval
+        <i class="fa fa-info-circle add-popover" title="After how many minutes a check shall be repeated"></i>
+      </label>
+      <input class="form-control" id="checkInterval" value={{model.checkInterval}} type="number" min="1" max="10080">
+    </div>
+
+    <div class="grid-cell form-group">
+      <label title="Retry interval in minutes" for="retryInterval">
+        Retry interval
+        <i class="fa fa-info-circle add-popover" title="After how many minutes a retry shall be performed"></i>
+      </label>
+      <input class="form-control" id="retryInterval" value={{model.retryInterval}} type="number" min="1" max="10080">
+    </div>
+
+    <div class="grid-cell form-group">
+      <label title="Freshness check delay in seconds" for="freshness">
+        Freshness
+        <i class="fa fa-info-circle add-popover" title="Sets how many seconds the freshness check shall be delayed"></i>
+      </label>
+      <input class="form-control" id="freshness" value={{model.freshness}} type="number" min="0" max="604800">
+    </div>
+
+    <div class="grid-cell checkbox grid-cell--align-center">
+      <input id="nrpe" class="form-control" type="checkbox" checked={{model.isNrpe}}>
+      <label for="nrpe">nrpe</label>
+    </div>
+
+    <div class="grid-cell form-group">
+      <label for="slaId">Default Alert Scheduler</label>
+      <select class="form-control" id="slaId">
+        <option value="0">Inherit from host</option>
+        <option value="3">Nightshift</option>
+        <option value="1">No Alarm</option>
+        <option value="2">Premium</option>
+      </select>
+    </div>
+  </div>
+</form>
+
+<div class="flex-grow">
+  <a class="btn">
+    <i class="fa fa-plus"></i> Add argument
+  </a>
+</div>
+
+<h4>Arguments</h4>
+<p>Argument <code>i</code> is related to <code>$ARG<b>i</b>$</code> of the command line:</p>
+
+<pre><code>/usr/lib/nagios/plugin/nrpe_ssl $FOO $BAR</code></pre>
+
+<table class="table table--condensed">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th></th>
+      <th>Option</th>
+      <th>Value</th>
+      <th>Description</th>
+      <th>Type</th>
+    </tr>
+  </thead>
+  <tbody class="sortable ui-sortable">
+    <tr>
+      <td colspan="42">No arguments created yet.</td>
+    </tr>
+  </tbody>
+</table>
+
+<ul>
+  <li>
+    For nrpe, <b>Option</b> is the option name, as in -w or -c. You may leave this field empty for non-nrpe services.
+  </li>
+  <li>
+    <b>Value</b> is the default or fixed value of the argument.
+  </li>
+  <li>
+    <b>Description</b> is an optional hint for the users who assign this service to a host.
+  </li>
+  <li>
+    The <b>Type</b> <i>Variable</i> means that the value can be overwritten at the host service assignment.
+  </li>
+</ul>
+
+<p>
+  If this service is of type nrpe the first argument value <b>must</b>
+  be the path to the plugin script.
+</p>
+
+<div class="flex-grow">
+  <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+  &nbsp;
+  <button type="submit" class="btn btn-primary">Save</button>
+</div>

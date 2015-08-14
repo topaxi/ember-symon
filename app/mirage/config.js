@@ -39,6 +39,12 @@ export default function() {
   this.post('/commands')
   this.put('/commands/:id')
   this.del('/commands/:id')
+
+  this.get('/services', list('services'))
+  this.get('/services/:id')
+  this.post('/services')
+  this.put('/services/:id')
+  this.del('/services/:id')
 }
 
 function list(key) {

@@ -13,7 +13,9 @@ export default function(server) {
     comment: 'Root customer: All customers are subcustomers of this one'
   })
 
-  server.createList('command', 30)
+  for (let command of server.createList('command', 30)) {
+    server.createList('service', rrange(1, 5), { command: command.id })
+  }
 
   createTopaxi(server)
 

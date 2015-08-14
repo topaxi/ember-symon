@@ -42,6 +42,13 @@ Router.map(function() {
         this.route('guidelines', { path: '/guidelines' })
       })
     })
+
+    this.route('services', function() {
+      this.route('new')
+      this.route('service', { path: '/:service_id' }, function() {
+        this.route('edit', { path: '/' })
+      })
+    })
   })
 
   this.route('monitoring', function() {

@@ -1,0 +1,31 @@
+{{#sy-list model=model loading=loading as |section model|}}
+  {{#if (equal section 'actions')}}
+    {{#link-to 'manage.services.new' class='btn btn-success'}}
+      <i class="fa fa-plus"></i>&nbsp;New service
+    {{/link-to}}
+  {{else if (equal section 'header')}}
+    <th>Name</th>
+    <th class="visible-lg">Description</th>
+    <th>Command</th>
+  {{else if (equal section 'footer')}}
+    <td colspan="3">
+      {{pagination-pager current=page count=totalPages}}
+    </td>
+  {{else if (equal section 'row')}}
+    <tr>
+      <td>
+        {{#link-to 'manage.services.service' model}}
+          {{model.name}}
+        {{/link-to}}
+      </td>
+      <td class="visible-lg">
+        {{model.description}}
+      </td>
+      <td>
+        {{model.command.name}}
+      </td>
+      <td>
+      </td>
+    </tr>
+  {{/if}}
+{{/sy-list}}

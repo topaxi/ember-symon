@@ -19,6 +19,8 @@
   {{/liquid-if}}
 
   <div class="flex-grow">
-    <button class="btn btn-primary">Save</button>
+    <button class="btn {{if disableAlerts 'btn-danger' 'btn-primary'}}">
+      Save
+    </button>
   </div>
 </form>

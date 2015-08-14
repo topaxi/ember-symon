@@ -1,5 +1,10 @@
 export default function() {
   this.transition(
+    this.fromRoute(route => route.endsWith('loading')),
+    this.use('crossFade')
+  )
+
+  this.transition(
     this.fromRoute('manage.hosts.host.edit'),
     this.toRoute('manage.hosts.host.services'),
     this.use('toLeft'),

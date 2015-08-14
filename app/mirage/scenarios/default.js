@@ -23,6 +23,8 @@ export default function(server) {
     server.createList('host', rrange(1, 8), { customer: customer.id })
     server.createList('host-group', rrange(0, 2), { customer: customer.id })
   }
+
+  server.createList('alert', rrange(50, 100))
 }
 
 // Somewhat reliable test data

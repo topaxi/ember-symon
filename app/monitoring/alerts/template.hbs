@@ -1,0 +1,52 @@
+{{#sy-list model=model loading=loading as |section model|}}
+  {{#if (equal section 'actions')}}
+    <!-- nothing -->
+  {{else if (equal section 'header')}}
+    <th>
+      <div class="checkbox" style="margin:0">
+        <input id="toggleAll" type="checkbox" onchange={{action 'toggleAll' value='target.checked'}}>
+        <label for="toggleAll"></label>
+      </div>
+    </th>
+    <th class="visible-sm"></th>
+    <th>Host</th>
+    <th>State</th>
+    <th>Output</th>
+    <th></th>
+  {{else if (equal section 'footer')}}
+    <td colspan="6">
+      {{pagination-pager current=page count=totalPages}}
+    </td>
+  {{else if (equal section 'row')}}
+    <tr>
+      <td>
+        <div class="checkbox" style="margin:0">
+          <input id="checkbox-{{model.id}}" value={{model.id}} type="checkbox">
+          <label for="checkbox-{{model.id}}"></label>
+        </div>
+      </td>
+      <td class="visible-sm">
+        <i class="text-{{if (equal model.type 'error') 'danger' 'warning'}} fa fa-{{if (equal model.type 'error') 'times' 'warning'}}"></i>
+        {{model.id}}
+      </td>
+      <td>
+        <strong>{{model.host.name}}</strong><br>
+        {{model.service.name}}<br>
+        {{model.host.customer.name}}<br>
+      </td>
+      <td>
+        {{model.type}}<br>
+        {{{moment-format model.datetime 'L[<br>]LT'}}}<br>
+        {{#if model.closetime}}
+          Duration: {{moment-duration model.duration}}
+        {{else}}
+          <strong>Open since {{moment-from-now model.datetime interval=1000}}</strong>
+        {{/if}}
+      </td>
+      <td>
+        {{model.output}}
+      </td>
+      <td></td>
+    </tr>
+  {{/if}}
+{{/sy-list}}

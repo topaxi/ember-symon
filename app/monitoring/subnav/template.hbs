@@ -6,13 +6,19 @@
   <section class="nav-side-body">
     <ul class="nav-side-list">
       <li class="nav-side-list-item">
-        <a href="#">New alerts</a>
+        {{#link-to 'monitoring.alerts' (query-params state='new')}}
+          New alerts
+        {{/link-to}}
       </li>
       <li class="nav-side-list-item">
-        <a href="#">Open Alerts</a>
+        {{#link-to 'monitoring.alerts' (query-params state='open')}}
+          Open alerts
+        {{/link-to}}
       </li>
       <li class="nav-side-list-item">
-        <a href="#">Closed Alerts</a>
+        {{#link-to 'monitoring.alerts' (query-params state='closed')}}
+          Closed alerts
+        {{/link-to}}
       </li>
       <li class="nav-side-list-item">
         <a href="#">Notifications</a>

@@ -105,3 +105,15 @@ dd + dd::before {
   padding-left: 0.75rem;
   padding-right: 0.75rem;
 }
+
+.text-danger {
+  color: rgb(217, 83, 79);
+}
+
+.text-warning {
+  color: rgb(240, 173, 78);
+}
+
+.text-success {
+  color: rgb(92, 184, 92);
+}

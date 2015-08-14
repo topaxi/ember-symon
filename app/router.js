@@ -54,6 +54,8 @@ Router.map(function() {
   })
 
   this.route('monitoring', function() {
+    this.route('alerts', function() {
+    })
   })
 
   this.route('maintenance', function() {

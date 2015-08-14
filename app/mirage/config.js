@@ -45,6 +45,38 @@ export default function() {
   this.post('/services')
   this.put('/services/:id')
   this.del('/services/:id')
+
+  this.get('/alerts', alertList('alerts'))
+  this.get('/alerts/:id')
+  this.post('/alerts')
+  this.put('/alerts/:id')
+  this.del('/alerts/:id')
+}
+
+function alertList(key) {
+  return (db, req) => {
+    let { page = 1, limit = 10, state, ids } = req.queryParams
+
+    page  = page  | 0
+    limit = limit | 0
+
+    let entries = ids ? db[key].find(ids) : db[key]
+
+    if (state) {
+      entries = entries.filter(e =>  e.state === state)
+    }
+
+    entries.sort((a, b) => b.id - a.id)
+
+    return {
+      [key]: entries.slice((page - 1) * limit, (page - 1) * limit + limit),
+      meta:  {
+        page:  page,
+        limit: limit,
+        total: entries.length
+      }
+    }
+  }
 }
 
 function list(key) {

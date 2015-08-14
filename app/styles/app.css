@@ -95,3 +95,13 @@ dd {
 dd + dd::before {
   content: ', ';
 }
+
+/* Slimmer subnav */
+.nav-side--sub .nav-side-list {
+  padding-right: 0.5rem;
+}
+
+.nav-side--sub .nav-side-list-item > a {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}

@@ -1,21 +1,29 @@
 <form method="post" {{action 'save' on='submit'}}>
   <div class="grid grid--12of12 grid-sm--6of12">
-    <div class="grid-cell grid-cell--12of12 form-group">
+    <div class="grid-cell {{if (equal model.id 1) 'grid-cell--12of12'}} form-group">
       <label for="name">Name:</label>
       <input class="form-control" id="name" maxlength="255" value={{model.name}} type="text">
     </div>
 
+    {{#unless (equal model.id 1)}}
+      <div class="grid-cell form-group">
+        <label for="parent">Parent:</label>
+        <input class="form-control" id="parent" value={{model.parent.name}} type="text" readonly>
+      </div>
+    {{/unless}}
+
     <div class="grid-cell form-group">
       <label for="wiki">Wiki:</label>
-      <input class="form-control url" id="wiki" name="wiki" value="" type="text">
+      <input class="form-control url" id="wiki" name="wiki" value={{model.wiki}} type="text">
     </div>
 
     <div class="grid-cell form-group">
       <label for="slaId">Alert scheduler:</label>
       <select class="form-control" id="slaId" name="slaId" required>
-        <option value="3">Nightshift</option>
-        <option value="1" selected>No Alarm</option>
-        <option value="2">Premium</option>
+        <option></option>
+        <option value="3" selected={{model.alertScheduler}}>Nightshift</option>
+        <option value="1" selected={{model.alertScheduler}}>No Alarm</option>
+        <option value="2" selected={{model.alertScheduler}}>Premium</option>
       </select>
     </div>
 
@@ -44,7 +52,7 @@
       <textarea id="comment" name="comment" class="form-control">Root customer: All customers are subcustomers of this one</textarea>
     </div>
 
-    <div class="grid-cell grid-cell--12of12 form-group">
+    <div class="grid-cell form-group">
       <label>Emergency default:</label>
       <ol>
         <li>

@@ -1,0 +1,32 @@
+{{#sy-list model=model loading=loading as |section model|}}
+  {{#if (equal section 'actions')}}
+    {{#link-to 'manage.commands.new' class='btn btn-success'}}
+      <i class="fa fa-plus"></i>&nbsp;New command
+    {{/link-to}}
+  {{else if (equal section 'header')}}
+    <th>Name</th>
+    <th class="visible-lg">Description</th>
+    <th>Assigned to</th>
+    <th>Guidelines</th>
+  {{else if (equal section 'footer')}}
+    <td colspan="4">
+      {{pagination-pager current=page count=totalPages}}
+    </td>
+  {{else if (equal section 'row')}}
+    <tr>
+      <td>
+        {{#link-to 'manage.commands.command' model}}
+          {{model.name}}
+          {{#if model.ipv6}}(ipv6){{/if}}
+        {{/link-to}}
+      </td>
+      <td class="visible-lg">
+        {{model.description}}
+      </td>
+      <td>
+      </td>
+      <td>
+      </td>
+    </tr>
+  {{/if}}
+{{/sy-list}}

@@ -1,15 +1,4 @@
 import Ember from 'ember'
+import ControllerList from 'ember-symon/mixins/controller-list'
 
-const { computed } = Ember
-const { ceil }     = Math
-
-export default Ember.Controller.extend({
-  queryParams: [ 'limit', 'page' ],
-  page: 1,
-  limit: 10,
-  loading: false,
-
-  totalPages: computed('limit', 'model.content.meta.total', function() {
-    return ceil(this.get('model.meta.total') / this.get('limit'))
-  })
-})
+export default Ember.Controller.extend(ControllerList)

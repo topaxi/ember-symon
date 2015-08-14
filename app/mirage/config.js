@@ -33,6 +33,12 @@ export default function() {
   this.post('/hostGroups', 'host-group')
   this.put('/hostGroups/:id', 'host-group')
   this.del('/hostGroups/:id', 'host-group')
+
+  this.get('/commands', list('commands'))
+  this.get('/commands/:id')
+  this.post('/commands')
+  this.put('/commands/:id')
+  this.del('/commands/:id')
 }
 
 function list(key) {

@@ -1,0 +1,15 @@
+<h1>{{model.name}} <small>Command ID {{model.id}}</small></h1>
+
+<ul class="nav nav-tabs">
+  <li>
+    {{#link-to 'manage.commands.command.edit' model}}
+      Edit
+    {{/link-to}}
+  </li>
+  <li>
+    {{#link-to 'manage.commands.command.guidelines' model}}
+      Guidelines
+    {{/link-to}}
+  </li>
+</ul>
+<div class="tab-content">{{liquid-outlet}}</div>

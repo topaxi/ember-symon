@@ -1,0 +1,83 @@
+<div id="guidelines">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>OS</th>
+        <th>Version</th>
+        <th>Install guidelines</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="listNoGuidelines">
+        <td colspan="4" class="text-center">
+          There are currently no guidelines assigned.
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<h4>Add new guideline</h4>
+
+<form method="post" {{action 'save' on='submit'}}>
+  <div class="grid grid--12of12 grid-sm--6of12">
+    <div class="grid-cell form-group">
+      <label for="osId">Operating System:</label>
+      <select class="form-control" id="osId" required>
+        <option>Please choose</option>
+        <option value="1">AIX</option>
+        <option value="2">Amiga</option>
+        <option value="3">Apple</option>
+        <option value="4">BeOS</option>
+        <option value="22">Citrix</option>
+        <option value="5">Debian</option>
+        <option value="6">FreeBSD</option>
+        <option value="24">Gentoo</option>
+        <option value="7">HP-UX</option>
+        <option value="8">IRIX</option>
+        <option value="9">Linux</option>
+        <option value="10">Mac</option>
+        <option value="11">Mandrake</option>
+        <option value="12">Novell</option>
+        <option value="13">OpenBSD</option>
+        <option value="23">Other</option>
+        <option value="14">Red Hat</option>
+        <option value="15">Router</option>
+        <option value="16">Slackware</option>
+        <option value="17">Sun</option>
+        <option value="21">SuSE</option>
+        <option value="18">Switch</option>
+        <option value="19">Ubuntu</option>
+        <option value="20">Windows</option>
+      </select>
+    </div>
+
+    <div class="grid-cell form-group">
+      <label for="osVersionId">OS version:</label>
+      <select id="osVersionId" class="form-control"></select>
+    </div>
+
+    <div class="grid-cell grid-cell--12of12 form-group">
+      <label for="guidelineContent">
+        Guideline:
+        &nbsp;<i title="This are the needed steps to install this check on the given OS"></i>
+      </label>
+      <textarea id="guidelineContent" class="form-control"></textarea>
+    </div>
+
+    <div class="grid-cell form-group">
+      <label for="guidelineManualPath">
+        Filename:
+        &nbsp;<i title="Please only upload a file if the check is not part of a distribution package of the given OS"></i>
+      </label>
+      <input id="guidelineManualPath" class="form-control" type="file">
+    </div>
+  </div>
+
+  <div class="flex-grow">
+    <a class="btn btn-primary">
+      <i class="fa fa-plus"></i> Add guideline
+    </a>
+  </div>
+</form>

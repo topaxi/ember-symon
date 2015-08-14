@@ -34,6 +34,14 @@ Router.map(function() {
         this.route('permissions', { path: '/permissions' })
       })
     })
+
+    this.route('commands', function() {
+      this.route('new')
+      this.route('command', { path: '/:command_id' }, function() {
+        this.route('edit',       { path: '/' })
+        this.route('guidelines', { path: '/guidelines' })
+      })
+    })
   })
 
   this.route('monitoring', function() {

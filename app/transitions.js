@@ -29,4 +29,11 @@ export default function() {
     this.use('toLeft'),
     this.reverse('toRight')
   )
+
+  this.transition(
+    this.fromRoute('manage.commands.command.edit'),
+    this.toRoute('manage.commands.command.guidelines'),
+    this.use('toLeft'),
+    this.reverse('toRight')
+  )
 }

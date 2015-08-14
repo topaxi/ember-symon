@@ -18,7 +18,8 @@ export default Ember.Mixin.create({
   actions: {
 
     loading(transition, route) {
-      if (route.controller && Ember.$('.sy-list').length) {
+      if (route.controller &&
+          Ember.$(`.sy-list--${this.get('modelName')}`).length) {
         route.controller.set('loading', true)
 
         return false

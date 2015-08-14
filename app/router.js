@@ -49,6 +49,8 @@ Router.map(function() {
         this.route('edit', { path: '/' })
       })
     })
+
+    this.route('global-settings')
   })
 
   this.route('monitoring', function() {

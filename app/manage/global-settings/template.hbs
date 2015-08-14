@@ -1,0 +1,24 @@
+<h1>Global Settings</h1>
+
+<form method="post" {{action 'save' on='submit'}}>
+  <div class="form-group">
+    <label for="email">Error email:</label>
+    <input class="form-control" type="email" id="email">
+  </div>
+
+  <div class="checkbox">
+    {{input id="disableAlerts" type="checkbox" checked=disableAlerts}}
+    <label for="disableAlerts">Deactivate all alerts</label>
+  </div>
+
+  {{#liquid-if disableAlerts}}
+    <div class="alert alert-danger">
+      Deactivating alerting is dangerous!<br>
+      Only do this if you really really know what you are doing!
+    </div>
+  {{/liquid-if}}
+
+  <div class="flex-grow">
+    <button class="btn btn-primary">Save</button>
+  </div>
+</form>

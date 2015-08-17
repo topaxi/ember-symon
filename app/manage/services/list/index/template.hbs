@@ -9,7 +9,7 @@
     <th>Command</th>
   {{else if (equal section 'footer')}}
     <td colspan="3">
-      {{pagination-pager current=page count=totalPages}}
+      {{pagination-pager current=page count=totalPages change=(action 'pageChanged')}}
     </td>
   {{else if (equal section 'row')}}
     <tr>

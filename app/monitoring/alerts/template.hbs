@@ -20,7 +20,7 @@
     {{/if}}
   {{else if (equal section 'footer')}}
     <td colspan="6">
-      {{pagination-pager current=page count=totalPages}}
+      {{pagination-pager current=page count=totalPages change=(action 'pageChanged')}}
     </td>
   {{else if (equal section 'row')}}
     {{component (if media.isMaxXs 'sy-alert-row--mobile' 'sy-alert-row')

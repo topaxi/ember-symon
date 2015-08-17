@@ -1,7 +1,7 @@
 import Ember from 'ember'
 
-const { Mixin, computed } = Ember
-const { ceil }            = Math
+const { Mixin, computed, $ } = Ember
+const { ceil }               = Math
 
 export default Mixin.create({
   queryParams: [ 'limit', 'page' ],
@@ -11,5 +11,12 @@ export default Mixin.create({
 
   totalPages: computed('limit', 'model.content.meta.total', function() {
     return ceil(this.get('model.meta.total') / this.get('limit'))
-  })
+  }),
+
+  actions: {
+
+    pageChanged(current, previous) {
+      $('.sy-list thead').get(0).scrollIntoView()
+    }
+  }
 })

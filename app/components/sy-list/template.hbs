@@ -21,6 +21,8 @@
   <tbody class={{if loading 'loading-mask'}}>
     {{#each model as |row|}}
       {{yield 'row' row}}
+    {{^}}
+      {{yield 'empty' model}}
     {{/each}}
   </tbody>
 </table>

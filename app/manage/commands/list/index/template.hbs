@@ -12,6 +12,8 @@
     <td colspan="4">
       {{pagination-pager current=page count=totalPages change=(action 'pageChanged')}}
     </td>
+  {{else if (equal section 'empty')}}
+    <tr class="warning"><td colspan="4">No commands found</td></tr>
   {{else if (equal section 'row')}}
     <tr>
       <td>

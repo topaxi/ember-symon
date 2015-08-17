@@ -6,7 +6,7 @@ const { ceil }               = Math
 export default Mixin.create({
   queryParams: [ 'limit', 'page' ],
   page: 1,
-  limit: 10,
+  limit: 15,
   loading: false,
 
   totalPages: computed('limit', 'model.content.meta.total', function() {

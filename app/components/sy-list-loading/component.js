@@ -4,7 +4,7 @@ const { computed } = Ember
 
 export default Ember.Component.extend({
   tagName: null,
-  limit: 10,
+  limit: 15,
   model: computed('limit', function() {
     return Array.apply(null, Array(this.get('limit')))
   }),

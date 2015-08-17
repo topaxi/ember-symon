@@ -23,6 +23,9 @@
       {{pagination-pager current=page count=totalPages}}
     </td>
   {{else if (equal section 'row')}}
-    {{component (if media.isMo 'sy-alert-row--mobile' 'sy-alert-row') model=model}}
+    {{component (if media.isMo 'sy-alert-row--mobile' 'sy-alert-row')
+      model   = model
+      refresh = 'refresh'
+      }}
   {{/if}}
 {{/sy-list}}

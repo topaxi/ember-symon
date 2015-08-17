@@ -1,0 +1,11 @@
+{{#sy-list-loading as |section|}}
+  {{#if (equal section 'actions')}}
+    {{#link-to 'manage.customers.new' class='btn btn-success'}}
+      <i class="fa fa-plus"></i>&nbsp;New customer
+    {{/link-to}}
+  {{else if (equal section 'header')}}
+    <th>Name</th>
+    <th class="visible-md">Comment</th>
+    <th>Wiki</th>
+  {{/if}}
+{{/sy-list-loading}}

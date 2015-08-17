@@ -1,5 +1,7 @@
 import Ember from 'ember'
 
+const { $ } = Ember
+
 export default Ember.Mixin.create({
   queryParams: {
     limit: { refreshModel: true },
@@ -19,7 +21,7 @@ export default Ember.Mixin.create({
 
     loading(transition, route) {
       if (route.controller &&
-          Ember.$(`.sy-list--${this.get('modelName')}`).length) {
+          $(`.sy-list--${this.get('modelName')}`).length) {
         route.controller.set('loading', true)
 
         return false

@@ -1,0 +1,12 @@
+{{#sy-list-loading as |section|}}
+  {{#if (equal section 'actions')}}
+    {{#link-to 'manage.commands.new' class='btn btn-success'}}
+      <i class="fa fa-plus"></i>&nbsp;New command
+    {{/link-to}}
+  {{else if (equal section 'header')}}
+    <th>Name</th>
+    <th class="visible-lg">Description</th>
+    <th>Assigned to</th>
+    <th>Guidelines</th>
+  {{/if}}
+{{/sy-list-loading}}

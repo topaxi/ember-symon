@@ -12,6 +12,7 @@ Router.map(function() {
         withParams: 'alert-schedule'
       })
       this.route('new')
+      this.route('list', { path: '/' }, ()=>{})
       this.route('host', { path: '/:hostname' }, function() {
         this.route('edit',     { path: '/' })
         this.route('services', { path: '/services' })
@@ -20,6 +21,7 @@ Router.map(function() {
 
     this.route('host-groups', function() {
       this.route('new')
+      this.route('list', { path: '/' }, ()=>{})
       this.route('host-group', { path: '/:host-group_id' }, function() {
         this.route('edit',  { path: '/' })
         this.route('hosts', { path: '/hosts' })
@@ -28,6 +30,7 @@ Router.map(function() {
 
     this.route('customers', function() {
       this.route('new')
+      this.route('list', { path: '/' }, ()=>{})
       this.route('customer', { path: '/:customer_id' }, function() {
         this.route('edit',        { path: '/' })
         this.route('info',        { path: '/info' })
@@ -37,6 +40,7 @@ Router.map(function() {
 
     this.route('commands', function() {
       this.route('new')
+      this.route('list', { path: '/' }, ()=>{})
       this.route('command', { path: '/:command_id' }, function() {
         this.route('edit',       { path: '/' })
         this.route('guidelines', { path: '/guidelines' })
@@ -45,6 +49,7 @@ Router.map(function() {
 
     this.route('services', function() {
       this.route('new')
+      this.route('list', { path: '/' }, ()=>{})
       this.route('service', { path: '/:service_id' }, function() {
         this.route('edit', { path: '/' })
       })

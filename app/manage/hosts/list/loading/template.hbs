@@ -1,0 +1,19 @@
+{{#sy-list-loading as |section|}}
+  {{#if (equal section 'actions')}}
+    {{#link-to 'manage.hosts.new' class='btn btn-success'}}
+      <i class="fa fa-plus"></i>&nbsp;New host
+    {{/link-to}}
+    &nbsp;
+    <a class="btn" disabled>
+      <i class="fa fa-exclamation-circle"></i>&nbsp;Alert schedules
+    </a>
+  {{else if (equal section 'header')}}
+    {{#unless media.isMo}}
+      <th width="250">Customer</th>
+    {{/unless}}
+    <th>Hostname</th>
+    <th class="visible-lg">Description</th>
+    <th>Wiki</th>
+    <th width="1"></th>
+  {{/if}}
+{{/sy-list-loading}}

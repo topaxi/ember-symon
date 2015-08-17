@@ -14,6 +14,10 @@ textarea {
   pointer-events: none;
 }
 
+.page-content--scroll {
+  scroll-behavior: smooth;
+}
+
 .flex-wrap {
   flex-wrap: wrap;
 }

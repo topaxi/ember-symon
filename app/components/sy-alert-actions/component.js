@@ -12,7 +12,7 @@ export default Ember.Component.extend({
 
   actions: {
     acknowledge(model) {
-      model.set('state', 'not-new')
+      model.set('state', 'open')
       model.save()
       this.sendAction('refresh')
       this.sendAction('dismiss')

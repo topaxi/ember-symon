@@ -39,6 +39,10 @@ textarea {
   margin-top: 0.5rem;
 }
 
+.page-content > .nav-side--sub .nav-side-body {
+  overflow-y: visible;
+}
+
 .liquid-container {
   overflow: visible;
 }

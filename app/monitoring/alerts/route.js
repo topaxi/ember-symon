@@ -5,5 +5,10 @@ export default Ember.Route.extend(RouteList, {
   modelName: 'alert',
   queryParams: {
     state: { refreshModel: true }
+  },
+  actions: {
+    refresh() {
+      this.refresh()
+    }
   }
 })

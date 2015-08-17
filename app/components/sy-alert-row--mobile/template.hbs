@@ -13,13 +13,15 @@
   {{model.service.name}}<br>
   {{model.host.customer.name}}<br>
   <hr>
-  {{model.type}}<br>
-  {{{moment-format model.datetime 'L[<br>]LT'}}}<br>
-  {{#if model.closetime}}
-    Duration: {{moment-duration model.duration}}
-  {{else}}
-    <strong>Open since {{moment-from-now model.datetime interval=1000}}</strong>
-  {{/if}}
+  {{#link-to (query-params alert-actions=model.id)}}
+    {{model.type}}<br>
+    {{{moment-format model.datetime 'L[<br>]LT'}}}<br>
+    {{#if model.closetime}}
+      Duration: {{moment-duration model.duration}}
+    {{else}}
+      <strong>Open since {{moment-from-now model.datetime interval=1000}}</strong>
+    {{/if}}
+  {{/link-to}}
   <hr>
   <strong>Output:</strong>
   <div style="white-space:pre-wrap;font-family:monospace">{{model.output}}</div>

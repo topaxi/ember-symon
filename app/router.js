@@ -55,6 +55,10 @@ Router.map(function() {
 
   this.route('monitoring', function() {
     this.route('alerts', function() {
+      this.modal('sy-alert-actions', {
+        withParams: 'alert-actions',
+        actions: { 'refresh': 'refresh' }
+      })
     })
   })
 

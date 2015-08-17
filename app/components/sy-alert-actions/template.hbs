@@ -1,0 +1,15 @@
+<div class="flex-grow">
+  {{#if (equal model.state 'new')}}
+    <a class="btn" {{action 'acknowledge' model}}>
+      <i class="fa {{if media.isMo 'fa-3x'}} fa-check"></i>
+    </a>
+  {{/if}}
+  &nbsp;
+  <a class="btn" {{action 'showComments' model}}>
+    <i class="fa {{if media.isMo 'fa-3x'}} fa-comment-o"></i>
+  </a>
+  &nbsp;
+  <a class="btn" {{action 'showLog' model}}>
+    <i class="fa {{if media.isMo 'fa-3x'}} fa-search"></i>
+  </a>
+</div>

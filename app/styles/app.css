@@ -22,6 +22,11 @@ textarea {
   cursor: pointer;
 }
 
+.btn {
+  height: auto;
+  min-height: 2rem;
+}
+
 .text-right {
   text-align: right !important;
 }

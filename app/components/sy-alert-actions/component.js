@@ -7,7 +7,7 @@ export default Ember.Component.extend({
 
   model: computed('alert-actions', function() {
     return this.get('store')
-               .peekRecord('alert', this.get('alert-actions'))
+               .findRecord('alert', this.get('alert-actions'))
   }),
 
   actions: {

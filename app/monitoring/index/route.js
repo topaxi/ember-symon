@@ -11,7 +11,7 @@ export default Ember.Route.extend({
 
   renderTemplate() {
     this.render('monitoring.subnav', {
-      into: 'monitoring'
+      into: 'application'
     })
   }
 })

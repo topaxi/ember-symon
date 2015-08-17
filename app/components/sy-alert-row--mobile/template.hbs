@@ -13,7 +13,7 @@
   {{model.service.name}}<br>
   {{model.host.customer.name}}<br>
   <hr>
-  {{#link-to (query-params alert-actions=model.id)}}
+  {{#link-to (query-params alert-actions=model.id) class='block'}}
     {{model.type}}<br>
     {{{moment-format model.datetime 'L[<br>]LT'}}}<br>
     {{#if model.closetime}}

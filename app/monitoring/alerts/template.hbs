@@ -9,7 +9,7 @@
       </div>
     </th>
 
-    {{#if media.isMo}}
+    {{#if media.isMaxXs}}
       <th>Alert</th>
     {{else}}
       <th></th>
@@ -23,7 +23,7 @@
       {{pagination-pager current=page count=totalPages}}
     </td>
   {{else if (equal section 'row')}}
-    {{component (if media.isMo 'sy-alert-row--mobile' 'sy-alert-row')
+    {{component (if media.isMaxXs 'sy-alert-row--mobile' 'sy-alert-row')
       model   = model
       refresh = 'refresh'
       }}

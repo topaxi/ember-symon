@@ -5,10 +5,6 @@
   hyphens: auto;
 }
 
-textarea {
-  min-height: 4em;
-}
-
 [href='#']:not([data-ember-action]), .not-ready {
   opacity: 0.3;
   pointer-events: none;
@@ -20,21 +16,12 @@ a, button {
       touch-action: manipulation;
 }
 
-.page-content--scroll {
-  scroll-behavior: smooth;
-}
-
 .flex-wrap {
   flex-wrap: wrap;
 }
 
 .pointer {
   cursor: pointer;
-}
-
-.btn {
-  height: auto;
-  min-height: 2rem;
 }
 
 .text-right {

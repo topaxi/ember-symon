@@ -1,5 +1,5 @@
 <div class="flex-grow">
-  {{#if (equal model.state 'new')}}
+  {{#if (eq model.state 'new')}}
     <a class="btn" {{action 'acknowledge' model}}>
       <i class="fa {{if media.isMaxXs 'fa-3x'}} fa-check"></i>
     </a>

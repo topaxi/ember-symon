@@ -1,7 +1,7 @@
 {{#sy-list model=model loading=loading as |section model|}}
-  {{#if (equal section 'actions')}}
+  {{#if (eq section 'actions')}}
     <!-- nothing -->
-  {{else if (equal section 'header')}}
+  {{else if (eq section 'header')}}
     <th>
       <div class="checkbox" style="margin:0">
         <input id="toggleAll" type="checkbox" onchange={{action 'toggleAll' value='target.checked'}}>
@@ -18,13 +18,13 @@
       <th>Output</th>
       <th></th>
     {{/if}}
-  {{else if (equal section 'footer')}}
+  {{else if (eq section 'footer')}}
     <td colspan="6">
       {{pagination-pager current=page count=totalPages change=(action 'pageChanged')}}
     </td>
-  {{else if (equal section 'empty')}}
+  {{else if (eq section 'empty')}}
     <tr class="warning"><td colspan="4">No alerts found</td></tr>
-  {{else if (equal section 'row')}}
+  {{else if (eq section 'row')}}
     {{component (if media.isMaxXs 'sy-alert-row--mobile' 'sy-alert-row')
       model   = model
       refresh = 'refresh'

@@ -1,5 +1,5 @@
 {{#sy-list-loading as |section|}}
-  {{#if (equal section 'actions')}}
+  {{#if (eq section 'actions')}}
     {{#link-to 'manage.hosts.new' class='btn btn-success'}}
       <i class="fa fa-plus"></i>&nbsp;New host
     {{/link-to}}
@@ -7,7 +7,7 @@
     <a class="btn" disabled>
       <i class="fa fa-exclamation-circle"></i>&nbsp;Alert schedules
     </a>
-  {{else if (equal section 'header')}}
+  {{else if (eq section 'header')}}
     {{#unless media.isMo}}
       <th width="250">Customer</th>
     {{/unless}}

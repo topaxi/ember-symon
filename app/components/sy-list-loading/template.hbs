@@ -1,11 +1,11 @@
 {{#sy-list model=model loading=true as |section|}}
-  {{#if (equal section 'actions')}}
+  {{#if (eq section 'actions')}}
     {{yield section model}}
-  {{else if (equal section 'header')}}
+  {{else if (eq section 'header')}}
     {{yield section model}}
-  {{else if (equal section 'footer')}}
+  {{else if (eq section 'footer')}}
     {{yield section model}}
-  {{else if (equal section 'row')}}
+  {{else if (eq section 'row')}}
     <tr><td colspan="42">&nbsp;</td></tr>
   {{/if}}
 {{/sy-list}}

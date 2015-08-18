@@ -1,9 +1,9 @@
 {{#sy-list-loading as |section|}}
-  {{#if (equal section 'actions')}}
+  {{#if (eq section 'actions')}}
     {{#link-to 'manage.host-groups.new' class='btn btn-success'}}
       <i class="fa fa-plus"></i>&nbsp;New host group
     {{/link-to}}
-  {{else if (equal section 'header')}}
+  {{else if (eq section 'header')}}
     <th>Customer</th>
     <th>Host group name</th>
     <th class="visible-lg">Description</th>

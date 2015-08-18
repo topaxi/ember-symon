@@ -7,7 +7,7 @@
       {{outlet 'subnav'}}
       <div class="page-content page-content--scroll">
         {{#bread-crumbs class='breadcrumb--first-mobileonly' as |component crumb|}}
-          {{crumb.title}}{{#if (equal crumb.title 'Loading')}}<span class="loading-dots"><i>.</i><i>.</i><i>.</i></span>{{/if}}
+          {{crumb.title}}{{#if (eq crumb.title 'Loading')}}<span class="loading-dots"><i>.</i><i>.</i><i>.</i></span>{{/if}}
         {{/bread-crumbs}}
         {{outlet}}
       </div>

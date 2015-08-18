@@ -1,5 +1,5 @@
 {{#sy-list model=model loading=loading as |section model|}}
-  {{#if (equal section 'actions')}}
+  {{#if (eq section 'actions')}}
     {{#link-to 'manage.hosts.new' class='btn btn-success'}}
       <i class="fa fa-plus"></i>&nbsp;New host
     {{/link-to}}
@@ -7,7 +7,7 @@
     {{#link-to (query-params alert-schedule='show') class='btn'}}
       <i class="fa fa-exclamation-circle"></i>&nbsp;Alert schedules
     {{/link-to}}
-  {{else if (equal section 'header')}}
+  {{else if (eq section 'header')}}
     {{#unless media.isMo}}
       <th width="250">Customer</th>
     {{/unless}}
@@ -15,13 +15,13 @@
     <th class="visible-lg">Description</th>
     <th>Wiki</th>
     <th width="1"></th>
-  {{else if (equal section 'footer')}}
+  {{else if (eq section 'footer')}}
     <td colspan="5">
       {{pagination-pager current=page count=totalPages change=(action 'pageChanged')}}
     </td>
-  {{else if (equal section 'empty')}}
+  {{else if (eq section 'empty')}}
     <tr class="warning"><td colspan="5">No hosts found</td></tr>
-  {{else if (equal section 'row')}}
+  {{else if (eq section 'row')}}
     <tr>
       {{#unless media.isMo}}
         <td>{{model.customer.name}}</td>

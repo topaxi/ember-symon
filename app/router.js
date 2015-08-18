@@ -75,6 +75,12 @@ Router.map(function() {
     this.route('hosts-hierarchy')
     this.route('audit-log')
   })
+
+  this.route('user', function() {
+  })
+
+  this.route('infofeeds', function() {
+  })
 })
 
 export default Router

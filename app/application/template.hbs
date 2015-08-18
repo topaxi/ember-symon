@@ -1,13 +1,18 @@
-{{#sy-sidenav expand=expandSidenav}}
-  <main class="page-main">
-    {{outlet 'subnav'}}
-    <div class="page-content page-content--scroll">
-      {{#bread-crumbs class='breadcrumb--first-mobileonly' as |component crumb|}}
-        {{crumb.title}}{{#if (equal crumb.title 'Loading')}}<span class="loading-dots"><i>.</i><i>.</i><i>.</i></span>{{/if}}
-      {{/bread-crumbs}}
-      {{outlet}}
-    </div>
-  </main>
+{{#sy-sidenav title='SyMonitoring' expand=expandSidenav as |component section|}}
+  {{#if (eq section 'body')}}
+    {{! templates/sidenav-body.hbs }}
+    {{partial 'sidenav-body'}}
+  {{else if (eq section 'page-content')}}
+    <main class="page-main">
+      {{outlet 'subnav'}}
+      <div class="page-content page-content--scroll">
+        {{#bread-crumbs class='breadcrumb--first-mobileonly' as |component crumb|}}
+          {{crumb.title}}{{#if (equal crumb.title 'Loading')}}<span class="loading-dots"><i>.</i><i>.</i><i>.</i></span>{{/if}}
+        {{/bread-crumbs}}
+        {{outlet}}
+      </div>
+    </main>
+  {{/if}}
 {{/sy-sidenav}}
 
 {{liquid-modal}}

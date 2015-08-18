@@ -42,6 +42,7 @@
     "ember-export-application-global": "^1.0.3",
     "ember-moment": "3.5.1",
     "ember-responsive": "1.1.0",
+    "ember-sy": "adfinis-sygroup/ember-sy#master",
     "font-awesome": "FortAwesome/Font-Awesome#v4.4.0",
     "liquid-fire": "0.21.2",
     "pagination-pager": "2.1.0"

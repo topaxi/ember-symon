@@ -1,0 +1,29 @@
+{{#sy-sidenav-list}}
+  {{sy-sidenav-item 'index' 'home' 'Home'}}
+  {{sy-sidenav-item 'manage' 'server' 'Manage'}}
+  {{sy-sidenav-item 'monitoring' 'heartbeat' 'Monitoring'}}
+  {{sy-sidenav-item 'maintenance' 'gears' 'Maintenance' class='not-ready'}}
+{{/sy-sidenav-list}}
+
+{{#sy-sidenav-list header='Analysis'}}
+  {{sy-sidenav-item 'analysis.reports' 'list-alt' 'Reports' class='not-ready'}}
+  {{sy-sidenav-item 'analysis.hosts-hierarchy' 'sitemap' 'Hosts Hierarchy' class='not-ready'}}
+  {{sy-sidenav-item 'analysis.audit-log' 'list' 'Audit Log' class='not-ready'}}
+{{/sy-sidenav-list}}
+
+{{#sy-sidenav-list header='User'}}
+  {{sy-sidenav-item 'user' 'user' 'Settings' class='not-ready'}}
+  {{sy-sidenav-item 'infofeeds' 'comment' 'Infofeeds' class='not-ready'}}
+  {{#sy-sidenav-item}}
+    <a href="https://monitoring-test.adfinis-sygroup.ch/guide/en/guide.html">
+      <i class="fa fa-support"></i>
+      Guide
+    </a>
+  {{/sy-sidenav-item}}
+  {{#sy-sidenav-item class='not-ready'}}
+    <a class="pointer" {{action 'invalidateSession'}}>
+      <i class="fa fa-sign-out"></i>
+      Sign out
+    </a>
+  {{/sy-sidenav-item}}
+{{/sy-sidenav-list}}

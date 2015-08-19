@@ -19,7 +19,7 @@ export default function(server) {
 
   createTopaxi(server)
 
-  for (let customer of server.createList('customer', rrange(30, 50))) {
+  for (let customer of server.createList('customer', rrange(50, 80))) {
     server.createList('host', rrange(1, 8), { customer: customer.id })
     server.createList('host-group', rrange(0, 2), { customer: customer.id })
   }

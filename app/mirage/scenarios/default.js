@@ -24,7 +24,7 @@ export default function(server) {
     server.createList('host-group', rrange(0, 2), { customer: customer.id })
   }
 
-  server.createList('alert', rrange(5, 20), { state: 'new' })
+  server.createList('alert', rrange(5, 15), { state: 'new' })
   server.createList('alert', rrange(50, 100))
 }
 

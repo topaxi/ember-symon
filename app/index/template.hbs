@@ -1,104 +1,27 @@
 <h1>Welcome to SyMonitoring</h1>
 
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title">New alerts</h3>
-  </div>
+{{#link-to 'monitoring.alerts' (query-params state='new')}}
+  <h3 class="panel-title">New alerts</h3>
+  <p>There are {{model.length}} new alerts.</p>
+{{/link-to}}
 
-  <div class="panel-body">
-    There are 10 new alerts.
-  </div>
-
-  <table class="table table--striped">
-    <thead>
-      <tr>
-        <th class="visible-xs">Customer</th>
-        <th>Hostname</th>
-        <th>Service</th>
-        <th class="visible-md">State</th>
+<table class="table table--striped">
+  <thead>
+    <tr>
+      <th class="visible-xs">Customer</th>
+      <th>Hostname</th>
+      <th>Service</th>
+      <th class="visible-md">State</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each model as |alert|}}
+      <tr class="item {{alert.cssType}}">
+        <td class="visible-xs">{{alert.host.customer.name}}</td>
+        <td>{{alert.host.hostname}}</td>
+        <td>{{alert.service.name}}</td>
+        <td class="visible-md">{{alert.type}}</td>
       </tr>
-    </thead>
-    <tbody>
-
-      <tr class="item warning" id="item218520">
-        <td class="visible-xs">Adfinis SyGroup</td>
-        <td>hs-adsy-rhev-becs-02.becs.adfinis-sygroup.ch</td>
-        <td>snmpv3_load</td>
-        <td class="visible-md">WARNING</td>
-      </tr>
-
-
-      <tr class="item warning" id="item218517">
-        <td class="visible-xs">Adfinis SyGroup</td>
-        <td>vm-adsy-ppa-mail-01.adfinis-sygroup.ch</td>
-        <td>nrpe_disk_varQmail</td>
-        <td class="visible-md">WARNING</td>
-      </tr>
-
-
-      <tr class="item warning" id="item218516">
-        <td class="visible-xs">Swissport</td>
-        <td>chzrh9spsv0002.swissport.aero</td>
-        <td>nrpe_load</td>
-        <td class="visible-md">WARNING</td>
-      </tr>
-
-
-      <tr class="item danger" id="item218459">
-        <td class="visible-xs">GIBB [GIB Bern]</td>
-        <td>ieu04-sr54.sn-dmz.iet-gibb.ch</td>
-        <td>https</td>
-        <td class="visible-md">CRITICAL</td>
-      </tr>
-
-
-      <tr class="item danger" id="item218439">
-        <td class="visible-xs">GIBB [GIB Bern]</td>
-        <td>ieu04-sr21.sn-srv.iet-gibb.ch</td>
-        <td>nrpe_dirvish</td>
-        <td class="visible-md">CRITICAL</td>
-      </tr>
-
-
-      <tr class="item warning" id="item218410">
-        <td class="visible-xs">Adfinis SyGroup</td>
-        <td>srsyg11.sygroup-int.ch</td>
-        <td>nrpe_backupspace</td>
-        <td class="visible-md">WARNING</td>
-      </tr>
-
-
-      <tr class="item warning" id="item218342">
-        <td class="visible-xs">Adfinis SyGroup</td>
-        <td>sr-adsy-backup-beke-01.adfinis-int.ch</td>
-        <td>nrpe_backupspace</td>
-        <td class="visible-md">WARNING</td>
-      </tr>
-
-
-      <tr class="item warning" id="item218184">
-        <td class="visible-xs">Toray Membrane Europe AG</td>
-        <td>zmail.toraynet.ch</td>
-        <td>nrpe_memory</td>
-        <td class="visible-md">WARNING</td>
-      </tr>
-
-
-      <tr class="item warning" id="item217964">
-        <td class="visible-xs">ICT Basler Schulen [EDUBS]</td>
-        <td>ucs-sla-02.intra.edubs.ch</td>
-        <td>nrpe_s4_connector_rejects</td>
-        <td class="visible-md">WARNING</td>
-      </tr>
-
-
-      <tr class="item warning" id="item216976">
-        <td class="visible-xs">Syngenta Agro</td>
-        <td>vm-syn-web-02.cust.adfinis-sygroup.ch</td>
-        <td>nrpe_disk_mysql</td>
-        <td class="visible-md">WARNING</td>
-      </tr>
-
-    </tbody>
-  </table>
-</div>
+    {{/each}}
+  </tbody>
+</table>

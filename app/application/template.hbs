@@ -6,8 +6,14 @@
     <main class="page-main">
       {{outlet 'subnav'}}
       <div class="page-content page-content--scroll">
-        {{#bread-crumbs class='breadcrumb--first-mobileonly' as |component crumb|}}
-          {{crumb.title}}{{#if (eq crumb.title 'Loading')}}{{sy-loading-dots}}{{/if}}
+        {{#bread-crumbs class='breadcrumb--first-mobileonly' as |component route|}}
+          {{#bread-crumb route=route breadCrumbs=component}}
+            {{#if (eq route.title 'Loading')}}
+              {{route.title}}{{sy-loading-dots}}
+            {{else}}
+              {{route.title}}
+            {{/if}}
+          {{/bread-crumb}}
         {{/bread-crumbs}}
         {{outlet}}
       </div>

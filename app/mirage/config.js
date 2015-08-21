@@ -51,6 +51,39 @@ export default function() {
   this.post('/alerts')
   this.put('/alerts/:id')
   this.del('/alerts/:id')
+
+  this.get('/serviceArguments', serviceList('service-arguments'))
+  this.get('/serviceArguments/:id', 'service-argument')
+  this.post('/serviceArguments', 'service-argument')
+  this.put('/serviceArguments/:id', 'service-argument')
+  this.del('/serviceArguments/:id', 'service-argument')
+}
+
+function serviceList(key) {
+  return (db, req) => {
+    let { page = 1, limit = 10, service, ids } = req.queryParams
+
+    page    = page    | 0
+    limit   = limit   | 0
+    service = service | 0
+
+    let entries = ids ? db[key].find(ids) : db[key]
+
+    if (service) {
+      entries = entries.filter(e =>  e.service === service)
+    }
+
+    entries.sort((a, b) => b.id - a.id)
+
+    return {
+      [key]: entries.slice((page - 1) * limit, (page - 1) * limit + limit),
+      meta:  {
+        page:  page,
+        limit: limit,
+        total: entries.length
+      }
+    }
+  }
 }
 
 function alertList(key) {

@@ -7,5 +7,7 @@ module.exports = function(defaults) {
     hinting: false
   })
 
+  app.import('vendor/browser-polyfill.js', { prepend: true })
+
   return app.toTree()
 }

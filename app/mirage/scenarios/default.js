@@ -14,7 +14,11 @@ export default function(server) {
   })
 
   for (let command of server.createList('command', 50)) {
-    server.createList('service', rrange(1, 5), { command: command.id })
+    let services = server.createList('service', rrange(1, 5), { command: command.id })
+
+    for (let service of services) {
+      server.createList('service-argument', rrange(0, 3), { service: service.id })
+    }
   }
 
   createTopaxi(server)

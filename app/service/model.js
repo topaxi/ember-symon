@@ -1,10 +1,11 @@
 import DS from 'ember-data'
 
-const { Model, attr, belongsTo/*, hasMany*/ } = DS
+const { Model, attr, belongsTo, hasMany } = DS
 
 export default Model.extend({
-  customer:         belongsTo('customer', { async: true }),
-  command:          belongsTo('command',  { async: true }),
+  customer:         belongsTo('customer'),
+  command:          belongsTo('command'),
+  arguments:        hasMany('service-argument'),
   name:             attr('string'),
   description:      attr('string'),
   maxCheckAttempts: attr('number'),

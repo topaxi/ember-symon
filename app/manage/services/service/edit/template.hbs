@@ -90,7 +90,6 @@
   <thead>
     <tr>
       <th>#</th>
-      <th></th>
       <th>Option</th>
       <th>Value</th>
       <th>Description</th>
@@ -98,9 +97,24 @@
     </tr>
   </thead>
   <tbody class="sortable ui-sortable">
-    <tr>
-      <td colspan="42">No arguments created yet.</td>
-    </tr>
+    {{#each model.arguments as |argument|}}
+      <tr>
+        <td>{{argument.id}}</td>
+        <td>{{argument.option}}</td>
+        <td>{{argument.value}}</td>
+        <td>{{argument.description}}</td>
+        <td>
+          <select class="form-control">
+            <option selected={{eq argument.type 'Fixed'}}>Fixed</option>
+            <option selected={{eq argument.type 'Variable'}}>Variable</option>
+          </select>
+        </td>
+      </tr>
+    {{^}}
+      <tr>
+        <td colspan="42">No arguments created yet.</td>
+      </tr>
+    {{/each}}
   </tbody>
 </table>
 

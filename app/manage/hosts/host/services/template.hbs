@@ -46,150 +46,56 @@
             </tr>
           </thead>
           <tbody>
-            <tr id="instance-9" class="">
-              <td>9</td>
-              <td>
-                <input name="instanceId[3][9]" value="0" type="hidden">
-                <input data-original-title="Avail Info" class="form-control add-popover" title="" data-toggle="popover" data-content="If Avail is set, this service becomes relevant for the availability of this host in the reports." name="forAvailability[old-9]" checked="checked" type="checkbox">
-              </td>
-              <td>
-                <input class="form-control" name="name[old-9]" value="Service 1.1" type="text">
-              </td>
-              <td>
-                <select id="slaId" class="form-control" name="slaId[old-9]">
-                  <option value="0">
-                  Inherit (Premium)
-                  </option>
-                  <option value="3">Nightshift</option>
-                  <option value="1">No Alarm</option>
-                  <option value="2">Premium</option>
+            {{#each model.services as |hostService|}}
+              <tr>
+                <td>{{hostService.id}}</td>
+                <td>
+                  <input class="form-control" title="If Avail is set, this service becomes relevant for the availability of this host in the reports." checked={{hostService.available}} type="checkbox">
+                </td>
+                <td>
+                  <input class="form-control" value={{hostService.name}} type="text">
+                </td>
+                <td>
+                  <select class="form-control">
+                    <option value="0" selected={{eq hostService.alertScheduler 0}}>
+                    Inherit (Premium)
+                    </option>
+                    <option value="3" selected={{eq hostService.alertScheduler 3}}>Nightshift</option>
+                    <option value="1" selected={{eq hostService.alertScheduler 1}}>No Alarm</option>
+                    <option value="2" selected={{eq hostService.alertScheduler 2}}>Premium</option>
 
-                </select>
-              </td>
-              <td>
-                <table class="table-condensed">
-                  <thead></thead>
-                  <tbody>
-                    <tr>
-                      <td>None.</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </td>
-              <td>
-                <input class="form-control" name="isPassive[old-9]" type="checkbox">
-              </td>
-              <td>
-                <input class="form-control" name="isEnabled[old-9]" checked="checked" type="checkbox">
-              </td>
-              <td class="text-right break-none">
-                <div class="flex-grow">
-                  <button type="button" class="btn btn-default btn-sm" title="Check service instance 'http' for host 'Host 1' now">
-                    <i class="fa fa-refresh"></i>
-                  </button>
-                  &nbsp;
-                  <button type="button" class="btn btn-default btn-sm" title="Delete this service instance">
-                    <i class="fa fa-trash-o"></i>
-                  </button>
-                </div>
-              </td>
-            </tr>
-            <tr id="instance-10" class="">
-              <td>10</td>
-              <td>
-                <input name="instanceId[3][10]" value="0" type="hidden">
-                <input data-original-title="Avail Info" class="form-control add-popover" title="" data-toggle="popover" data-content="If Avail is set, this service becomes relevant for the availability of this host in the reports." name="forAvailability[old-10]" type="checkbox">
-              </td>
-              <td>
-                <input class="form-control" name="name[old-10]" value="Service 1.2" type="text">
-              </td>
-              <td>
-                <select id="slaId" class="form-control" name="slaId[old-10]">
-                  <option value="0">
-                  Inherit (Premium)
-                  </option>
-                  <option value="3">Nightshift</option>
-                  <option value="1">No Alarm</option>
-                  <option value="2">Premium</option>
-
-                </select>
-              </td>
-              <td>
-                <table class="table-condensed">
-                  <thead></thead>
-                  <tbody>
-                    <tr>
-                      <td>None.</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </td>
-              <td>
-                <input class="form-control" name="isPassive[old-10]" type="checkbox">
-              </td>
-              <td>
-                <input class="form-control" name="isEnabled[old-10]" checked="checked" type="checkbox">
-              </td>
-              <td class="text-right break-none">
-                <div class="flex-grow">
-                  <button type="button" class="btn btn-default btn-sm" title="Check service instance 'http' for host 'Host 1' now">
-                    <i class="fa fa-refresh"></i>
-                  </button>
-                  &nbsp;
-                  <button type="button" class="btn btn-default btn-sm" title="Delete this service instance">
-                    <i class="fa fa-trash-o"></i>
-                  </button>
-                </div>
-              </td>
-            </tr>
-            <tr id="instance-11" class="">
-              <td>11</td>
-              <td>
-                <input name="instanceId[3][11]" value="0" type="hidden">
-                <input data-original-title="Avail Info" class="form-control add-popover" title="" data-toggle="popover" data-content="If Avail is set, this service becomes relevant for the availability of this host in the reports." name="forAvailability[old-11]" type="checkbox">
-              </td>
-              <td>
-                <input class="form-control" name="name[old-11]" value="Service 1.3" type="text">
-              </td>
-              <td>
-                <select id="slaId" class="form-control" name="slaId[old-11]">
-                  <option value="0">
-                  Inherit (Premium)
-                  </option>
-                  <option value="3">Nightshift</option>
-                  <option value="1">No Alarm</option>
-                  <option value="2">Premium</option>
-
-                </select>
-              </td>
-              <td>
-                <table class="table-condensed">
-                  <thead></thead>
-                  <tbody>
-                    <tr>
-                      <td>None.</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </td>
-              <td>
-                <input class="form-control" name="isPassive[old-11]" type="checkbox">
-              </td>
-              <td>
-                <input class="form-control" name="isEnabled[old-11]" checked="checked" type="checkbox">
-              </td>
-              <td class="text-right break-none">
-                <div class="flex-grow">
-                  <button type="button" class="btn btn-default btn-sm" title="Check service instance 'http' for host 'Host 1' now">
-                    <i class="fa fa-refresh"></i>
-                  </button>
-                  &nbsp;
-                  <button type="button" class="btn btn-default btn-sm" title="Delete this service instance">
-                    <i class="fa fa-trash-o"></i>
-                  </button>
-                </div>
-              </td>
-            </tr>
+                  </select>
+                </td>
+                <td>
+                  {{#with hostService.arguments as |arguments|}}
+                    <div class="grid grid--12of12">
+                      {{#each arguments as |argument|}}
+                        <div class="grid-cell">
+                          <input>
+                        </div>
+                      {{/each}}
+                    </div>
+                  {{/with}}
+                </td>
+                <td>
+                  <input class="form-control" checked={{hostService.passive}} type="checkbox">
+                </td>
+                <td>
+                  <input class="form-control" checked={{hostService.enabled}} type="checkbox">
+                </td>
+                <td>
+                  <div class="flex-grow">
+                    <button type="button" class="btn btn-default btn-sm" title="Check service instance 'http' for host 'Host 1' now">
+                      <i class="fa fa-refresh"></i>
+                    </button>
+                    &nbsp;
+                    <button type="button" class="btn btn-default btn-sm" title="Delete this service instance">
+                      <i class="fa fa-trash-o"></i>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            {{/each}}
           </tbody>
         </table>
       </div>

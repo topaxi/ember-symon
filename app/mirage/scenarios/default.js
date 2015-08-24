@@ -1,6 +1,12 @@
 const { floor, random } = Math
 
+function pushAll(on, elements) {
+  Array.prototype.push.apply(on, elements)
+}
+
 export default function(server) {
+  let allServices = []
+
   server.create('customer', {
     parent: null,
     name: 'All customers',
@@ -16,6 +22,8 @@ export default function(server) {
   for (let command of server.createList('command', 50)) {
     let services = server.createList('service', rrange(1, 5), { command: command.id })
 
+    pushAll(allServices, services)
+
     for (let service of services) {
       server.createList('service-argument', rrange(0, 3), { service: service.id })
     }
@@ -24,7 +32,13 @@ export default function(server) {
   createTopaxi(server)
 
   for (let customer of server.createList('customer', rrange(60, 80))) {
-    server.createList('host', rrange(1, 8), { customer: customer.id })
+    for (let host of server.createList('host', rrange(1, 8), { customer: customer.id })) {
+      server.createList('host-service', rrange(0, 8), {
+        host: host.id,
+        service: rrange(1, allServices.length)
+      })
+    }
+
     server.createList('host-group', rrange(0, 2), { customer: customer.id })
   }
 
@@ -47,6 +61,16 @@ function createTopaxi(server) {
     description: 'The awesome VPS of topaxi',
     ipv4:        '95.128.34.190',
     wiki:        'http://wiki.lspace.org/mediawiki/Topaxci'
+  })
+
+  server.create('host-service', {
+    host:    topaxich.id,
+    service: 1
+  })
+
+  server.create('host-service', {
+    host:    topaxich.id,
+    service: 2
   })
 }
 

@@ -52,25 +52,31 @@ export default function() {
   this.put('/alerts/:id')
   this.del('/alerts/:id')
 
-  this.get('/serviceArguments', serviceList('service-arguments'))
+  this.get('/serviceArguments', listByField('service-arguments', 'service'))
   this.get('/serviceArguments/:id', 'service-argument')
   this.post('/serviceArguments', 'service-argument')
   this.put('/serviceArguments/:id', 'service-argument')
   this.del('/serviceArguments/:id', 'service-argument')
+
+  this.get('/hostServices', listByField('host-services', 'host'))
+  this.get('/hostServices/:id', 'host-service')
+  this.post('/hostServices', 'host-service')
+  this.put('/hostServices/:id', 'host-service')
+  this.del('/hostServices/:id', 'host-service')
 }
 
-function serviceList(key) {
+function listByField(key, fieldName) {
   return (db, req) => {
-    let { page = 1, limit = 10, service, ids } = req.queryParams
+    let { page = 1, limit = 10, [fieldName]: field, ids } = req.queryParams
 
-    page    = page    | 0
-    limit   = limit   | 0
-    service = service | 0
+    page  = page  | 0
+    limit = limit | 0
+    field = field | 0
 
     let entries = ids ? db[key].find(ids) : db[key]
 
-    if (service) {
-      entries = entries.filter(e =>  e.service === service)
+    if (field) {
+      entries = entries.filter(e => e[fieldName] === field)
     }
 
     entries.sort((a, b) => b.id - a.id)

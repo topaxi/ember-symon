@@ -4,7 +4,8 @@ const { attr, belongsTo, hasMany } = DS
 
 export default DS.Model.extend({
   host:           belongsTo('host'),
-  arguments:      hasMany('host-service-argument', { async: false }),
+  service:        belongsTo('service'),
+  //arguments:      hasMany('host-service-argument', { async: false }),
   name:           attr('string'),
   available:      attr('boolean'),
   alertScheduler: attr('number'),

@@ -67,7 +67,7 @@ export default function() {
 
 function listByField(key, fieldName) {
   return (db, req) => {
-    let { page = 1, limit = 10, [fieldName]: field, ids } = req.queryParams
+    let { page = 1, limit, [fieldName]: field, ids } = req.queryParams
 
     page  = page  | 0
     limit = limit | 0
@@ -79,22 +79,25 @@ function listByField(key, fieldName) {
       entries = entries.filter(e => e[fieldName] === field)
     }
 
+    let total = entries.length
+
     entries.sort((a, b) => b.id - a.id)
 
+    if (limit) {
+      let offset = (page - 1) * limit
+      entries = entries.slice(offset, offset + limit)
+    }
+
     return {
-      [key]: entries.slice((page - 1) * limit, (page - 1) * limit + limit),
-      meta:  {
-        page:  page,
-        limit: limit,
-        total: entries.length
-      }
+      [key]: entries,
+      meta:  { page, limit, total }
     }
   }
 }
 
 function alertList(key) {
   return (db, req) => {
-    let { page = 1, limit = 10, state, ids } = req.queryParams
+    let { page = 1, limit, state, ids } = req.queryParams
 
     page  = page  | 0
     limit = limit | 0
@@ -105,35 +108,40 @@ function alertList(key) {
       entries = entries.filter(e =>  e.state === state)
     }
 
+    let total = entries.length
+
     entries.sort((a, b) => b.id - a.id)
 
+    if (limit) {
+      let offset = (page - 1) * limit
+      entries = entries.slice(offset, offset + limit)
+    }
+
     return {
-      [key]: entries.slice((page - 1) * limit, (page - 1) * limit + limit),
-      meta:  {
-        page:  page,
-        limit: limit,
-        total: entries.length
-      }
+      [key]: entries,
+      meta:  { page, limit, total }
     }
   }
 }
 
 function list(key) {
   return (db, req) => {
-    let { page = 1, limit = 10, ids } = req.queryParams
+    let { page = 1, limit, ids } = req.queryParams
 
     page  = page  | 0
     limit = limit | 0
 
     let entries = ids ? db[key].find(ids) : db[key]
+    let total   = entries.length
+
+    if (limit) {
+      let offset = (page - 1) * limit
+      entries = entries.slice(offset, offset + limit)
+    }
 
     return {
-      [key]: entries.slice((page - 1) * limit, (page - 1) * limit + limit),
-      meta:  {
-        page:  page,
-        limit: limit,
-        total: entries.length
-      }
+      [key]: entries,
+      meta:  { page, limit, total }
     }
   }
 }

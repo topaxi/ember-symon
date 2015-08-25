@@ -23,7 +23,7 @@
       {{pagination-pager current=page count=totalPages change=(action 'pageChanged')}}
     </td>
   {{else if (eq section 'empty')}}
-    <tr class="warning"><td colspan="4">No alerts found</td></tr>
+    <tr class="warning"><td colspan="6">No alerts found</td></tr>
   {{else if (eq section 'row')}}
     {{component (if media.isMaxXs 'sy-alert-row--mobile' 'sy-alert-row')
       model   = model

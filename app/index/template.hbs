@@ -5,23 +5,25 @@
   <p>There are {{model.length}} new alerts.</p>
 {{/link-to}}
 
-<table class="table table--striped">
-  <thead>
-    <tr>
-      <th class="visible-xs">Customer</th>
-      <th>Hostname</th>
-      <th>Service</th>
-      <th class="visible-md">Type</th>
-    </tr>
-  </thead>
-  <tbody>
-    {{#each model as |alert|}}
-      <tr class="item {{alert.cssType}}">
-        <td class="visible-xs">{{alert.host.customer.name}}</td>
-        <td>{{alert.host.hostname}}</td>
-        <td>{{alert.service.name}}</td>
-        <td class="visible-md">{{alert.type}}</td>
+{{#with model as |alerts|}}
+  <table class="table table--striped">
+    <thead>
+      <tr>
+        <th class="visible-xs">Customer</th>
+        <th>Hostname</th>
+        <th>Service</th>
+        <th class="visible-md">Type</th>
       </tr>
-    {{/each}}
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      {{#each alerts as |alert|}}
+        <tr class="item {{alert.cssType}}">
+          <td class="visible-xs">{{alert.host.customer.name}}</td>
+          <td>{{alert.host.hostname}}</td>
+          <td>{{alert.service.name}}</td>
+          <td class="visible-md">{{alert.type}}</td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+{{/with}}

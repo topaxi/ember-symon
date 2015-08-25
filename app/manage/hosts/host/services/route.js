@@ -8,13 +8,12 @@ export default Ember.Route.extend({
   },
 
   model() {
-    return Ember.RSVP.hash({
-      host:     this._super(...arguments),
-      services: this.store.findAll('service')
-    })
-  },
+    let host = this.modelFor('manage.hosts.host')
 
-  afterModel({ host: { id } }) {
-    return this.store.query('host-service', { host: id })
+    return Ember.RSVP.hash({
+      host,
+      services:     this.store.findAll('service'),
+      hostServices: this.store.query('host-service', { host: host.id })
+    })
   }
 })

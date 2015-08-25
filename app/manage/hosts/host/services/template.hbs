@@ -1,10 +1,11 @@
-<form method="post">
+<form method="post" {{action 'saveServices' on='submit'}}>
   <div class="form-group">
     <label for="serviceId">Service:</label>
     <div class="flex-grow">
       <select id="serviceId" class="form-control">
-        <option value="6">check_raid</option>
-        <option value="3">http</option>
+        {{#each services as |service|}}
+          <option value={{service.id}}>{{service.name}}</option>
+        {{/each}}
       </select>
       &nbsp;
       <a class="btn btn-success">
@@ -20,86 +21,79 @@
 
   <h3>Assigned services</h3>
   <div>
-    <div>
-      <div class="panel panel-default">
-        <input name="serviceId[]" value="3" type="hidden">
-        <div class="panel-heading">
-          <h4 class="panel-title">
-            http
-            <p class="pull-right">
-            <button type="button" class="btn btn-link">
-              <i class="fa fa-plus"></i> Add instance
-            </button>
-            </p>
-          </h4>
-        </div>
-        <table class="table table--striped">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Avail</th>
-              <th>Name</th>
-              <th>Alert Scheduler</th>
-              <th>Arguments</th>
-              <th>Passive</th>
-              <th colspan="2">Enabled</th>
-            </tr>
-          </thead>
-          <tbody>
-            {{#each model.services as |hostService|}}
-              <tr>
-                <td>{{hostService.id}}</td>
-                <td>
-                  <input class="form-control" title="If Avail is set, this service becomes relevant for the availability of this host in the reports." checked={{hostService.available}} type="checkbox">
-                </td>
-                <td>
-                  <input class="form-control" value={{hostService.name}} type="text">
-                </td>
-                <td>
-                  <select class="form-control">
-                    <option value="0" selected={{eq hostService.alertScheduler 0}}>
-                    Inherit (Premium)
-                    </option>
-                    <option value="3" selected={{eq hostService.alertScheduler 3}}>Nightshift</option>
-                    <option value="1" selected={{eq hostService.alertScheduler 1}}>No Alarm</option>
-                    <option value="2" selected={{eq hostService.alertScheduler 2}}>Premium</option>
+    <h4 class="panel-title">
+      http
+      <p class="pull-right">
+      <button type="button" class="btn btn-link">
+        <i class="fa fa-plus"></i> Add instance
+      </button>
+      </p>
+    </h4>
+    <table class="table table--striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Avail</th>
+          <th>Name</th>
+          <th>Alert Scheduler</th>
+          <th>Arguments</th>
+          <th>Passive</th>
+          <th colspan="2">Enabled</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each model.services as |hostService|}}
+          <tr>
+            <td>{{hostService.id}}</td>
+            <td>
+              <input class="form-control" title="If Avail is set, this service becomes relevant for the availability of this host in the reports." checked={{hostService.available}} type="checkbox">
+            </td>
+            <td>
+              <input class="form-control" value={{hostService.name}} type="text">
+            </td>
+            <td>
+              <select class="form-control">
+                <option value="0" selected={{eq hostService.alertScheduler 0}}>
+                Inherit (Premium)
+                </option>
+                <option value="3" selected={{eq hostService.alertScheduler 3}}>Nightshift</option>
+                <option value="1" selected={{eq hostService.alertScheduler 1}}>No Alarm</option>
+                <option value="2" selected={{eq hostService.alertScheduler 2}}>Premium</option>
 
-                  </select>
-                </td>
-                <td>
-                  {{#with hostService.arguments as |arguments|}}
-                    <div class="grid grid--12of12">
-                      {{#each arguments as |argument|}}
-                        <div class="grid-cell">
-                          <input>
-                        </div>
-                      {{/each}}
+              </select>
+            </td>
+            <td>
+              {{#with hostService.arguments as |arguments|}}
+                <div class="grid grid--12of12">
+                  {{#each arguments as |argument|}}
+                    <div class="grid-cell">
+                      <input>
                     </div>
-                  {{/with}}
-                </td>
-                <td>
-                  <input class="form-control" checked={{hostService.passive}} type="checkbox">
-                </td>
-                <td>
-                  <input class="form-control" checked={{hostService.enabled}} type="checkbox">
-                </td>
-                <td>
-                  <div class="flex-grow">
-                    <button type="button" class="btn btn-default btn-sm" title="Check service instance 'http' for host 'Host 1' now">
-                      <i class="fa fa-refresh"></i>
-                    </button>
-                    &nbsp;
-                    <button type="button" class="btn btn-default btn-sm" title="Delete this service instance">
-                      <i class="fa fa-trash-o"></i>
-                    </button>
-                  </div>
-                </td>
-              </tr>
-            {{/each}}
-          </tbody>
-        </table>
-      </div>
-    </div>
+                  {{/each}}
+                </div>
+              {{/with}}
+            </td>
+            <td>
+              <input class="form-control" checked={{hostService.passive}} type="checkbox">
+            </td>
+            <td>
+              <input class="form-control" checked={{hostService.enabled}} type="checkbox">
+            </td>
+            <td>
+              <div class="flex-grow">
+                <button type="button" class="btn btn-default btn-sm" title="Check service instance 'http' for host 'Host 1' now">
+                  <i class="fa fa-refresh"></i>
+                </button>
+                &nbsp;
+                <button type="button" class="btn btn-default btn-sm" title="Delete this service instance">
+                  <i class="fa fa-trash-o"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
   </div>
   <div class="flex-grow">
     <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>

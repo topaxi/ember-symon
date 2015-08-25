@@ -7,6 +7,36 @@ function pushAll(on, elements) {
 export default function(server) {
   let allServices = []
 
+  function createCommands() {
+    server.createList('command', 50).forEach(command => {
+      let services = server.createList('service', rrange(1, 5), { command: command.id })
+
+      pushAll(allServices, services)
+    })
+
+    createServiceArguments(allServices)
+  }
+
+  function createServiceArguments(services) {
+    for (let service of services) {
+      server.createList('service-argument', rrange(0, 3), { service: service.id })
+    }
+  }
+
+  function createCustomers() {
+    server.createList('customer', rrange(60, 80)).forEach(customer => {
+
+      server.createList('host', rrange(1, 8), { customer: customer.id }).forEach(host => {
+        server.createList('host-service', rrange(0, 8), {
+          host:    host.id,
+          service: rrange(1, allServices.length)
+        })
+      })
+
+      server.createList('host-group', rrange(0, 2), { customer: customer.id })
+    })
+  }
+
   server.create('customer', {
     parent: null,
     name: 'All customers',
@@ -19,28 +49,9 @@ export default function(server) {
     comment: 'Root customer: All customers are subcustomers of this one'
   })
 
-  for (let command of server.createList('command', 50)) {
-    let services = server.createList('service', rrange(1, 5), { command: command.id })
-
-    pushAll(allServices, services)
-
-    for (let service of services) {
-      server.createList('service-argument', rrange(0, 3), { service: service.id })
-    }
-  }
-
+  createCommands()
   createTopaxi(server)
-
-  for (let customer of server.createList('customer', rrange(60, 80))) {
-    for (let host of server.createList('host', rrange(1, 8), { customer: customer.id })) {
-      server.createList('host-service', rrange(0, 8), {
-        host: host.id,
-        service: rrange(1, allServices.length)
-      })
-    }
-
-    server.createList('host-group', rrange(0, 2), { customer: customer.id })
-  }
+  createCustomers()
 
   server.createList('alert', rrange(5, 15), { state: 'new' })
   server.createList('alert', rrange(50, 100))

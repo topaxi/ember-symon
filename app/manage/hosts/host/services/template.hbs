@@ -21,12 +21,13 @@
 
   {{#each-in hostServices as |serviceName services|}}
     <h4 class="panel-title">
-      {{serviceName}}
-      <p class="pull-right">
-      <button type="button" class="btn btn-link">
-        <i class="fa fa-plus"></i> Add instance
-      </button>
-      </p>
+      <div class="flex-grow">
+        <button type="button" class="btn btn-success">
+          <i class="fa fa-plus"></i>
+        </button>
+        &nbsp;
+        {{serviceName}}
+      </div>
     </h4>
     <table class="table table--striped">
       <thead>

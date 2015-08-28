@@ -2,18 +2,17 @@ import Ember from 'ember'
 
 export default Ember.Route.extend({
 
-  setupController(controller, { host, services }) {
-    controller.set('model',    host)
-    controller.set('services', services)
+  setupController(controller) {
+    controller.set('model',    this.modelFor('manage.hosts.host'))
+    controller.set('services', this.store.peekAll('service'))
   },
 
-  model() {
-    let host = this.modelFor('manage.hosts.host')
+  beforeModel() {
+    return this.store.findAll('service')
+  },
 
-    return Ember.RSVP.hash({
-      host,
-      services:     this.store.findAll('service'),
-      hostServices: this.store.query('host-service', { host: host.id })
-    })
+  afterModel() {
+    let host = this.modelFor('manage.hosts.host')
+    return this.store.query('host-service', { host: host.id })
   }
 })

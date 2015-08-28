@@ -1,3 +1,5 @@
+import Mirage from 'ember-cli-mirage'
+
 export default function() {
 
   this.namespace = 'api' // make this `api`, for example, if your API is namespaced
@@ -13,6 +15,10 @@ export default function() {
     }
     else {
       host = db.hosts.where({ hostname: id })[0]
+    }
+
+    if (!host) {
+      return new Mirage.Response(404, {}, `Host ${id} not found`)
     }
 
     return { host }

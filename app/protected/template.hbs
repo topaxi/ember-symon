@@ -1,0 +1,11 @@
+{{#bread-crumbs class='breadcrumb--first-mobileonly' as |component route|}}
+  {{#bread-crumb route=route breadCrumbs=component}}
+    {{#if (eq route.title 'Loading')}}
+      {{route.title}}{{sy-loading-dots}}
+    {{else}}
+      {{route.title}}
+    {{/if}}
+  {{/bread-crumb}}
+{{/bread-crumbs}}
+
+{{outlet}}

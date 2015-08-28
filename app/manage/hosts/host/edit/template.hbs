@@ -153,13 +153,13 @@
   <h3>Comment&nbsp;<i title="Anything special with this host?" class="fa fa-info-circle"></i></h3>
 
   <p>
-    <textarea name="comment" id="hostComment" class="form-control"></textarea>
+    {{textarea class='form-control' value=model.comment}}
   </p>
 
   <h3>Password&nbsp;<i title="The host password is required to download nrpe and satellite export files" class="fa fa-info-circle"></i></h3>
 
   <p>
-    The current password is: <span>6frnj10IaBXFXGuRGq192WTYDf9eCvnJ</span>
+    The current password is: <span>{{model.password}}</span>
     <br>
     Set a new one: <a href="#" class="fa fa-refresh" id="host-4"></a>
   </p>

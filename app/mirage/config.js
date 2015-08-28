@@ -7,7 +7,7 @@ export default function() {
 
   this.get('/hosts', list('hosts'))
   this.get('/hosts/:id', (db, req) => {
-    let id = req.params.id
+    let { id } = req.params
     let host
 
     if (id | 0) {

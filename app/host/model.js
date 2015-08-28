@@ -1,8 +1,6 @@
-import Ember from 'ember'
-import DS    from 'ember-data'
+import DS from 'ember-data'
 
 const { Model, attr, belongsTo, hasMany } = DS
-const { computed } = Ember
 
 export default Model.extend({
   customer:               belongsTo('customer'),

@@ -50,7 +50,7 @@
 
     <div class="grid-cell form-group">
       <label for="osId">Operating System:</label>
-      <select class="form-control" id="osId" required>
+      <select class="form-control" id="osId" required onchange={{action 'changeOperatingSystem' value="target.value"}}>
         <option value=""></option>
         {{#each operatingSystems as |OS|}}
           <option value={{OS.id}} selected={{eq model.operatingSystem.id OS.id}}>{{OS.name}}</option>
@@ -60,7 +60,7 @@
 
     <div class="grid-cell form-group">
       <label for="osVersionId">OS version:</label>
-      <select id="osVersionId" name="osVersionId" class="form-control">
+      <select id="osVersionId" class="form-control" onchange={{action 'setOperatingSystemVersion' value="target.value"}}>
         <option value=""></option>
         {{#each model.operatingSystem.versions as |version|}}
           <option value={{version.id}} selected={{eq model.operatingSystemVersion.id version.id}}>{{version.name}}</option>

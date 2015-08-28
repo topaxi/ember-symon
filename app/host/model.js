@@ -7,6 +7,7 @@ const { computed } = Ember
 export default Model.extend({
   customer:               belongsTo('customer'),
   services:               hasMany('host-service'),
+  operatingSystem:        belongsTo('operating-system'),
   operatingSystemVersion: belongsTo('operating-system-version'),
   name:                   attr('string'),
   hostname:               attr('string'),
@@ -16,7 +17,5 @@ export default Model.extend({
   ipv4:                   attr('string'),
   ipv6:                   attr('string'),
   alertScheduler:         attr('number'),
-  wiki:                   attr('string'),
-
-  operatingSystem: computed.oneWay('operatingSystemVersion.operatingSystem')
+  wiki:                   attr('string')
 })

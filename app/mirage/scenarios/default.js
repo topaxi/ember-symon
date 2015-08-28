@@ -66,23 +66,9 @@ function createDeterministicData(server) {
     logo: 'http://design.ubuntu.com/wp-content/uploads/ubuntu-logo32.png'
   })
 
-  server.create('operating-system', { name: 'AIX'       })
-  server.create('operating-system', { name: 'Amiga'     })
-  server.create('operating-system', { name: 'BeOS'      })
-  server.create('operating-system', { name: 'Citrix'    })
-  server.create('operating-system', { name: 'Debian'    })
-  server.create('operating-system', { name: 'FreeBSD'   })
-  server.create('operating-system', { name: 'Gentoo'    })
-  server.create('operating-system', { name: 'HP-UX'     })
-  server.create('operating-system', { name: 'IRIX'      })
-  server.create('operating-system', { name: 'Linux'     })
-  server.create('operating-system', { name: 'Mandrake'  })
-  server.create('operating-system', { name: 'Novell'    })
-  server.create('operating-system', { name: 'OpenBSD'   })
-  server.create('operating-system', { name: 'Red Hat'   })
-  server.create('operating-system', { name: 'Slackware' })
-  server.create('operating-system', { name: 'SuSE'      })
-  server.create('operating-system', { name: 'Windows'   })
+  let debian  = server.create('operating-system', { name: 'Debian'  })
+  let gentoo  = server.create('operating-system', { name: 'Gentoo'  })
+  let windows = server.create('operating-system', { name: 'Windows' })
 
   server.create('operating-system-version', {
     name:            'Ubuntu 14.10 x86',
@@ -96,6 +82,55 @@ function createDeterministicData(server) {
     shortname:       'ubuntu_14.10_x64',
     operatingSystem: ubuntu.id,
     architecture:    x64.id
+  })
+
+  server.create('operating-system-version', {
+    name:            'Ubuntu 15.04 x86',
+    shortname:       'ubuntu_15.04_x86',
+    operatingSystem: ubuntu.id,
+    architecture:    x86.id
+  })
+
+  server.create('operating-system-version', {
+    name:            'Ubuntu 15.04 x86_64',
+    shortname:       'ubuntu_15.04_x64',
+    operatingSystem: ubuntu.id,
+    architecture:    x64.id
+  })
+
+  server.create('operating-system-version', {
+    name:            'Debian Jessie x86',
+    shortname:       'debian_jessie_x86',
+    operatingSystem: debian.id,
+    architecture:    x86.id
+  })
+
+  server.create('operating-system-version', {
+    name:            'Debian Jessie x86_64',
+    shortname:       'debian_jessie_x64',
+    operatingSystem: debian.id,
+    architecture:    x64.id
+  })
+
+  server.create('operating-system-version', {
+    name:            'Windows 7 x86',
+    shortname:       'win7_x86',
+    operatingSystem: windows.id,
+    architecture:    x86.id
+  })
+
+  server.create('operating-system-version', {
+    name:            'Windows 7 x86_64',
+    shortname:       'win7_x64',
+    operatingSystem: windows.id,
+    architecture:    x64.id
+  })
+
+  server.create('operating-system-version', {
+    name:            'Windows 8',
+    shortname:       'win8_x64',
+    operatingSystem: windows.id,
+    architecture:    x86.id
   })
 
   let tcp = server.create('command', {
@@ -145,7 +180,8 @@ function createTopaxi(server, services) {
 
   let topaxich = server.create('host', {
     customer:               topaxi.id,
-    operatingSystemVersion: 2, // Ubuntu x64
+    operatingSystem:        1, // Ubuntu
+    operatingSystemVersion: 2, // Ubuntu 14.10 x64
     hostname:               'topaxi.ch',
     description:            'The awesome VPS of topaxi',
     ipv4:                   '95.128.34.190',

@@ -24,9 +24,9 @@ export default function(server) {
   }
 
   function createCustomers() {
-    server.createList('customer', rrange(60, 80)).forEach(customer => {
+    server.createList('customer', rrange(40, 60)).forEach(customer => {
 
-      server.createList('host', rrange(1, 8), { customer: customer.id }).forEach(host => {
+      server.createList('host', rrange(1, 5), { customer: customer.id }).forEach(host => {
         server.createList('host-service', rrange(0, 8), {
           host:    host.id,
           service: () => rrange(1, allServices.length)
@@ -54,7 +54,7 @@ export default function(server) {
   createCustomers()
 
   server.createList('alert', rrange(5, 15), { state: 'new' })
-  server.createList('alert', rrange(50, 100))
+  server.createList('alert', rrange(70, 80))
 }
 
 function createDeterministicData(server) {

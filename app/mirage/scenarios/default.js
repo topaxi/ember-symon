@@ -29,7 +29,7 @@ export default function(server) {
       server.createList('host', rrange(1, 8), { customer: customer.id }).forEach(host => {
         server.createList('host-service', rrange(0, 8), {
           host:    host.id,
-          service: rrange(1, allServices.length)
+          service: () => rrange(1, allServices.length)
         })
       })
 

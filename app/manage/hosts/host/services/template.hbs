@@ -3,7 +3,7 @@
     <label for="serviceId">Service:</label>
     <div class="flex-grow">
       <select id="serviceId" class="form-control">
-        {{#each services as |service|}}
+        {{#each sortedServices as |service|}}
           <option value={{service.id}}>{{service.name}}</option>
         {{/each}}
       </select>
@@ -19,10 +19,9 @@
     <i>None</i>
   </div>
 
-  <h3>Assigned services</h3>
-  <div>
+  {{#each-in hostServices as |serviceName services|}}
     <h4 class="panel-title">
-      http
+      {{serviceName}}
       <p class="pull-right">
       <button type="button" class="btn btn-link">
         <i class="fa fa-plus"></i> Add instance
@@ -42,7 +41,7 @@
         </tr>
       </thead>
       <tbody>
-        {{#each model.services as |hostService|}}
+        {{#each services as |hostService|}}
           <tr>
             <td>{{hostService.id}}</td>
             <td>
@@ -67,7 +66,7 @@
                 <div class="grid grid--12of12">
                   {{#each arguments as |argument|}}
                     <div class="grid-cell">
-                      <input>
+                      <input class="form-control" value={{argument.value}}>
                     </div>
                   {{/each}}
                 </div>
@@ -94,7 +93,8 @@
         {{/each}}
       </tbody>
     </table>
-  </div>
+  {{/each-in}}
+
   <div class="flex-grow">
     <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
     &nbsp;

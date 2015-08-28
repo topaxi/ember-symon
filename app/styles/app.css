@@ -45,8 +45,13 @@ a, button {
   overflow-y: visible;
 }
 
-.liquid-container {
+.liquid-container, .liquid-child {
   overflow: visible;
+}
+
+.liquid-container.liquid-animating,
+.liquid-container.liquid-animating .liquid-child {
+  overflow: hidden;
 }
 
 .liquid-container, .liquid-child {

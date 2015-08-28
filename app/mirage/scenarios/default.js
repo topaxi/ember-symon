@@ -49,16 +49,53 @@ export default function(server) {
     comment: 'Root customer: All customers are subcustomers of this one'
   })
 
+  createDeterministicData(server)
   createCommands()
-  createTopaxi(server)
   createCustomers()
 
   server.createList('alert', rrange(5, 15), { state: 'new' })
   server.createList('alert', rrange(50, 100))
 }
 
+function createDeterministicData(server) {
+  let tcp = server.create('command', {
+    name:        'tcp',
+    description: 'Check whether a tcp connection to a certain port is possible',
+    ipv6:        false,
+    command:     '$USER1$/check_tcp -H $HOSTADDRESS$ -p $ARG1$'
+  })
+
+  let ssh = server.create('service', {
+    name:             'ssh',
+    description:      'Check whether a TCP connection to port 22 is possible',
+    command:          tcp.id,
+    maxCheckAttempts: 5,
+    checkInterval:    5,
+    retryInterval:    1,
+    freshness:        0,
+    isNrpe:           false,
+    alertScheduler:   0
+  })
+
+  let http = server.create('service', {
+    name:             'http',
+    description:      'Check whether a HTTP connection to port 80 is possible',
+    command:          tcp.id,
+    maxCheckAttempts: 5,
+    checkInterval:    5,
+    retryInterval:    1,
+    freshness:        0,
+    isNrpe:           false,
+    alertScheduler:   0
+  })
+
+  let topaxiServices = { ssh, http }
+
+  createTopaxi(server, topaxiServices)
+}
+
 // Somewhat reliable test data
-function createTopaxi(server) {
+function createTopaxi(server, services) {
   let topaxi = server.create('customer', {
     parent:  1,
     name:    'topaxi',
@@ -75,13 +112,23 @@ function createTopaxi(server) {
   })
 
   server.create('host-service', {
-    host:    topaxich.id,
-    service: 1
+    host:           topaxich.id,
+    service:        services.ssh.id,
+    name:           'SSH',
+    available:      true,
+    alertScheduler: 0,
+    passive:        false,
+    enabled:        true
   })
 
   server.create('host-service', {
-    host:    topaxich.id,
-    service: 2
+    host:           topaxich.id,
+    service:        services.http.id,
+    name:           'HTTP',
+    available:      true,
+    alertScheduler: 0,
+    passive:        false,
+    enabled:        true
   })
 }
 

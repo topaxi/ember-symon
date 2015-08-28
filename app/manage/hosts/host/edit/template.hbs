@@ -50,45 +50,28 @@
 
     <div class="grid-cell form-group">
       <label for="osId">Operating System:</label>
-      <select class="form-control" id="osId" name="osId" required>
-        <option value="">Please choose</option>
-        <option value="1">AIX</option>
-        <option value="2">Amiga</option>
-        <option value="3">Apple</option>
-        <option value="4">BeOS</option>
-        <option value="22">Citrix</option>
-        <option value="5">Debian</option>
-        <option value="6">FreeBSD</option>
-        <option value="24">Gentoo</option>
-        <option value="7">HP-UX</option>
-        <option value="8">IRIX</option>
-        <option value="9" selected="selected">Linux</option>
-        <option value="10">Mac</option>
-        <option value="11">Mandrake</option>
-        <option value="12">Novell</option>
-        <option value="13">OpenBSD</option>
-        <option value="23">Other</option>
-        <option value="14">Red Hat</option>
-        <option value="15">Router</option>
-        <option value="16">Slackware</option>
-        <option value="17">Sun</option>
-        <option value="21">SuSE</option>
-        <option value="18">Switch</option>
-        <option value="19">Ubuntu</option>
-        <option value="20">Windows</option>
+      <select class="form-control" id="osId" required>
+        <option value=""></option>
+        {{#each operatingSystems as |OS|}}
+        <option value={{OS.id}} selected={{eq model.operatingSystem.id OS.id}}>{{OS.name}}</option>
+        {{/each}}
       </select>
     </div>
 
     <div class="grid-cell form-group">
       <label for="osVersionId">OS version:</label>
       <select id="osVersionId" name="osVersionId" class="form-control">
+        <option value=""></option>
+        {{#each model.operatingSystem.versions as |version|}}
+          <option value={{version.id}} selected={{eq model.operatingSystemVersion.id version.id}}>{{version.name}}</option>
+        {{/each}}
       </select>
     </div>
 
     <div class="grid-cell form-group">
       <label for="dependencyId">Depends on:</label>
-      <select class="form-control" id="dependencyId" name="dependencyId">
-        <option label="none" value="0">-- none --</option>
+      <select class="form-control" id="dependencyId">
+        <option value=""></option>
         <option value="18">BehindSatelliteTest</option>
         <option value="4">Host 1</option>
         <option value="5">Host 1.1</option>
@@ -107,7 +90,7 @@
     <div class="grid-cell form-group">
       <label for="satelliteId">Behind satellite:</label>
       <select class="form-control" id="satelliteId" name="satelliteId">
-        <option label="none" value="0">-- none --</option>
+        <option value=""></option>
         <option value="17">NewSatelliteTest</option>
       </select>
     </div>

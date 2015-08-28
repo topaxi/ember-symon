@@ -69,6 +69,24 @@ export default function() {
   this.post('/hostServices', 'host-service')
   this.put('/hostServices/:id', 'host-service')
   this.del('/hostServices/:id', 'host-service')
+
+  this.get('/architectures')
+  this.get('/architectures/:id')
+  this.post('/architectures')
+  this.put('/architectures/:id')
+  this.del('/architectures/:id')
+
+  this.get('/operatingSystems', 'operating-system')
+  this.get('/operatingSystems/:id', 'operating-system')
+  this.post('/operatingSystems', 'operating-system')
+  this.put('/operatingSystems/:id', 'operating-system')
+  this.del('/operatingSystems/:id', 'operating-system')
+
+  this.get('/operatingSystemVersions', 'operating-system-version')
+  this.get('/operatingSystemVersions/:id', 'operating-system-version')
+  this.post('/operatingSystemVersions', 'operating-system-version')
+  this.put('/operatingSystemVersions/:id', 'operating-system-version')
+  this.del('/operatingSystemVersions/:id', 'operating-system-version')
 }
 
 function listByField(key, fieldName) {

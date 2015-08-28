@@ -58,6 +58,46 @@ export default function(server) {
 }
 
 function createDeterministicData(server) {
+  let x86 = server.create('architecture', { name: 'x86'    })
+  let x64 = server.create('architecture', { name: 'x86_64' })
+
+  let ubuntu = server.create('operating-system', {
+    name: 'Ubuntu',
+    logo: 'http://design.ubuntu.com/wp-content/uploads/ubuntu-logo32.png'
+  })
+
+  server.create('operating-system', { name: 'AIX'       })
+  server.create('operating-system', { name: 'Amiga'     })
+  server.create('operating-system', { name: 'BeOS'      })
+  server.create('operating-system', { name: 'Citrix'    })
+  server.create('operating-system', { name: 'Debian'    })
+  server.create('operating-system', { name: 'FreeBSD'   })
+  server.create('operating-system', { name: 'Gentoo'    })
+  server.create('operating-system', { name: 'HP-UX'     })
+  server.create('operating-system', { name: 'IRIX'      })
+  server.create('operating-system', { name: 'Linux'     })
+  server.create('operating-system', { name: 'Mandrake'  })
+  server.create('operating-system', { name: 'Novell'    })
+  server.create('operating-system', { name: 'OpenBSD'   })
+  server.create('operating-system', { name: 'Red Hat'   })
+  server.create('operating-system', { name: 'Slackware' })
+  server.create('operating-system', { name: 'SuSE'      })
+  server.create('operating-system', { name: 'Windows'   })
+
+  server.create('operating-system-version', {
+    name:            'Ubuntu 14.10 x86',
+    shortname:       'ubuntu_14.10_x86',
+    operatingSystem: ubuntu.id,
+    architecture:    x86.id
+  })
+
+  server.create('operating-system-version', {
+    name:            'Ubuntu 14.10 x86_64',
+    shortname:       'ubuntu_14.10_x64',
+    operatingSystem: ubuntu.id,
+    architecture:    x64.id
+  })
+
   let tcp = server.create('command', {
     name:        'tcp',
     description: 'Check whether a tcp connection to a certain port is possible',
@@ -104,11 +144,12 @@ function createTopaxi(server, services) {
   })
 
   let topaxich = server.create('host', {
-    customer:    topaxi.id,
-    hostname:    'topaxi.ch',
-    description: 'The awesome VPS of topaxi',
-    ipv4:        '95.128.34.190',
-    wiki:        'http://wiki.lspace.org/mediawiki/Topaxci'
+    customer:               topaxi.id,
+    operatingSystemVersion: 2, // Ubuntu x64
+    hostname:               'topaxi.ch',
+    description:            'The awesome VPS of topaxi',
+    ipv4:                   '95.128.34.190',
+    wiki:                   'http://wiki.lspace.org/mediawiki/Topaxci'
   })
 
   server.create('host-service', {

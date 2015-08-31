@@ -203,7 +203,9 @@ function createTopaxi(server, services) {
     hostname:               'topaxi.ch',
     description:            'The awesome VPS of topaxi',
     ipv4:                   '95.128.34.190',
-    wiki:                   'http://wiki.lspace.org/mediawiki/Topaxci'
+    wiki:                   'http://wiki.lspace.org/mediawiki/Topaxci',
+    isSatellite:            false,
+    isEnabled:              true
   })
 
   server.create('host-service', {

@@ -16,5 +16,7 @@ export default Model.extend({
   ipv4:                   attr('string'),
   ipv6:                   attr('string'),
   alertScheduler:         attr('number'),
-  wiki:                   attr('string')
+  wiki:                   attr('string'),
+  isSatelite:             attr('boolean'),
+  isEnabled:              attr('boolean')
 })

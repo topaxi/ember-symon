@@ -1,11 +1,11 @@
 <div>
-  <div class="grid">
-    <div class="grid-cell flex-grow form-group">
+  <div class="grid grid--12of12 grid-md--6of12">
+    <div class="grid-cell flex-grow form-group grid-cell-xl--8of12">
       {{yield 'actions' model}}
     </div>
 
     {{#unless disableSearch}}
-      <form class="grid-cell text-right">
+      <form class="grid-cell text-right grid-cell-xl--4of12">
         <div>
           <label for="search" class="sr-only">Search:</label>
           <input id="search" type="text" class="form-control" placeholder="Search...">

@@ -18,7 +18,15 @@ export default function() {
     }
 
     if (!host) {
-      return new Mirage.Response(404, {}, `Host ${id} not found`)
+      return new Mirage.Response(404, {}, {
+        errors: [
+          {
+            status: '404',
+            title: 'Host not found',
+            detail: `Host ${id} not found`
+          }
+        ]
+      })
     }
 
     return { host }

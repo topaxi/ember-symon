@@ -85,6 +85,8 @@ Router.map(function() {
     this.route('infofeeds', { resetNamespace: true }, function() {
     })
   })
+
+  this.route('notfound', { path: '/*path' })
 })
 
 export default Router

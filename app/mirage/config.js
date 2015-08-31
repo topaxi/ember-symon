@@ -87,6 +87,12 @@ export default function() {
   this.post('/operatingSystemVersions', 'operating-system-version')
   this.put('/operatingSystemVersions/:id', 'operating-system-version')
   this.del('/operatingSystemVersions/:id', 'operating-system-version')
+
+  this.get('/hostTypes', 'host-type')
+  this.get('/hostTypes/:id', 'host-type')
+  this.post('/hostTypes', 'host-type')
+  this.put('/hostTypes/:id', 'host-type')
+  this.del('/hostTypes/:id', 'host-type')
 }
 
 function listByField(key, fieldName) {

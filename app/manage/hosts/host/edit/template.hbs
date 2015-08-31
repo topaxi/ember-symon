@@ -12,24 +12,11 @@
   <div class="grid grid--12of12 grid-sm--6of12">
     <div class="grid-cell form-group">
       <label for="typeId">Type:</label>
-      <select class="form-control" id="typeId" name="typeId">
-        <option value="0">-- none --</option>
-        <option value="5">Accesspoint</option>
-        <option value="4">Drucker</option>
-        <option value="15">Dynamischer Client</option>
-        <option value="3">Firewall</option>
-        <option value="13">Fixe Workstation</option>
-        <option value="10">Hostsystem</option>
-        <option value="6">IP-Telefon</option>
-        <option value="7">Management Interfaces</option>
-        <option value="8">Monitoringhardware</option>
-        <option value="14">Notebook</option>
-        <option value="2">Router</option>
-        <option value="9" selected="selected">Server</option>
-        <option value="16">Storage-Geräte</option>
-        <option value="1">Switch</option>
-        <option value="11">Thinclient</option>
-        <option value="12">Virtueller Server</option>
+      <select class="form-control" id="typeId" required>
+        <option value=""></option>
+        {{#each hostTypes as |type|}}
+          <option value={{type.id}} selected={{eq model.hostType.id type.id}}>{{type.name}}</option>
+        {{/each}}
       </select>
     </div>
 

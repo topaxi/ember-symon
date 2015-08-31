@@ -10,12 +10,14 @@ export default Ember.Route.extend(RouteNew, {
         .setProperties({
           model,
           isNew:            true,
+          hostTypes:        this.store.peekAll('host-type'),
           operatingSystems: this.store.peekAll('operating-system')
         })
   },
 
   beforeModel() {
     return [
+      this.store.findAll('host-type'),
       this.store.findAll('operating-system'),
       this.store.findAll('operating-system-version')
     ]

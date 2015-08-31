@@ -5,6 +5,7 @@ const { Model, attr, belongsTo, hasMany } = DS
 export default Model.extend({
   customer:               belongsTo('customer'),
   services:               hasMany('host-service'),
+  hostType:               belongsTo('host-type'),
   operatingSystem:        belongsTo('operating-system'),
   operatingSystemVersion: belongsTo('operating-system-version'),
   name:                   attr('string'),

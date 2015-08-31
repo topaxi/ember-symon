@@ -164,6 +164,23 @@ function createDeterministicData(server) {
     alertScheduler:   0
   })
 
+  server.create('host-type', { name: 'Accesspoint', shortname: 'ap' })
+  server.create('host-type', { name: 'Printer', shortname: 'pr' })
+  server.create('host-type', { name: 'Dynamic Client', shortname: 'dc' })
+  server.create('host-type', { name: 'Firewall', shortname: 'fw' })
+  server.create('host-type', { name: 'Workstation', shortname: 'ws' })
+  server.create('host-type', { name: 'Hostsystem', shortname: 'hs' })
+  server.create('host-type', { name: 'IP-Phone', shortname: 'ph' })
+  server.create('host-type', { name: 'Management Interface', shortname: 'mg' })
+  server.create('host-type', { name: 'Monitoringhardware', shortname: 'mn' })
+  server.create('host-type', { name: 'Notebook', shortname: 'nb' })
+  server.create('host-type', { name: 'Router', shortname: 'rt' })
+  server.create('host-type', { name: 'Server', shortname: 'sr' })
+  server.create('host-type', { name: 'Storage Device', shortname: 'st' })
+  server.create('host-type', { name: 'Switch', shortname: 'sw' })
+  server.create('host-type', { name: 'Thinclient', shortname: 'tc' })
+  server.create('host-type', { name: 'Virtual Server', shortname: 'vm' })
+
   let topaxiServices = { ssh, http }
 
   createTopaxi(server, topaxiServices)
@@ -180,6 +197,7 @@ function createTopaxi(server, services) {
 
   let topaxich = server.create('host', {
     customer:               topaxi.id,
+    hostType:               16, // Virtual server
     operatingSystem:        1, // Ubuntu
     operatingSystemVersion: 2, // Ubuntu 14.10 x64
     hostname:               'topaxi.ch',

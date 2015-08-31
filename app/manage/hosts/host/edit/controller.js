@@ -1,6 +1,10 @@
 import Ember from 'ember'
 
+const { inject } = Ember
+
 export default Ember.Controller.extend({
+  notify: inject.service(),
+
   actions: {
     changeOperatingSystem(id) {
       this.set('model.operatingSystem',
@@ -13,6 +17,19 @@ export default Ember.Controller.extend({
       this.set('model.operatingSystemVersion',
         this.store.peekRecord('operating-system-version', id)
       )
+    },
+
+    async save() {
+      try {
+        await this.model.save()
+
+        this.notify.success('Host successfully saved!')
+
+        this.transitionToRoute('manage.hosts.host.edit', this.model)
+      }
+      catch (e) {
+        this.notify.error(err || 'Error while trying to save host!')
+      }
     }
   }
 })

@@ -6,8 +6,9 @@ let Router = Ember.Router.extend({
 })
 
 Router.map(function() {
-  this.route('index')
   this.route('protected', { path: '/' }, function() {
+    this.resource('index', { path: '/' })
+
     this.resource('manage', function() {
       this.route('hosts', function() {
         this.modal('sy-alert-schedule', {

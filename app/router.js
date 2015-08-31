@@ -7,9 +7,9 @@ let Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('protected', { path: '/' }, function() {
-    this.resource('index', { path: '/' })
+    this.route('index', { path: '/', resetNamespace: true })
 
-    this.resource('manage', function() {
+    this.route('manage', { resetNamespace: true }, function() {
       this.route('hosts', function() {
         this.modal('sy-alert-schedule', {
           withParams: 'alert-schedule'
@@ -61,7 +61,7 @@ Router.map(function() {
       this.route('global-settings')
     })
 
-    this.resource('monitoring', function() {
+    this.route('monitoring', { resetNamespace: true }, function() {
       this.route('alerts', function() {
         this.modal('sy-alert-actions', {
           withParams: 'alert-actions',
@@ -70,19 +70,19 @@ Router.map(function() {
       })
     })
 
-    this.resource('maintenance', function() {
+    this.route('maintenance', { resetNamespace: true }, function() {
     })
 
-    this.resource('analysis', function() {
+    this.route('analysis', { resetNamespace: true }, function() {
       this.route('reports')
       this.route('hosts-hierarchy')
       this.route('audit-log')
     })
 
-    this.resource('user', function() {
+    this.route('user', { resetNamespace: true }, function() {
     })
 
-    this.resource('infofeeds', function() {
+    this.route('infofeeds', { resetNamespace: true }, function() {
     })
   })
 })

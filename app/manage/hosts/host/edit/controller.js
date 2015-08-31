@@ -23,12 +23,12 @@ export default Ember.Controller.extend({
       try {
         await this.model.save()
 
-        this.notify.success('Host successfully saved!')
+        this.get('notify').success('Host successfully saved!')
 
         this.transitionToRoute('manage.hosts.host.edit', this.model)
       }
-      catch (e) {
-        this.notify.error(err || 'Error while trying to save host!')
+      catch (err) {
+        this.get('notify').error(err || 'Error while trying to save host!')
       }
     }
   }

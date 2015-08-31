@@ -21,7 +21,12 @@
     </div>
 
     <div class="grid-cell form-group">
-      <label for="wiki">Wiki:</label>
+      <label for="wiki">
+        Wiki:
+        {{#if model.wiki}}
+          <a href={{model.wiki}}><i class="fa fa-external-link"></i></a>
+        {{/if}}
+      </label>
       {{input id="wiki" class="form-control" value=model.wiki}}
     </div>
 

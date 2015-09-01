@@ -86,9 +86,15 @@
                   <i class="fa fa-refresh"></i>
                 </button>
                 &nbsp;
-                <button type="button" class="btn btn-default btn-sm" title="Delete this service instance" {{action 'removeServiceInstance' hostService}}>
-                  <i class="fa fa-trash-o"></i>
-                </button>
+                {{#if hostService.isDeleted}}
+                  <button type="button" class="btn btn-default btn-sm" title="Rollback this service instance" {{action 'rollbackServiceInstance' hostService}}>
+                    <i class="fa fa-undo"></i>
+                  </button>
+                {{else}}
+                  <button type="button" class="btn btn-default btn-sm" title="Delete this service instance" {{action 'deleteServiceInstance' hostService}}>
+                    <i class="fa fa-trash-o"></i>
+                  </button>
+                {{/if}}
               </div>
             </td>
           </tr>

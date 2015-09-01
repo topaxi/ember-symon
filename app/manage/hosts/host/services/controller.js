@@ -43,8 +43,12 @@ export default Ember.Controller.extend({
       }
     },
 
-    removeServiceInstance(hostService) {
+    deleteServiceInstance(hostService) {
       hostService.deleteRecord()
+    },
+
+    rollbackServiceInstance(hostService) {
+      hostService.rollbackAttributes()
     },
 
     changeHostServiceAlertScheduler(hostService, e) {

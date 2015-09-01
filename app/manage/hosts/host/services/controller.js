@@ -57,7 +57,7 @@ export default Ember.Controller.extend({
 
     async saveServices() {
       try {
-        this.get('model.services').map(s => s.save())
+        await this.get('model.services').map(s => s.save())
 
         this.get('notify').success('Host services successfully saved!')
       }

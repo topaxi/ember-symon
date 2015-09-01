@@ -10,6 +10,10 @@
   pointer-events: none;
 }
 
+.deleted {
+  opacity: 0.4;
+}
+
 /* Fix click delays on mobile devices */
 a, button {
   -ms-touch-action: manipulation;

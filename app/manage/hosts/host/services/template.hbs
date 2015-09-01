@@ -44,7 +44,7 @@
       </thead>
       <tbody>
         {{#each services as |hostService|}}
-          <tr>
+          <tr class={{if hostService.isDeleted 'deleted'}}>
             <td>{{hostService.id}}</td>
             <td>
               {{input class='form-control' title='If Avail is set, this service becomes relevant for the availability of this host in the reports.' checked=hostService.available type='checkbox'}}
@@ -86,7 +86,7 @@
                   <i class="fa fa-refresh"></i>
                 </button>
                 &nbsp;
-                <button type="button" class="btn btn-default btn-sm" title="Delete this service instance">
+                <button type="button" class="btn btn-default btn-sm" title="Delete this service instance" {{action 'removeServiceInstance' hostService}}>
                   <i class="fa fa-trash-o"></i>
                 </button>
               </div>

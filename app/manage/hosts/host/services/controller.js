@@ -43,6 +43,10 @@ export default Ember.Controller.extend({
       }
     },
 
+    removeServiceInstance(hostService) {
+      hostService.deleteRecord()
+    },
+
     changeHostServiceAlertScheduler(hostService, e) {
       hostService.set('alertScheduler', e.target.value)
     },

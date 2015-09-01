@@ -2,13 +2,14 @@
   <div class="form-group">
     <label for="serviceId">Service:</label>
     <div class="flex-grow">
-      <select id="serviceId" class="form-control">
+      <select id="serviceId" class="form-control" onchange={{action 'setSelectedService' value='target.value'}}>
+        <option value=""></option>
         {{#each sortedServices as |service|}}
           <option value={{service.id}}>{{service.name}}</option>
         {{/each}}
       </select>
       &nbsp;
-      <a class="btn btn-success">
+      <a class="btn btn-success {{unless selectedServiceId 'disabled'}}" {{action 'addService'}}>
         <i class="fa fa-plus"></i>&nbsp;Add service
       </a>
     </div>
@@ -19,14 +20,14 @@
     <i>None</i>
   </div>
 
-  {{#each-in hostServices as |serviceName services|}}
+  {{#each-in hostServices as |serviceId services|}}
     <h4 class="panel-title">
       <div class="flex-grow">
-        <button type="button" class="btn btn-success">
+        <button type="button" class="btn btn-success" {{action 'addServiceInstance' serviceId}}>
           <i class="fa fa-plus"></i>
         </button>
         &nbsp;
-        {{serviceName}}
+        {{services.0.service.name}}
       </div>
     </h4>
     <table class="table table--striped">
@@ -46,13 +47,13 @@
           <tr>
             <td>{{hostService.id}}</td>
             <td>
-              <input class="form-control" title="If Avail is set, this service becomes relevant for the availability of this host in the reports." checked={{hostService.available}} type="checkbox">
+              {{input class='form-control' title='If Avail is set, this service becomes relevant for the availability of this host in the reports.' checked=hostService.available type='checkbox'}}
             </td>
             <td>
-              <input class="form-control" value={{hostService.name}} type="text">
+              {{input class='form-control' value=hostService.name type='text'}}
             </td>
             <td>
-              <select class="form-control">
+              <select class="form-control" onchange={{action 'changeHostServiceAlertScheduler' hostService}}>
                 <option value="0" selected={{eq hostService.alertScheduler 0}}>
                 Inherit (Premium)
                 </option>
@@ -74,10 +75,10 @@
               {{/with}}
             </td>
             <td>
-              <input class="form-control" checked={{hostService.passive}} type="checkbox">
+              {{input class='form-control' checked=hostService.passive type='checkbox'}}
             </td>
             <td>
-              <input class="form-control" checked={{hostService.enabled}} type="checkbox">
+              {{input class='form-control' checked=hostService.enabled type='checkbox'}}
             </td>
             <td>
               <div class="flex-grow">

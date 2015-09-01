@@ -11,7 +11,7 @@ export default Ember.Controller.extend({
     let services = {}
 
     this.get('sortedModelServices').forEach(hostService => {
-      let key = hostService.get('service.name')
+      let key = hostService.get('service.id')
 
       if (!(key in services)) {
         services[key] = []
@@ -21,5 +21,32 @@ export default Ember.Controller.extend({
     })
 
     return services
-  })
+  }),
+
+  actions: {
+    setSelectedService(serviceId) {
+      this.set('selectedServiceId', serviceId)
+    },
+
+    addService() {
+      this.send('addServiceInstance', this.get('selectedServiceId'))
+    },
+
+    addServiceInstance(serviceId) {
+      if (serviceId) {
+        this.store.createRecord('host-service', {
+          service: this.store.peekRecord('service', serviceId),
+          host:    this.get('model')
+        })
+      }
+    },
+
+    changeHostServiceAlertScheduler(hostService, e) {
+      hostService.set('alertScheduler', e.target.value)
+    },
+
+    saveServices() {
+      return this.get('model.services').map(s => s.save())
+    }
+  }
 })

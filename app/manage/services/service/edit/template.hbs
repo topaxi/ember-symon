@@ -12,12 +12,11 @@
 
     <div class="grid-cell form-group">
       <label for="commandId">Command:</label>
-      <select class="form-control" id="commandId">
-        <option value="2">ftp</option>
-        <option value="4">nrpe</option>
-        <option value="6" selected>nrpe_ssl</option>
-        <option value="3">pingHost</option>
-        <option value="1">tcp</option>
+      <select class="form-control" id="commandId" required>
+        <option value=""></option>
+        {{#each commands as |command|}}
+          <option value={{command.id}} selected={{eq model.command.id command.id}}>{{command.name}}</option>
+        {{/each}}
       </select>
     </div>
 
@@ -139,7 +138,5 @@
 </p>
 
 <div class="flex-grow">
-  <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-  &nbsp;
   <button type="submit" class="btn btn-primary">Save</button>
 </div>

@@ -15,7 +15,6 @@ export default Ember.Controller.extend({
         this.transitionToRoute('manage.host-groups.host-group.edit', this.model)
       }
       catch (err) {
-        console.log(err)
         this.get('notify').error(err || 'Error while trying to save host-group!')
       }
     }

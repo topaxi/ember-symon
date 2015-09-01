@@ -2,41 +2,39 @@
   <div class="grid grid--12of12 grid-sm--6of12">
     <div class="grid-cell form-group">
       <label for="name">Name:</label>
-      <input class="form-control" id="name" maxlength="32" value={{model.name}} type="text" required>
+      {{input class='form-control' id='name' maxlength=32 value=model.name type='text' required=true}}
     </div>
 
     <div class="grid-cell grid-cell--align-center checkbox">
-      <input id="v6Capable" class="form-control" type="checkbox" checked={{model.ipv6}}>
+      {{input id='v6Capable' class='form-control' type='checkbox' checked=model.ipv6}}
       <label for="v6Capable">IPv6</label>
     </div>
 
     <div class="grid-cell grid-cell--12of12 form-group">
       <label for="description">Description:</label>
-      <input class="required form-control" id="description" maxlength="255" value={{model.description}} type="text">
+      {{input class='form-control' id='description' maxlength=255 value=model.description type='text' required=true}}
     </div>
 
     <div class="grid-cell grid-cell--12of12 form-group">
       <label for="commandline">Command line:</label>
-      <textarea class="form-control" id="commandline" required>{{model.command}}</textarea>
+      {{textarea class='form-control' id='commandline' required=true value=model.command}}
     </div>
   </div>
+
+  <h4 class="pointer" {{action 'toggleExample'}}>
+    <i class="fa-fw fa fa-chevron-{{if showExample 'down' 'right'}}"></i>
+    Command line example
+  </h4>
+  {{#liquid-if showExample}}
+    <pre>$USER1$/check_tcp -H $HOSTADDRESS$ -p $ARG1$</pre>
+    <ul>
+      <li><strong>$USER1$</strong>: this placeholder will be replaced with the path of the directory in which nagios will find the commands. The commands are for example perl-scripts, python-scripts or executables. $USER1$/check_tcp will be replaced by /usr/lib/nagios/plugins/check_tcp on the target host.</li>
+      <li><strong>$HOSTADDRESS$</strong>: contains the IP address of the host which is monitored. Because a service can be used for multiple hosts, the IP may not be static and will be replaced by the actual IP address during execution.</li>
+      <li><strong>$ARG1$, $ARG2$, ...</strong>: This are arguments for the given command. Defining the arguments as placeholder allows you to use a command in a generic way. In this example we define a command which monitors a given TCP-port. The port is not hard coded in the command and can therefore be defined in the service. This allows you to use the command for multiple services, in that case for example for SSH and SMTP. Both services will then use the same TCP command and set $ARG1$ accordingly (22 for SSH and 25 for SMTP).</li>
+    </ul>
+  {{/liquid-if}}
+
+  <div class="flex-grow">
+    <button type="submit" class="btn btn-primary">Save</button>
+  </div>
 </form>
-
-<h4 class="pointer" {{action 'toggleExample'}}>
-  <i class="fa-fw fa fa-chevron-{{if showExample 'down' 'right'}}"></i>
-  Command line example
-</h4>
-{{#liquid-if showExample}}
-  <pre>$USER1$/check_tcp -H $HOSTADDRESS$ -p $ARG1$</pre>
-  <ul>
-    <li><strong>$USER1$</strong>: this placeholder will be replaced with the path of the directory in which nagios will find the commands. The commands are for example perl-scripts, python-scripts or executables. $USER1$/check_tcp will be replaced by /usr/lib/nagios/plugins/check_tcp on the target host.</li>
-    <li><strong>$HOSTADDRESS$</strong>: contains the IP address of the host which is monitored. Because a service can be used for multiple hosts, the IP may not be static and will be replaced by the actual IP address during execution.</li>
-    <li><strong>$ARG1$, $ARG2$, ...</strong>: This are arguments for the given command. Defining the arguments as placeholder allows you to use a command in a generic way. In this example we define a command which monitors a given TCP-port. The port is not hard coded in the command and can therefore be defined in the service. This allows you to use the command for multiple services, in that case for example for SSH and SMTP. Both services will then use the same TCP command and set $ARG1$ accordingly (22 for SSH and 25 for SMTP).</li>
-  </ul>
-{{/liquid-if}}
-
-<div class="flex-grow">
-  <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-  &nbsp;
-  <button type="submit" class="btn btn-primary">Save</button>
-</div>

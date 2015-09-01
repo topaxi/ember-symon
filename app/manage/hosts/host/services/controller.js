@@ -1,8 +1,10 @@
 import Ember from 'ember'
 
-const { computed } = Ember
+const { inject, computed } = Ember
 
 export default Ember.Controller.extend({
+  notify: inject.service(),
+
   serviceSorting:      [ 'name' ],
   sortedModelServices: computed.sort('model.services', 'serviceSorting'),
   sortedServices:      computed.sort('services', 'serviceSorting'),
@@ -45,8 +47,15 @@ export default Ember.Controller.extend({
       hostService.set('alertScheduler', e.target.value)
     },
 
-    saveServices() {
-      return this.get('model.services').map(s => s.save())
+    async saveServices() {
+      try {
+        this.get('model.services').map(s => s.save())
+
+        this.get('notify').success('Host services successfully saved!')
+      }
+      catch (err) {
+        this.get('notify').error(err || 'Error while trying to save host!')
+      }
     }
   }
 })

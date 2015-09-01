@@ -45,7 +45,16 @@ export default function() {
   this.get('/hostGroups', list('host-groups'))
   this.get('/hostGroups/:id', 'host-group')
   this.post('/hostGroups', 'host-group')
-  this.put('/hostGroups/:id', 'host-group')
+  //this.put('/hostGroups/:id', 'host-group')
+  this.put('/hostGroups/:id', function(db, request) {
+    let { id } = request.params
+    let attrs  = JSON.parse(request.requestBody)['hostGroup']
+    let record = db['host-groups'].update(id, attrs)
+
+    return {
+      'host-group': record
+    }
+  })
   this.del('/hostGroups/:id', 'host-group')
 
   this.get('/commands', list('commands'))

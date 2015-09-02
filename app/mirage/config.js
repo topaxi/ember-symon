@@ -184,14 +184,14 @@ function list(key) {
   }
 }
 
-function put(route, model) {
+function put(route, singular, plural = `${singular}s`) {
   return (db, request) => {
     let { id } = request.params
     let attrs  = JSON.parse(request.requestBody)[route]
-    let record = db[model].update(id, attrs)
+    let record = db[plural].update(id, attrs)
 
     return {
-      [model]: record
+      [singular]: record
     }
   }
 }

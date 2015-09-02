@@ -63,10 +63,10 @@ export default Mirage.Factory.extend({
     'telnet'
   ),
   description:      faker.hacker.phrase,
-  maxCheckAttempts: faker.random.number({ min: 1, max: 10 }),
-  checkInterval:    faker.random.number({ min: 1, max: 120 }),
-  retryInterval:    faker.random.number({ min: 1, max: 120 }),
-  freshness:        faker.random.number({ min: 0, max: 600 }),
+  maxCheckAttempts: () => faker.random.number({ min: 1, max:  10 }),
+  checkInterval:    () => faker.random.number({ min: 1, max: 120 }),
+  retryInterval:    () => faker.random.number({ min: 1, max: 120 }),
+  freshness:        () => faker.random.number({ min: 0, max: 600 }),
   isNrpe:           faker.random.boolean,
   alertScheduler:   faker.list.random(null, 1, 2, 3, 4, 5)
 })

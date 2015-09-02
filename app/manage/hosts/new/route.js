@@ -11,6 +11,7 @@ export default Ember.Route.extend(RouteNew, {
           model,
           isNew:            true,
           hostTypes:        this.store.peekAll('host-type'),
+          alertSchedulers:  this.store.peekAll('alert-scheduler'),
           operatingSystems: this.store.peekAll('operating-system')
         })
   },
@@ -18,6 +19,7 @@ export default Ember.Route.extend(RouteNew, {
   beforeModel() {
     return [
       this.store.findAll('host-type'),
+      this.store.findAll('alert-scheduler'),
       this.store.findAll('operating-system'),
       this.store.findAll('operating-system-version')
     ]

@@ -9,12 +9,16 @@ export default Ember.Route.extend(RouteNew, {
     this.controllerFor(this.get('editRoute'))
         .setProperties({
           model,
-          isNew:    true,
-          commands: this.store.peekAll('command')
+          isNew:            true,
+          commands:         this.store.peekAll('command'),
+          alertSchedulers:  this.store.peekAll('alert-scheduler')
         })
   },
 
   beforeModel() {
-    return this.store.findAll('command')
+    return [
+      this.store.findAll('command'),
+      this.store.findAll('alert-scheduler')
+    ]
   }
 })

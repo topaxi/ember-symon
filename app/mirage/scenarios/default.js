@@ -58,6 +58,36 @@ export default function(server) {
 }
 
 function createDeterministicData(server) {
+  server.create('customer', {
+    parent:         1,
+    name:           'Adfinis SyGroup AG',
+    comment:        '',
+    wiki:           '',
+    alertScheduler: 2
+  })
+
+  server.create('alert-scheduler', {
+    name:        'No Alarm',
+    description: 'No alarm.'
+  })
+
+  server.create('alert-scheduler', {
+    name:        'Mail only',
+    description: 'Mail alert'
+  })
+
+  server.create('alert-scheduler', {
+    name:        'Standard',
+    description: 'Standard Template',
+    customer:    1
+  })
+
+  server.create('alert-scheduler', {
+    name:        'Premium',
+    description: 'Premium Template',
+    customer:    1
+  })
+
   let x86 = server.create('architecture', { name: 'x86'    })
   let x64 = server.create('architecture', { name: 'x86_64' })
 
@@ -149,7 +179,7 @@ function createDeterministicData(server) {
     retryInterval:    1,
     freshness:        0,
     isNrpe:           false,
-    alertScheduler:   0
+    alertScheduler:   null
   })
 
   let http = server.create('service', {
@@ -161,7 +191,7 @@ function createDeterministicData(server) {
     retryInterval:    1,
     freshness:        0,
     isNrpe:           false,
-    alertScheduler:   0
+    alertScheduler:   null
   })
 
   server.create('host-type', { name: 'Accesspoint', shortname: 'ap' })

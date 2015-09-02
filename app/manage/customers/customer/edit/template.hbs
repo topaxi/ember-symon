@@ -19,12 +19,7 @@
 
     <div class="grid-cell form-group">
       <label for="slaId">Alert scheduler:</label>
-      <select class="form-control" id="slaId" name="slaId" required>
-        <option></option>
-        <option value="3" selected={{model.alertScheduler}}>Nightshift</option>
-        <option value="1" selected={{model.alertScheduler}}>No Alarm</option>
-        <option value="2" selected={{model.alertScheduler}}>Premium</option>
-      </select>
+      {{sy-select-alert-scheduler id='slaId' alertSchedulers=alertSchedulers selected=model.alertScheduler.id change=(action 'setAlertScheduler' value='target.value')}}
     </div>
 
     <div class="grid-cell form-group">
@@ -34,7 +29,7 @@
 
     <div class="grid-cell checkbox grid-cell--align-center">
       <input class="form-control" id="warnHoster" type="checkbox">
-      <label for="warnHoster">Warn hoster:</label>
+      <label for="warnHoster">Warn hoster</label>
     </div>
 
     <div class="grid-cell form-group">

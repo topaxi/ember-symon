@@ -101,6 +101,12 @@ export default function() {
   this.post('/hostTypes', 'host-type')
   this.put('/hostTypes/:id', put('hostType', 'host-type'))
   this.del('/hostTypes/:id', 'host-type')
+
+  this.get('/alertSchedulers', 'alert-scheduler')
+  this.get('/alertSchedulers/:id', 'alert-scheduler')
+  this.post('/alertSchedulers', 'alert-scheduler')
+  this.put('/alertSchedulers/:id', put('alertScheduler', 'alert-scheduler'))
+  this.del('/alertSchedulers/:id', 'alert-scheduler')
 }
 
 function listByField(key, fieldName) {

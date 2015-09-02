@@ -5,6 +5,7 @@ const { Model, attr, belongsTo, hasMany } = DS
 export default Model.extend({
   customer:         belongsTo('customer'),
   command:          belongsTo('command'),
+  alertScheduler:   belongsTo('alert-scheduler'),
   arguments:        hasMany('service-argument'),
   name:             attr('string'),
   description:      attr('string'),
@@ -12,6 +13,5 @@ export default Model.extend({
   checkInterval:    attr('number'),
   retryInterval:    attr('number'),
   freshness:        attr('number'),
-  isNrpe:           attr('boolean'),
-  alertScheduler:   attr('number')
+  isNrpe:           attr('boolean')
 })

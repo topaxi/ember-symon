@@ -68,5 +68,5 @@ export default Mirage.Factory.extend({
   retryInterval:    faker.random.number({ min: 1, max: 120 }),
   freshness:        faker.random.number({ min: 0, max: 600 }),
   isNrpe:           faker.random.boolean,
-  alertScheduler:   faker.list.random(0, 1, 2, 3, 4, 5)
+  alertScheduler:   faker.list.random(null, 1, 2, 3, 4, 5)
 })

@@ -19,6 +19,12 @@ export default Ember.Controller.extend({
       )
     },
 
+    setAlertScheduler(id) {
+      this.set('model.alertScheduler',
+        this.store.peekRecord('alert-scheduler', id)
+      )
+    },
+
     async save() {
       try {
         await this.model.save()

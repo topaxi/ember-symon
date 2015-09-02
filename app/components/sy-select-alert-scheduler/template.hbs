@@ -1,0 +1,4 @@
+<option></option>
+{{#each alertSchedulers as |alertScheduler|}}
+  <option value={{alertScheduler.id}} selected={{eq alertScheduler.id selected}}>{{alertScheduler.name}}</option>
+{{/each}}

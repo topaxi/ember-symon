@@ -8,6 +8,7 @@ export default Model.extend({
   hostType:               belongsTo('host-type'),
   operatingSystem:        belongsTo('operating-system'),
   operatingSystemVersion: belongsTo('operating-system-version'),
+  alertScheduler:         belongsTo('alert-scheduler'),
   name:                   attr('string'),
   hostname:               attr('string'),
   description:            attr('string'),
@@ -15,7 +16,6 @@ export default Model.extend({
   password:               attr('string'),
   ipv4:                   attr('string'),
   ipv6:                   attr('string'),
-  alertScheduler:         attr('number'),
   wiki:                   attr('string'),
   isSatellite:            attr('boolean'),
   isEnabled:              attr('boolean')

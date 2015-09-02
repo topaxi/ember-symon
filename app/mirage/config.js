@@ -84,7 +84,7 @@ export default function() {
   this.put('/architectures/:id')
   this.del('/architectures/:id')
 
-  this.get('/operatingSystems', 'operating-system')
+  this.get('/operatingSystems', list('operating-systems'))
   this.get('/operatingSystems/:id', 'operating-system')
   this.post('/operatingSystems', 'operating-system')
   this.put('/operatingSystems/:id', put('operatingSystem', 'operating-system'))

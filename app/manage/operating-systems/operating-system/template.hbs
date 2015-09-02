@@ -1,0 +1,18 @@
+<h1>
+  {{#if model.logo}}<img src={{model.logo}} style="height:.7em">{{/if}}
+  {{model.name}}
+</h1>
+
+<ul class="nav nav-tabs">
+  <li>
+    {{#link-to 'manage.operating-systems.operating-system.edit' model}}
+      Edit
+    {{/link-to}}
+  </li>
+  <li>
+    {{#link-to 'manage.operating-systems.operating-system.versions' model}}
+      Versions
+    {{/link-to}}
+  </li>
+</ul>
+<div class="tab-content">{{liquid-outlet}}</div>

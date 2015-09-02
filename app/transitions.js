@@ -44,4 +44,11 @@ export default function() {
     this.use('toLeft'),
     this.reverse('toRight')
   )
+
+  this.transition(
+    this.fromRoute('manage.operating-systems.operating-system.edit'),
+    this.toRoute('manage.operating-systems.operating-system.versions'),
+    this.use('toLeft'),
+    this.reverse('toRight')
+  )
 }

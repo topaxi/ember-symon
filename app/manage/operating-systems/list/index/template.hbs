@@ -1,0 +1,24 @@
+{{#sy-list model=model loading=loading as |section model|}}
+  {{#if (eq section 'actions')}}
+    {{#link-to 'manage.operating-systems.new' class='btn btn-success'}}
+      <i class="fa fa-plus"></i>&nbsp;New operating system
+    {{/link-to}}
+  {{else if (eq section 'header')}}
+    <th>Operating System</th>
+  {{else if (eq section 'footer')}}
+    <td colspan="2">
+      {{pagination-pager current=page count=totalPages change=(action 'pageChanged')}}
+    </td>
+  {{else if (eq section 'empty')}}
+    <tr class="warning"><td colspan="4">No operating systems found</td></tr>
+  {{else if (eq section 'row')}}
+    <tr>
+      <td>
+        {{#link-to 'manage.operating-systems.operating-system' model}}
+          {{#if model.logo}}<img src={{model.logo}} style="height:.7rem">{{/if}}
+          {{model.name}}
+        {{/link-to}}
+      </td>
+    </tr>
+  {{/if}}
+{{/sy-list}}

@@ -1,0 +1,9 @@
+{{#sy-list-loading as |section|}}
+  {{#if (eq section 'actions')}}
+    {{#link-to 'manage.commands.new' class='btn btn-success'}}
+      <i class="fa fa-plus"></i>&nbsp;New operating system
+    {{/link-to}}
+  {{else if (eq section 'header')}}
+    <th>Operating System</th>
+  {{/if}}
+{{/sy-list-loading}}

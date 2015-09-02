@@ -95,10 +95,18 @@ function createDeterministicData(server) {
     name: 'Ubuntu',
     logo: 'http://design.ubuntu.com/wp-content/uploads/ubuntu-logo32.png'
   })
-
-  let debian  = server.create('operating-system', { name: 'Debian'  })
-  let gentoo  = server.create('operating-system', { name: 'Gentoo'  })
-  let windows = server.create('operating-system', { name: 'Windows' })
+  let debian = server.create('operating-system', {
+    name: 'Debian',
+    logo: 'https://www.debian.org/logos/openlogo-nd.svg'
+  })
+  let gentoo = server.create('operating-system', {
+    name: 'Gentoo',
+    logo: 'https://www.gentoo.org/assets/img/logo/gentoo-3d-small.png'
+  })
+  let windows = server.create('operating-system', {
+    name: 'Windows',
+    logo: 'http://img2.wikia.nocookie.net/__cb20150608074653/logopedia/images/3/30/7497b4a2.png'
+  })
 
   server.create('operating-system-version', {
     name:            'Ubuntu 14.10 x86',

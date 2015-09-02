@@ -58,6 +58,15 @@ Router.map(function() {
         })
       })
 
+      this.route('operating-systems', function() {
+        this.route('new')
+        this.route('list', { path: '/' }, ()=>{})
+        this.route('operating-system', { path: '/:operating-system_id' }, function() {
+          this.route('edit',     { path: '/' })
+          this.route('versions', { path: '/versions' })
+        })
+      })
+
       this.route('global-settings')
     })
 

@@ -1,0 +1,15 @@
+<form method="post" {{action 'save' on='submit'}}>
+  <div class="form-group">
+    <label for="name">Name:</label>
+    {{input class="form-control" id="name" value=model.name type="text" required=true}}
+  </div>
+
+  <div class="form-group">
+    <label for="shortname">Shortname:</label>
+    {{input class="form-control" id="shortname" value=model.shortname type="text" required=true}}
+  </div>
+
+  <div class="flex-grow">
+    <button type="submit" class="btn btn-primary">Save</button>
+  </div>
+</form>

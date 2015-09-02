@@ -1,0 +1,27 @@
+{{#sy-list model=model loading=loading as |section model|}}
+  {{#if (eq section 'actions')}}
+    {{#link-to 'manage.host-types.new' class='btn btn-success'}}
+      <i class="fa fa-plus"></i>&nbsp;New host type
+    {{/link-to}}
+  {{else if (eq section 'header')}}
+    <th>Name</th>
+    <th>Shortname</th>
+  {{else if (eq section 'footer')}}
+    <td colspan="2">
+      {{pagination-pager current=page count=totalPages change=(action 'pageChanged')}}
+    </td>
+  {{else if (eq section 'empty')}}
+    <tr class="warning"><td colspan="2">No host types found</td></tr>
+  {{else if (eq section 'row')}}
+    <tr>
+      <td>
+        {{#link-to 'manage.host-types.host-type' model}}
+          {{model.name}}
+        {{/link-to}}
+      </td>
+      <td>
+        {{model.shortname}}
+      </td>
+    </tr>
+  {{/if}}
+{{/sy-list}}

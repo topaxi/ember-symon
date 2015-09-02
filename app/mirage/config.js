@@ -96,7 +96,7 @@ export default function() {
   this.put('/operatingSystemVersions/:id', put('operatingSystemVersion', 'operating-system-version'))
   this.del('/operatingSystemVersions/:id', 'operating-system-version')
 
-  this.get('/hostTypes', 'host-type')
+  this.get('/hostTypes', list('host-types'))
   this.get('/hostTypes/:id', 'host-type')
   this.post('/hostTypes', 'host-type')
   this.put('/hostTypes/:id', put('hostType', 'host-type'))

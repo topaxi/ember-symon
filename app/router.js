@@ -75,6 +75,14 @@ Router.map(function() {
         })
       })
 
+      this.route('host-types', function() {
+        this.route('new')
+        this.route('list', { path: '/' }, ()=>{})
+        this.route('host-type', { path: '/:host-type_id' }, function() {
+          this.route('edit', { path: '/' })
+        })
+      })
+
       this.route('global-settings')
     })
 

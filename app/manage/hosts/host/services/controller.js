@@ -57,12 +57,12 @@ export default Ember.Controller.extend({
 
     async saveServices() {
       try {
-        await this.get('model.services').map(s => s.save())
+        await* this.get('model.services').map(s => s.save())
 
         this.get('notify').success('Host services successfully saved!')
       }
       catch (err) {
-        this.get('notify').error(err || 'Error while trying to save host!')
+        this.get('notify').error(err.message || 'Error while trying to save host!')
       }
     }
   }

@@ -81,11 +81,13 @@
               {{input class='form-control' checked=hostService.enabled type='checkbox'}}
             </td>
             <td>
-              <div class="flex-grow">
-                <button type="button" class="btn btn-default btn-sm" title="Check service instance 'http' for host 'Host 1' now">
-                  <i class="fa fa-refresh"></i>
-                </button>
-                &nbsp;
+              <div class="flex-grow" style="justify-content:flex-end">
+                {{#unless hostService.isNew}}
+                  <button type="button" class="btn btn-default btn-sm" title="Check service instance 'http' for host 'Host 1' now" disabled={{or (not hostService.isValid) hostService.hasDirtyAttributes}}>
+                    <i class="fa fa-refresh"></i>
+                  </button>
+                  &nbsp;
+                {{/unless}}
                 {{#if hostService.isDeleted}}
                   <button type="button" class="btn btn-default btn-sm" title="Rollback this service instance" {{action 'rollbackServiceInstance' hostService}}>
                     <i class="fa fa-undo"></i>

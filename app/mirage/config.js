@@ -45,16 +45,7 @@ export default function() {
   this.get('/hostGroups', list('host-groups'))
   this.get('/hostGroups/:id', 'host-group')
   this.post('/hostGroups', 'host-group')
-  //this.put('/hostGroups/:id', 'host-group')
-  this.put('/hostGroups/:id', function(db, request) {
-    let { id } = request.params
-    let attrs  = JSON.parse(request.requestBody)['hostGroup']
-    let record = db['host-groups'].update(id, attrs)
-
-    return {
-      'host-group': record
-    }
-  })
+  this.put('/hostGroups/:id', put('hostGroup', 'host-group'))
   this.del('/hostGroups/:id', 'host-group')
 
   this.get('/commands', list('commands'))
@@ -78,13 +69,13 @@ export default function() {
   this.get('/serviceArguments', listByField('service-arguments', 'service'))
   this.get('/serviceArguments/:id', 'service-argument')
   this.post('/serviceArguments', 'service-argument')
-  this.put('/serviceArguments/:id', 'service-argument')
+  this.put('/serviceArguments/:id', put('serviceArgument', 'service-argument'))
   this.del('/serviceArguments/:id', 'service-argument')
 
   this.get('/hostServices', listByField('host-services', 'host'))
   this.get('/hostServices/:id', 'host-service')
   this.post('/hostServices', 'host-service')
-  this.put('/hostServices/:id', 'host-service')
+  this.put('/hostServices/:id', put('hostService', 'host-service'))
   this.del('/hostServices/:id', 'host-service')
 
   this.get('/architectures')
@@ -96,19 +87,19 @@ export default function() {
   this.get('/operatingSystems', 'operating-system')
   this.get('/operatingSystems/:id', 'operating-system')
   this.post('/operatingSystems', 'operating-system')
-  this.put('/operatingSystems/:id', 'operating-system')
+  this.put('/operatingSystems/:id', put('operatingSystem', 'operating-system'))
   this.del('/operatingSystems/:id', 'operating-system')
 
   this.get('/operatingSystemVersions', 'operating-system-version')
   this.get('/operatingSystemVersions/:id', 'operating-system-version')
   this.post('/operatingSystemVersions', 'operating-system-version')
-  this.put('/operatingSystemVersions/:id', 'operating-system-version')
+  this.put('/operatingSystemVersions/:id', put('operatingSystemVersion', 'operating-system-version'))
   this.del('/operatingSystemVersions/:id', 'operating-system-version')
 
   this.get('/hostTypes', 'host-type')
   this.get('/hostTypes/:id', 'host-type')
   this.post('/hostTypes', 'host-type')
-  this.put('/hostTypes/:id', 'host-type')
+  this.put('/hostTypes/:id', put('hostType', 'host-type'))
   this.del('/hostTypes/:id', 'host-type')
 }
 
@@ -189,6 +180,18 @@ function list(key) {
     return {
       [key]: entries,
       meta:  { page, limit, total }
+    }
+  }
+}
+
+function put(route, model) {
+  return (db, request) => {
+    let { id } = request.params
+    let attrs  = JSON.parse(request.requestBody)[route]
+    let record = db[model].update(id, attrs)
+
+    return {
+      [model]: record
     }
   }
 }

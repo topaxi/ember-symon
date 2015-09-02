@@ -4,16 +4,16 @@
   </header>
 
   <section class="nav-side-body">
-    <ul class="nav-side-list">
+    {{#sy-sidenav-list}}
       <li class="nav-side-list-item">
         {{#link-to 'manage.hosts'}}Hosts{{/link-to}}
       </li>
       <li class="nav-side-list-item">
         {{#link-to 'manage.host-groups'}}Host Groups{{/link-to}}
       </li>
-    </ul>
+    {{/sy-sidenav-list}}
 
-    <ul class="nav-side-list">
+    {{#sy-sidenav-list}}
       <li class="nav-side-list-item">
         {{#link-to 'manage.commands'}}Commands{{/link-to}}
       </li>
@@ -23,9 +23,9 @@
       <li class="nav-side-list-item">
         <a href="#">Service Groups</a>
       </li>
-    </ul>
+    {{/sy-sidenav-list}}
 
-    <ul class="nav-side-list">
+    {{#sy-sidenav-list}}
       <li class="nav-side-list-item">
         <a href="#">Users</a>
       </li>
@@ -35,9 +35,9 @@
       <li class="nav-side-list-item">
         <a href="#">Roles</a>
       </li>
-    </ul>
+    {{/sy-sidenav-list}}
 
-    <ul class="nav-side-list">
+    {{#sy-sidenav-list}}
       <li class="nav-side-list-item">
         {{#link-to 'manage.operating-systems'}}Operating Systems{{/link-to}}
       </li>
@@ -48,14 +48,17 @@
         <a href="#">Host Types</a>
       </li>
       <li class="nav-side-list-item">
-        {{#link-to 'manage.global-settings'}}Global Settings{{/link-to}}
-      </li>
-      <li class="nav-side-list-item">
         <a href="#">Alert Templates</a>
       </li>
       <li class="nav-side-list-item">
         <a href="#">Alert Schedulers</a>
       </li>
-    </ul>
+    {{/sy-sidenav-list}}
+
+    {{#sy-sidenav-list}}
+      <li class="nav-side-list-item">
+        {{#link-to 'manage.global-settings'}}Global Settings{{/link-to}}
+      </li>
+    {{/sy-sidenav-list}}
   </section>
 </nav>

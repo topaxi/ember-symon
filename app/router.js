@@ -67,6 +67,14 @@ Router.map(function() {
         })
       })
 
+      this.route('architectures', function() {
+        this.route('new')
+        this.route('list', { path: '/' }, ()=>{})
+        this.route('architecture', { path: '/:architecture_id' }, function() {
+          this.route('edit', { path: '/' })
+        })
+      })
+
       this.route('global-settings')
     })
 

@@ -78,7 +78,7 @@ export default function() {
   this.put('/hostServices/:id', put('hostService', 'host-service'))
   this.del('/hostServices/:id', 'host-service')
 
-  this.get('/architectures')
+  this.get('/architectures', list('architectures'))
   this.get('/architectures/:id')
   this.post('/architectures')
   this.put('/architectures/:id')

@@ -1,0 +1,9 @@
+{{#sy-list-loading as |section|}}
+  {{#if (eq section 'actions')}}
+    {{#link-to 'manage.architectures.new' class='btn btn-success'}}
+      <i class="fa fa-plus"></i>&nbsp;New architecture
+    {{/link-to}}
+  {{else if (eq section 'header')}}
+    <th>Name</th>
+  {{/if}}
+{{/sy-list-loading}}

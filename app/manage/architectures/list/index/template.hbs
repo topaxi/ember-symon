@@ -1,0 +1,23 @@
+{{#sy-list model=model loading=loading as |section model|}}
+  {{#if (eq section 'actions')}}
+    {{#link-to 'manage.architectures.new' class='btn btn-success'}}
+      <i class="fa fa-plus"></i>&nbsp;New architecture
+    {{/link-to}}
+  {{else if (eq section 'header')}}
+    <th>Name</th>
+  {{else if (eq section 'footer')}}
+    <td colspan="1">
+      {{pagination-pager current=page count=totalPages change=(action 'pageChanged')}}
+    </td>
+  {{else if (eq section 'empty')}}
+    <tr class="warning"><td colspan="1">No architectures found</td></tr>
+  {{else if (eq section 'row')}}
+    <tr>
+      <td>
+        {{#link-to 'manage.architectures.architecture' model}}
+          {{model.name}}
+        {{/link-to}}
+      </td>
+    </tr>
+  {{/if}}
+{{/sy-list}}

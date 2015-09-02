@@ -62,7 +62,7 @@ export default Ember.Controller.extend({
         this.get('notify').success('Host services successfully saved!')
       }
       catch (err) {
-        this.get('notify').error(err.message || 'Error while trying to save host!')
+        this.get('notify').error(err.message || 'Error while trying to save host services!')
       }
     }
   }

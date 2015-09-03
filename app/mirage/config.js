@@ -107,6 +107,12 @@ export default function() {
   this.post('/alertSchedulers', 'alert-scheduler')
   this.put('/alertSchedulers/:id', put('alertScheduler', 'alert-scheduler'))
   this.del('/alertSchedulers/:id', 'alert-scheduler')
+
+  this.get('/downtimes', alertList('downtimes'))
+  this.get('/downtimes/:id')
+  this.post('/downtimes')
+  this.put('/downtimes/:id')
+  this.del('/downtimes/:id')
 }
 
 function listByField(key, fieldName) {

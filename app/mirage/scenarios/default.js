@@ -58,6 +58,8 @@ export default function(server) {
 }
 
 function createDeterministicData(server) {
+  server.createList('downtime', rrange(100, 1000))
+
   server.create('customer', {
     parent:         1,
     name:           'Adfinis SyGroup AG',

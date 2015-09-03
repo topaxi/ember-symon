@@ -102,6 +102,11 @@ Router.map(function() {
           actions: { 'refresh': 'refresh' }
         })
       })
+
+      this.route('downtimes', function() {
+        this.route('new')
+        this.route('list', { path: '/' }, ()=>{})
+      })
     })
 
     this.route('maintenance', { resetNamespace: true }, function() {

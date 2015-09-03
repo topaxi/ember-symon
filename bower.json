@@ -17,6 +17,7 @@
     "Faker": "~3.0.0",
     "ember-data": "2.1.0-beta.1",
     "moment": ">= 2.8.0",
-    "moment-timezone": ">= 0.1.0"
+    "moment-timezone": ">= 0.1.0",
+    "selectize": "~0.12.1"
   }
 }

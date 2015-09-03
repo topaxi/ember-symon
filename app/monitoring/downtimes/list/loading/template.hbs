@@ -1,0 +1,15 @@
+{{#sy-list-loading as |section|}}
+  {{#if (eq section 'actions')}}
+    {{#link-to 'monitoring.downtimes.new' class='btn btn-success'}}
+      <i class="fa fa-plus"></i>&nbsp;New downtime
+    {{/link-to}}
+  {{else if (eq section 'header')}}
+    <th>Customer</th>
+    <th>Host</th>
+    <th>Services</th>
+    <th>From</th>
+    <th>To</th>
+    <th>Recurring</th>
+    <th></th>
+  {{/if}}
+{{/sy-list-loading}}

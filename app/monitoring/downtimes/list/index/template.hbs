@@ -1,0 +1,45 @@
+{{#sy-list model=model loading=loading as |section model|}}
+  {{#if (eq section 'actions')}}
+    {{#link-to 'monitoring.downtimes.new' class='btn btn-success'}}
+      <i class="fa fa-plus"></i>&nbsp;New downtime
+    {{/link-to}}
+  {{else if (eq section 'header')}}
+    <th>Customer</th>
+    <th>Host</th>
+    <th>Services</th>
+    <th>From</th>
+    <th>To</th>
+    <th>Recurring</th>
+    <th></th>
+  {{else if (eq section 'footer')}}
+    <td colspan="7">
+      {{pagination-pager current=page count=totalPages change=(action 'pageChanged')}}
+    </td>
+  {{else if (eq section 'empty')}}
+    <tr class="warning"><td colspan="7">No downtimes found</td></tr>
+  {{else if (eq section 'row')}}
+    <tr>
+      <td>
+        {{model.host.customer.name}}
+      </td>
+      <td>
+        {{model.host.hostname}}
+      </td>
+      <td>
+        {{#if model.hostServices}}
+          <ul>
+            {{#each model.hostServices as |hostService|}}
+              <li>{{hostService.name}}</li>
+            {{/each}}
+          </ul>
+        {{else}}
+          All services
+        {{/if}}
+      </td>
+      <td>{{moment-format model.start 'DD.MM.YYYY hh:mm'}}</td>
+      <td>{{moment-format model.end 'DD.MM.YYYY hh:mm'}}</td>
+      <td>TODO</td>
+      <td>TODO</td>
+    </tr>
+  {{/if}}
+{{/sy-list}}

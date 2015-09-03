@@ -11,8 +11,8 @@ const cssTypeMap = {
 }
 
 export default Model.extend({
-  host:          belongsTo('host',    { async: true }),
-  service:       belongsTo('service', { async: true }),
+  host:          belongsTo('host'),
+  service:       belongsTo('service'),
   //comments:      hasMany(...),
   //notifications: hasMany(...),
   type:          attr('string'),

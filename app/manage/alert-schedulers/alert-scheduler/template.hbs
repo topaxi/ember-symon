@@ -1,0 +1,15 @@
+<h1>{{model.name}}</h1>
+
+<ul class="nav nav-tabs">
+  <li>
+    {{#link-to 'manage.alert-schedulers.alert-scheduler.edit' model}}
+      Edit
+    {{/link-to}}
+  </li>
+  <li>
+    {{#link-to 'manage.alert-schedulers.alert-scheduler.timeframes' model}}
+      Timeframes
+    {{/link-to}}
+  </li>
+</ul>
+<div class="tab-content flex-grow">{{liquid-outlet}}</div>

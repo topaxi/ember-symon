@@ -1,0 +1,31 @@
+{{#sy-list model=model loading=loading as |section model|}}
+  {{#if (eq section 'actions')}}
+    {{#link-to 'manage.alert-schedulers.new' class='btn btn-success'}}
+      <i class="fa fa-plus"></i>&nbsp;New alert scheduler
+    {{/link-to}}
+  {{else if (eq section 'header')}}
+    <th>Name</th>
+    <th>Description</th>
+    <th>Customer</th>
+  {{else if (eq section 'footer')}}
+    <td colspan="3">
+      {{pagination-pager current=page count=totalPages change=(action 'pageChanged')}}
+    </td>
+  {{else if (eq section 'empty')}}
+    <tr class="warning"><td colspan="3">No alert schedulers found</td></tr>
+  {{else if (eq section 'row')}}
+    <tr>
+      <td>
+        {{#link-to 'manage.alert-schedulers.alert-scheduler' model}}
+          {{model.name}}
+        {{/link-to}}
+      </td>
+      <td>
+        {{model.description}}
+      </td>
+      <td>
+        {{model.customer.name}}
+      </td>
+    </tr>
+  {{/if}}
+{{/sy-list}}

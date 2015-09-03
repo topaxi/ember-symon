@@ -79,13 +79,13 @@ function createDeterministicData(server) {
   server.create('alert-scheduler', {
     name:        'Standard',
     description: 'Standard Template',
-    customer:    1
+    customer:    2
   })
 
   server.create('alert-scheduler', {
     name:        'Premium',
     description: 'Premium Template',
-    customer:    1
+    customer:    2
   })
 
   let x86 = server.create('architecture', { name: 'x86'    })

@@ -51,4 +51,11 @@ export default function() {
     this.use('toLeft'),
     this.reverse('toRight')
   )
+
+  this.transition(
+    this.fromRoute('manage.alert-schedulers.alert-scheduler.edit'),
+    this.toRoute('manage.alert-schedulers.alert-scheduler.timeframes'),
+    this.use('toLeft'),
+    this.reverse('toRight')
+  )
 }

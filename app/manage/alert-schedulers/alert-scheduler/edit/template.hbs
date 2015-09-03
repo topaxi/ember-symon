@@ -1,0 +1,44 @@
+<form method="post" {{action 'save' on='submit'}}>
+  <div class="grid grid--12of12 grid-sm--6of12">
+    <div class="grid-cell form-group">
+      <label for="name">Name:</label>
+      {{input class="form-control" id="name" value=model.name type="text" required=true}}
+    </div>
+
+    <div class="grid-cell form-group">
+      <label for="customer">Customer:</label>
+      <select id="customer" class="form-control" disabled>
+        <option>{{model.customer.name}}</option>
+      </select>
+    </div>
+
+    <div class="grid-cell grid-cell--12of12 form-group">
+      <label for="description">Description:</label>
+      {{input class="form-control" id="description" value=model.description type="text" required=true}}
+    </div>
+
+    <div class="grid-cell form-group">
+      <label for="cycleDelay">Cycle delay:</label>
+      {{input class="form-control" id="cycleDelay" value=model.cycleDelay type="number" required=true}}
+    </div>
+
+    <div class="grid-cell form-group">
+      <label for="restartDelay">Restart delay:</label>
+      {{input class="form-control" id="restartDelay" value=model.restartDelay type="number" required=true}}
+    </div>
+
+    <div class="grid-cell form-group">
+      <label for="timeout">Timeout:</label>
+      {{input class="form-control" id="timeout" value=model.timeout type="number" required=true}}
+    </div>
+
+    <div class="grid-cell form-group">
+      <label for="minAvailability">Minimum availability:</label>
+      {{input class="form-control" id="minAvailability" value=model.minAvailability type="number" step="any" required=true}}
+    </div>
+  </div>
+
+  <div class="flex-grow">
+    <button type="submit" class="btn btn-primary">Save</button>
+  </div>
+</form>

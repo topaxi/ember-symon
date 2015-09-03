@@ -1,0 +1,11 @@
+{{#sy-list-loading as |section|}}
+  {{#if (eq section 'actions')}}
+    {{#link-to 'manage.alert-schedulers.new' class='btn btn-success'}}
+      <i class="fa fa-plus"></i>&nbsp;New alert scheduler
+    {{/link-to}}
+  {{else if (eq section 'header')}}
+    <th>Name</th>
+    <th>Description</th>
+    <th>Customer</th>
+  {{/if}}
+{{/sy-list-loading}}

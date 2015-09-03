@@ -4,7 +4,7 @@ const { Model, attr, belongsTo, hasMany } = DS
 
 export default Model.extend({
   parent:              belongsTo('customer'),
-  alertScheduler:      belongsTo('alert-scheduler'),
+  alertScheduler:      belongsTo('alert-scheduler', { inverse: null }),
   hosts:               hasMany('hosts'),
   name:                attr('string'),
   wiki:                attr('string'),

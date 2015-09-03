@@ -83,6 +83,15 @@ Router.map(function() {
         })
       })
 
+      this.route('alert-schedulers', function() {
+        this.route('new')
+        this.route('list', { path: '/' }, ()=>{})
+        this.route('alert-scheduler', { path: '/:alert-scheduler_id' }, function() {
+          this.route('edit', { path: '/' })
+          this.route('timeframes')
+        })
+      })
+
       this.route('global-settings')
     })
 

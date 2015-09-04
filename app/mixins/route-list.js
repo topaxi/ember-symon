@@ -4,8 +4,9 @@ const { $ } = Ember
 
 export default Ember.Mixin.create({
   queryParams: {
-    limit: { refreshModel: true },
-    page:  { refreshModel: true }
+    limit:  { refreshModel: true },
+    page:   { refreshModel: true },
+    filter: { refreshModel: true }
   },
 
   setupController(controller, model) {

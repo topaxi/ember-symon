@@ -1,10 +1,10 @@
 import Ember from 'ember'
 
-const { Mixin, computed, $ } = Ember
-const { ceil }               = Math
+const { Mixin, computed, run, $ } = Ember
+const { ceil }                    = Math
 
 export default Mixin.create({
-  queryParams: [ 'limit', 'page' ],
+  queryParams: [ 'limit', 'page', 'filter' ],
   page: 1,
   limit: 15,
   loading: false,
@@ -13,10 +13,18 @@ export default Mixin.create({
     return ceil(this.get('model.meta.total') / this.get('limit'))
   }),
 
+  setFilter(filter) {
+    this.set('filter', filter)
+  },
+
   actions: {
 
     pageChanged(current, previous) {
       $('.sy-list thead').get(0).scrollIntoView()
+    },
+
+    updateFilter(filter) {
+      run.debounce(this, this.setFilter, filter, 300)
     }
   }
 })

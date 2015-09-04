@@ -8,7 +8,7 @@
       <form class="grid-cell text-right grid-cell-xl--4of12">
         <div>
           <label for="search" class="sr-only">Search:</label>
-          <input id="search" type="text" class="form-control" placeholder="Search...">
+          <input id="search" type="text" class="form-control" placeholder="Search..." oninput={{action 'updateSearch' value='target.value'}}>
         </div>
       </form>
     {{/unless}}

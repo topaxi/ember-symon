@@ -5,7 +5,9 @@ export default function() {
   this.namespace = 'api' // make this `api`, for example, if your API is namespaced
   this.timing    = 300   // delay for each request, automatically set to 0 during testing
 
-  this.get('/hosts', list('hosts'))
+  this.get('/hosts', list('hosts', {
+    filterField: [ 'hostname', 'ipv4', 'ipv6' ]
+  }))
   this.get('/hosts/:id', (db, req) => {
     let { id } = req.params
     let host
@@ -174,7 +176,7 @@ function alertList(key) {
   }
 }
 
-function list(key) {
+function list(key, options = { filterField: 'name' }) {
   return (db, req) => {
     let { page = 1, limit, ids, filter } = req.queryParams
 
@@ -186,7 +188,17 @@ function list(key) {
 
     if (filter) {
       let re = new RegExp(filter, 'i')
-      entries = entries.filter(e => re.test(e.name))
+
+      if (Array.isArray(options.filterField)) {
+        entries = entries.filter(e =>
+          options.filterField.some(field =>
+            re.test(e[field])
+          )
+        )
+      }
+      else {
+        entries = entries.filter(e => re.test(e[options.filterField]))
+      }
     }
 
     if (limit) {

@@ -53,15 +53,12 @@
               {{input class='form-control' value=hostService.name type='text'}}
             </td>
             <td>
-              <select class="form-control" onchange={{action 'changeHostServiceAlertScheduler' hostService}}>
-                <option value="0" selected={{eq hostService.alertScheduler 0}}>
-                Inherit (Premium)
-                </option>
-                <option value="3" selected={{eq hostService.alertScheduler 3}}>Nightshift</option>
-                <option value="1" selected={{eq hostService.alertScheduler 1}}>No Alarm</option>
-                <option value="2" selected={{eq hostService.alertScheduler 2}}>Premium</option>
-
-              </select>
+              {{sy-select-alert-scheduler
+                alertSchedulers = alertSchedulers
+                selected        = hostService.alertScheduler
+                inherit         = (or model.alertScheduler model.customer.alertScheduler)
+                change          = (action 'changeHostServiceAlertScheduler' value='target.value')
+                }}
             </td>
             <td>
               {{#with hostService.arguments as |arguments|}}

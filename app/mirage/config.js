@@ -199,7 +199,6 @@ function list(key, options = { filterField: 'name' }) {
     limit = limit | 0
 
     let entries = ids ? db[key].find(ids) : db[key]
-    let total   = entries.length
 
     if (filter) {
       let re = new RegExp(filter, 'i')
@@ -215,6 +214,8 @@ function list(key, options = { filterField: 'name' }) {
         entries = entries.filter(e => re.test(e[options.filterField]))
       }
     }
+
+    let total = entries.length
 
     if (limit) {
       let offset = (page - 1) * limit

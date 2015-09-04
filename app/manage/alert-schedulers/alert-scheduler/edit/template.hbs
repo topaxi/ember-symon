@@ -7,9 +7,7 @@
 
     <div class="grid-cell form-group">
       <label for="customer">Customer:</label>
-      <select id="customer" class="form-control" disabled>
-        <option>{{model.customer.name}}</option>
-      </select>
+      {{sy-select-customer id='customerId' customer=model.customer}}
     </div>
 
     <div class="grid-cell grid-cell--12of12 form-group">

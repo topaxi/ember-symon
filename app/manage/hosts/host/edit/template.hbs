@@ -104,9 +104,7 @@
   <div class="grid grid--12of12 grid-sm--6of12">
     <div class="grid-cell form-group">
       <label for="customerId">Customer</label>
-      <select class="form-control" id="customerId" name="customerId" required>
-        <option value="1" selected="selected">All customers</option>
-      </select>
+      {{sy-select-customer id='customerId' customer=model.customer required=true}}
     </div>
     <div class="grid-cell form-group">
       <label for="slaId">Alert Scheduler:</label>

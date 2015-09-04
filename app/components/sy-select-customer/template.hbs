@@ -1,0 +1,14 @@
+{{ember-selectize
+  plugins         = null
+  content         = customers
+  placeholder     = placeholder
+  selection       = customer
+  loading         = loading
+  disabled        = disabled
+  multiple        = multiple
+  required        = required
+  optionValuePath = 'content.id'
+  optionLabelPath = 'content.name'
+  update-filter   = (action 'updateFilter')
+  select-item     = (action 'selectCustomer')
+  }}

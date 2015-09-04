@@ -10,10 +10,8 @@
   </div>
 
   <div class="form-group">
-    <label for="hostGroupCustomerId">Customer:</label>
-    <select class="form-control" id="hostGroupCustomerId" required>
-      <option value="1" selected>All customers</option>
-    </select>
+    <label for="customerId">Customer:</label>
+    {{sy-select-customer id='customerId' customer=model.customer}}
   </div>
 
   <div class="flex-grow">

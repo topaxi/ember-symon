@@ -176,13 +176,18 @@ function alertList(key) {
 
 function list(key) {
   return (db, req) => {
-    let { page = 1, limit, ids } = req.queryParams
+    let { page = 1, limit, ids, filter } = req.queryParams
 
     page  = page  | 0
     limit = limit | 0
 
     let entries = ids ? db[key].find(ids) : db[key]
     let total   = entries.length
+
+    if (filter) {
+      let re = new RegExp(filter, 'i')
+      entries = entries.filter(e => re.test(e.name))
+    }
 
     if (limit) {
       let offset = (page - 1) * limit

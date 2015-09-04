@@ -22,10 +22,7 @@
 
     <div class="grid-cell form-group">
       <label for="customerId">Customer:</label>
-      <select id="customerId" class="form-control">
-        <option value="0">None</option>
-        <option value="1">All customers</option>
-      </select>
+      {{sy-select-customer id='customerId' customer=model.customer}}
     </div>
 
     <div class="grid-cell form-group">

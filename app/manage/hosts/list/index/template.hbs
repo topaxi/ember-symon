@@ -1,4 +1,4 @@
-{{#sy-list model=model loading=loading search=(action 'updateFilter') as |section model|}}
+{{#sy-list model=model loading=loading search=(action 'updateFilter') searchValue=filter as |section model|}}
   {{#if (eq section 'actions')}}
     {{#link-to 'manage.hosts.new' class='btn btn-success'}}
       <i class="fa fa-plus"></i>&nbsp;New host

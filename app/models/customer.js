@@ -3,7 +3,7 @@ import DS from 'ember-data'
 const { Model, attr, belongsTo, hasMany } = DS
 
 export default Model.extend({
-  parent:              belongsTo('customer'),
+  parent:              belongsTo('customer',        { inverse: null }),
   alertScheduler:      belongsTo('alert-scheduler', { inverse: null }),
   hosts:               hasMany('hosts'),
   name:                attr('string'),

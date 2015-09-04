@@ -2,19 +2,19 @@
   <div class="grid grid--12of12 grid-sm--6of12">
     <div class="grid-cell {{if (eq model.id 1) 'grid-cell--12of12'}} form-group">
       <label for="name">Name:</label>
-      <input class="form-control" id="name" maxlength="255" value={{model.name}} type="text">
+      {{input class="form-control" id="name" maxlength="255" value=model.name type="text"}}
     </div>
 
     {{#unless (eq model.id 1)}}
       <div class="grid-cell form-group">
         <label for="parent">Parent:</label>
-        <input class="form-control" id="parent" value={{model.parent.name}} type="text" readonly>
+        {{sy-select-customer id='parent' customer=model.parent required=true}}
       </div>
     {{/unless}}
 
     <div class="grid-cell form-group">
       <label for="wiki">Wiki:</label>
-      <input class="form-control url" id="wiki" name="wiki" value={{model.wiki}} type="text">
+      {{input class="form-control" id="wiki" value=model.wiki type="url"}}
     </div>
 
     <div class="grid-cell form-group">
@@ -24,11 +24,11 @@
 
     <div class="grid-cell form-group">
       <label for="email">Email:</label>
-      <input class="email form-control" id="email" value={{model.email}} type="text">
+      {{input class="form-control" id="email" value=model.email type="email"}}
     </div>
 
     <div class="grid-cell checkbox grid-cell--align-center">
-      <input class="form-control" id="warnHoster" type="checkbox">
+      {{input class="form-control" id="warnHoster" type="checkbox" checked=model.warnHoster}}
       <label for="warnHoster">Warn hoster</label>
     </div>
 
@@ -44,7 +44,7 @@
 
     <div class="grid-cell grid-cell--12of12 form-group">
       <label for="comment">Comment:</label>
-      <textarea id="comment" name="comment" class="form-control">Root customer: All customers are subcustomers of this one</textarea>
+      {{textarea id="comment" class="form-control" value=model.comment}}
     </div>
 
     <div class="grid-cell form-group">
@@ -71,197 +71,174 @@
         <option value="6">LDAP - Thomas Koechli</option>
       </select>
     </div>
+  </div>
 
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Ldap mapping</h3>
+    </div>
+    <table class="table table-striped">
+      <tbody><tr>
+          <th>Role</th>
+          <th>Description</th>
+          <th>Ldap group</th>
+        </tr>
+        <tr>
+          <td>
+            Administrator
+            <input name="roleId[]" value="1" type="hidden">
+          </td>
+          <td>
+            All permissions except 'Emergency alert' and 'Maintenance master'
+          </td>
+          <td>
+            <input class="form-control" id="ldapGroup-1" name="ldapGroup[1]" value="" type="text">
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Cacti
+            <input name="roleId[]" value="4" type="hidden">
+          </td>
+          <td>
+            Access Cacti
+          </td>
+          <td>
+            <input class="form-control" id="ldapGroup-4" name="ldapGroup[4]" value="" type="text">
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Downtimes verwalten
+            <input name="roleId[]" value="6" type="hidden">
+          </td>
+          <td>
+            Manage downtimes
+          </td>
+          <td>
+            <input class="form-control" id="ldapGroup-6" name="ldapGroup[6]" value="" type="text">
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Emergency team
+            <input name="roleId[]" value="5" type="hidden">
+          </td>
+          <td>
+            Users with this role can be put into emergency teams
+          </td>
+          <td>
+            <input class="form-control" id="ldapGroup-5" name="ldapGroup[5]" value="" type="text">
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Icinga web
+            <input name="roleId[]" value="8" type="hidden">
+          </td>
+          <td>
+            Access to the Icinga web interface
+          </td>
+          <td>
+            <input class="form-control" id="ldapGroup-8" name="ldapGroup[8]" value="" type="text">
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Kunden-Benutzer
+            <input name="roleId[]" value="7" type="hidden">
+          </td>
+          <td>
+            Allows a user to see Alerts, Downtimes, Hosts and Reports
+          </td>
+          <td>
+            <input class="form-control" id="ldapGroup-7" name="ldapGroup[7]" value="" type="text">
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Maintenance
+            <input name="roleId[]" value="2" type="hidden">
+          </td>
+          <td>
+            Maintenance write access with downtimes
+          </td>
+          <td>
+            <input class="form-control" id="ldapGroup-2" name="ldapGroup[2]" value="" type="text">
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Maintenance master
+            <input name="roleId[]" value="3" type="hidden">
+          </td>
+          <td>
+            Adds the 'Maintenance master' permission
+          </td>
+          <td>
+            <input class="form-control" id="ldapGroup-3" name="ldapGroup[3]" value="" type="text">
+          </td>
+        </tr>
+      </tbody></table>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Alert Settings</h3>
+    </div>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Enabled</th>
+        </tr>
+      </thead>
+      <tbody><tr>
+          <td>e-mail</td>
+          <td>
+            <select class="form-control" name="alerttype_3_enabled">
+              <option value="0" selected="">Inherit</option>
+              <option value="1">Forced</option>
+              <option value="2">Optional</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>jabber</td>
+          <td>
+            <select class="form-control" name="alerttype_4_enabled">
+              <option value="0" selected="">Inherit</option>
+              <option value="1">Forced</option>
+              <option value="2">Optional</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>phone</td>
+          <td>
+            <select class="form-control" name="alerttype_2_enabled">
+              <option value="0" selected="">Inherit</option>
+              <option value="1">Forced</option>
+              <option value="2">Optional</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>SMS</td>
+          <td>
+            <select class="form-control" name="alerttype_1_enabled">
+              <option value="0" selected="">Inherit</option>
+              <option value="1">Forced</option>
+              <option value="2">Optional</option>
+            </select>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="flex-grow">
+    <button type="submit" class="btn btn-primary">Save</button>
   </div>
 </form>
-
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title">Ldap mapping</h3>
-  </div>
-  <table class="table table-striped">
-    <tbody><tr>
-        <th>Role</th>
-        <th>Description</th>
-        <th>Ldap group</th>
-      </tr>
-      <tr>
-        <td>
-          Administrator
-          <input name="roleId[]" value="1" type="hidden">
-        </td>
-        <td>
-          All permissions except 'Emergency alert' and 'Maintenance master'
-        </td>
-        <td>
-          <input class="form-control" id="ldapGroup-1" name="ldapGroup[1]" value="" type="text">
-        </td>
-      </tr>
-      <tr>
-        <td>
-          Cacti
-          <input name="roleId[]" value="4" type="hidden">
-        </td>
-        <td>
-          Access Cacti
-        </td>
-        <td>
-          <input class="form-control" id="ldapGroup-4" name="ldapGroup[4]" value="" type="text">
-        </td>
-      </tr>
-      <tr>
-        <td>
-          Downtimes verwalten
-          <input name="roleId[]" value="6" type="hidden">
-        </td>
-        <td>
-          Manage downtimes
-        </td>
-        <td>
-          <input class="form-control" id="ldapGroup-6" name="ldapGroup[6]" value="" type="text">
-        </td>
-      </tr>
-      <tr>
-        <td>
-          Emergency team
-          <input name="roleId[]" value="5" type="hidden">
-        </td>
-        <td>
-          Users with this role can be put into emergency teams
-        </td>
-        <td>
-          <input class="form-control" id="ldapGroup-5" name="ldapGroup[5]" value="" type="text">
-        </td>
-      </tr>
-      <tr>
-        <td>
-          Icinga web
-          <input name="roleId[]" value="8" type="hidden">
-        </td>
-        <td>
-          Access to the Icinga web interface
-        </td>
-        <td>
-          <input class="form-control" id="ldapGroup-8" name="ldapGroup[8]" value="" type="text">
-        </td>
-      </tr>
-      <tr>
-        <td>
-          Kunden-Benutzer
-          <input name="roleId[]" value="7" type="hidden">
-        </td>
-        <td>
-          Allows a user to see Alerts, Downtimes, Hosts and Reports
-        </td>
-        <td>
-          <input class="form-control" id="ldapGroup-7" name="ldapGroup[7]" value="" type="text">
-        </td>
-      </tr>
-      <tr>
-        <td>
-          Maintenance
-          <input name="roleId[]" value="2" type="hidden">
-        </td>
-        <td>
-          Maintenance write access with downtimes
-        </td>
-        <td>
-          <input class="form-control" id="ldapGroup-2" name="ldapGroup[2]" value="" type="text">
-        </td>
-      </tr>
-      <tr>
-        <td>
-          Maintenance master
-          <input name="roleId[]" value="3" type="hidden">
-        </td>
-        <td>
-          Adds the 'Maintenance master' permission
-        </td>
-        <td>
-          <input class="form-control" id="ldapGroup-3" name="ldapGroup[3]" value="" type="text">
-        </td>
-      </tr>
-    </tbody></table>
-</div>
-
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title">Alert Settings</h3>
-  </div>
-
-
-
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Enabled</th>
-      </tr>
-    </thead>
-
-
-    <tbody><tr>
-        <td>e-mail</td>
-        <td>
-          <select class="form-control" name="alerttype_3_enabled">
-            <option value="0" selected="">Inherit</option>
-            <option value="1">Forced</option>
-            <option value="2">Optional</option>
-          </select>
-        </td>
-
-      </tr>
-
-
-
-
-      <tr>
-        <td>jabber</td>
-        <td>
-          <select class="form-control" name="alerttype_4_enabled">
-            <option value="0" selected="">Inherit</option>
-            <option value="1">Forced</option>
-            <option value="2">Optional</option>
-          </select>
-        </td>
-
-      </tr>
-
-
-
-
-      <tr>
-        <td>phone</td>
-        <td>
-          <select class="form-control" name="alerttype_2_enabled">
-            <option value="0" selected="">Inherit</option>
-            <option value="1">Forced</option>
-            <option value="2">Optional</option>
-          </select>
-        </td>
-
-      </tr>
-
-
-
-
-      <tr>
-        <td>SMS</td>
-        <td>
-          <select class="form-control" name="alerttype_1_enabled">
-            <option value="0" selected="">Inherit</option>
-            <option value="1">Forced</option>
-            <option value="2">Optional</option>
-          </select>
-        </td>
-
-      </tr>
-
-    </tbody>
-  </table>
-</div>
-<div class="flex-grow">
-  <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-  &nbsp;
-  <button type="submit" class="btn btn-primary">Save</button>
-</div>

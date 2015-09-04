@@ -26,5 +26,9 @@
   <div style="white-space:pre-wrap;font-family:monospace">{{model.output}}</div>
 </td>
 <td>
-  {{sy-alert-actions model=model refresh=(action 'refresh')}}
+  {{sy-alert-actions
+    model         = model
+    refresh       = (action 'refresh')
+    acknowledging = (action 'acknowledging')
+    }}
 </td>

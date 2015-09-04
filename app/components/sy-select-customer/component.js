@@ -23,9 +23,13 @@ export default Component.extend({
     })
   }),
 
+  setFilter(filter) {
+    this.set('filter', filter)
+  },
+
   actions: {
     updateFilter(filter) {
-      run.debounce(this, this.set, 'filter', filter, 300)
+      run.debounce(this, this.setFilter, filter, 300)
     },
     selectCustomer(...args) {
       this.sendAction('select', ...args)

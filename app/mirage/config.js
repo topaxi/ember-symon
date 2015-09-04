@@ -119,7 +119,7 @@ export default function() {
 
 function listByField(key, fieldName) {
   return (db, req) => {
-    let { page = 1, limit, [fieldName]: field, ids } = req.queryParams
+    let { page = 1, limit, [fieldName]: field, ids, filter } = req.queryParams
 
     page  = page  | 0
     limit = limit | 0
@@ -129,6 +129,11 @@ function listByField(key, fieldName) {
 
     if (field) {
       entries = entries.filter(e => e[fieldName] === field)
+    }
+
+    if (filter) {
+      let re = new RegExp(filter, 'i')
+      entries = entries.filter(e => re.test(e.name))
     }
 
     let total = entries.length
@@ -149,7 +154,7 @@ function listByField(key, fieldName) {
 
 function alertList(key) {
   return (db, req) => {
-    let { page = 1, limit, state, ids } = req.queryParams
+    let { page = 1, limit, state, ids, filter } = req.queryParams
 
     page  = page  | 0
     limit = limit | 0
@@ -158,6 +163,16 @@ function alertList(key) {
 
     if (state) {
       entries = entries.filter(e =>  e.state === state)
+    }
+
+    if (filter) {
+      let re = new RegExp(filter, 'i')
+      let fields = [ 'type', 'output' ]
+      entries = entries.filter(e =>
+        fields.some(field =>
+          re.test(e[field])
+        )
+      )
     }
 
     let total = entries.length

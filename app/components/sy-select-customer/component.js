@@ -24,7 +24,7 @@ export default Component.extend({
   }),
 
   setFilter(filter) {
-    this.set('filter', filter)
+    this.set('filter', String(filter) || void 0)
   },
 
   actions: {

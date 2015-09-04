@@ -14,7 +14,7 @@ export default Mixin.create({
   }),
 
   setFilter(filter) {
-    this.set('filter', filter)
+    this.set('filter', String(filter) || void 0)
   },
 
   actions: {

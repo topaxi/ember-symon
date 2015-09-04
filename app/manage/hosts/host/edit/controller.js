@@ -34,7 +34,7 @@ export default Ember.Controller.extend({
         this.transitionToRoute('manage.hosts.host.edit', this.model)
       }
       catch (err) {
-        this.get('notify').error(err || 'Error while trying to save host!')
+        this.get('notify').error(err.message || 'Error while trying to save host!')
       }
     }
   }

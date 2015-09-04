@@ -6,7 +6,7 @@
   {{else if (eq section 'header')}}
     <th>Name</th>
     <th class="visible-md">Comment</th>
-    <th>Wiki</th>
+    <th width="1">Wiki</th>
   {{else if (eq section 'footer')}}
     <td colspan="4">
       {{pagination-pager current=page count=totalPages change=(action 'pageChanged')}}

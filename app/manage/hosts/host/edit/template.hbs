@@ -108,7 +108,13 @@
     </div>
     <div class="grid-cell form-group">
       <label for="slaId">Alert Scheduler:</label>
-      {{sy-select-alert-scheduler id='slaId' alertSchedulers=alertSchedulers selected=model.alertScheduler.id change=(action 'setAlertScheduler' value='target.value')}}
+      {{sy-select-alert-scheduler
+        id              = 'slaId'
+        alertSchedulers = alertSchedulers
+        selected        = model.alertScheduler.id
+        inherit         = model.customer.alertScheduler
+        change          = (action 'setAlertScheduler' value='target.value')
+        }}
     </div>
     <div class="grid-cell checkbox">
       <input id="checkHostAlive" class="form-control" type="checkbox" checked>

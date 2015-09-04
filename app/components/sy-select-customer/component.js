@@ -1,7 +1,7 @@
 import Ember from 'ember'
 import DS    from 'ember-data'
 
-const { Component, inject, computed } = Ember
+const { Component, inject, computed, run } = Ember
 
 export default Component.extend({
   store: inject.service(),
@@ -25,7 +25,7 @@ export default Component.extend({
 
   actions: {
     updateFilter(filter) {
-      this.set('filter', filter)
+      run.debounce(this, this.set, 'filter', filter, 300)
     },
     selectCustomer(...args) {
       this.sendAction('select', ...args)

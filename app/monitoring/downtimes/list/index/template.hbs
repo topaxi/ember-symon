@@ -4,11 +4,17 @@
       <i class="fa fa-plus"></i>&nbsp;New downtime
     {{/link-to}}
   {{else if (eq section 'header')}}
-    <th>Customer</th>
+    {{#unless media.isMo}}
+      <th>Customer</th>
+    {{/unless}}
     <th>Host</th>
     <th>Services</th>
-    <th>From</th>
-    <th>To</th>
+    {{#if media.isMo}}
+      <th>Date</th>
+    {{else}}
+      <th>From</th>
+      <th>To</th>
+    {{/if}}
     <th>Recurring</th>
     <th></th>
   {{else if (eq section 'footer')}}
@@ -19,10 +25,15 @@
     <tr class="warning"><td colspan="7">No downtimes found</td></tr>
   {{else if (eq section 'row')}}
     <tr>
+      {{#unless media.isMo}}
+        <td>
+          {{model.host.customer.name}}
+        </td>
+      {{/unless}}
       <td>
-        {{model.host.customer.name}}
-      </td>
-      <td>
+        {{#if media.isMo}}
+          {{model.host.customer.name}}<br>
+        {{/if}}
         {{model.host.hostname}}
       </td>
       <td>
@@ -36,8 +47,15 @@
           All services
         {{/if}}
       </td>
-      <td>{{moment-format model.start 'DD.MM.YYYY hh:mm'}}</td>
-      <td>{{moment-format model.end 'DD.MM.YYYY hh:mm'}}</td>
+      <td>
+        {{moment-format model.start 'DD.MM.YYYY hh:mm'}}
+        {{#if media.isMo}}
+          - {{moment-format model.end 'DD.MM.YYYY hh:mm'}}
+        {{/if}}
+      </td>
+      {{#unless media.isMo}}
+        <td>{{moment-format model.end 'DD.MM.YYYY hh:mm'}}</td>
+      {{/unless}}
       <td>TODO</td>
       <td>TODO</td>
     </tr>

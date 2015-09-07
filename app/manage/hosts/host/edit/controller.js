@@ -6,6 +6,12 @@ export default Ember.Controller.extend({
   notify: inject.service(),
 
   actions: {
+    setHostType(id) {
+      this.set('model.hostType',
+        this.store.peekRecord('host-type', id)
+      )
+    },
+
     changeOperatingSystem(id) {
       this.set('model.operatingSystem',
         this.store.peekRecord('operating-system', id)

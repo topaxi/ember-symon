@@ -12,7 +12,7 @@
   <div class="grid grid--12of12 grid-sm--6of12">
     <div class="grid-cell form-group">
       <label for="typeId">Type:</label>
-      <select class="form-control" id="typeId" required>
+      <select class="form-control" id="typeId" required onchange={{action 'setHostType' value='target.value'}}>
         <option value=""></option>
         {{#each hostTypes as |type|}}
           <option value={{type.id}} selected={{eq model.hostType.id type.id}}>{{type.name}}</option>

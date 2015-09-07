@@ -1,7 +1,4 @@
 * {
-  -webkit-hyphens: auto;
-  -moz-hyphens: auto;
-  -ms-hyphens: auto;
   hyphens: auto;
 }
 
@@ -20,8 +17,7 @@
 
 /* Fix click delays on mobile devices */
 a, button {
-  -ms-touch-action: manipulation;
-      touch-action: manipulation;
+  touch-action: manipulation;
 }
 
 .flex-wrap {

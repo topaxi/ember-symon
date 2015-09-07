@@ -192,6 +192,14 @@ function createDeterministicData(server) {
     alertScheduler:   null
   })
 
+  server.create('service-argument', {
+    service:     ssh.id,
+    option:      '',
+    value:       22,
+    description: '',
+    type:        'Fixed'
+  })
+
   let http = server.create('service', {
     name:             'http',
     description:      'Check whether a HTTP connection to port 80 is possible',
@@ -202,6 +210,14 @@ function createDeterministicData(server) {
     freshness:        0,
     isNrpe:           false,
     alertScheduler:   null
+  })
+
+  server.create('service-argument', {
+    service:     http.id,
+    option:      '',
+    value:       80,
+    description: '',
+    type:        'Fixed'
   })
 
   server.create('host-type', { name: 'Accesspoint', shortname: 'ap' })

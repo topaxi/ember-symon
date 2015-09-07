@@ -11,7 +11,7 @@
     "ember-resolver": "~0.1.19",
     "jquery": "^2.1.4",
     "loader.js": "ember-cli/loader.js#3.3.0",
-    "qunit": "~1.18.0",
+    "qunit": "~1.19.0",
     "pretender": "~0.10.0",
     "lodash": "~3.10.1",
     "Faker": "~3.0.0",

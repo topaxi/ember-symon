@@ -5,6 +5,10 @@
   hyphens: auto;
 }
 
+.ember-application > .ember-view > .ember-view {
+  z-index: 0;
+}
+
 [href='#']:not([data-ember-action]), .not-ready {
   opacity: 0.3;
   pointer-events: none;

@@ -13,7 +13,6 @@ export default Ember.Component.extend({
   actions: {
     async acknowledge(model) {
       model.set('state', 'open')
-      this.sendAction('acknowledging')
       await model.save()
       this.sendAction('refresh')
       return false

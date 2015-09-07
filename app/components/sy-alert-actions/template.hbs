@@ -1,15 +1,15 @@
 <div class="flex-grow">
   {{#if (eq model.state 'new')}}
-    <a class="btn" {{action 'acknowledge' model}}>
+    <a class="btn" {{action 'acknowledge' model bubbles=false}}>
       <i class="fa {{if media.isMaxXs 'fa-3x'}} fa-check"></i>
     </a>
   {{/if}}
   &nbsp;
-  <a class="btn" {{action 'showComments' model}}>
+  <a class="btn" {{action 'showComments' model bubbles=false}}>
     <i class="fa {{if media.isMaxXs 'fa-3x'}} fa-comment-o"></i>
   </a>
   &nbsp;
-  <a class="btn" {{action 'showLog' model}}>
+  <a class="btn" {{action 'showLog' model bubbles=false}}>
     <i class="fa {{if media.isMaxXs 'fa-3x'}} fa-search"></i>
   </a>
 </div>

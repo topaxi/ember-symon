@@ -1,17 +1,14 @@
-<td>
-  <label for="checkbox-{{model.id}}">
-    <i class="text-{{if (eq model.type 'error') 'danger' 'warning'}} fa fa-fw fa-{{if (eq model.type 'error') 'times' 'warning'}}"></i>
-    <hr>
-    <div class="checkbox" style="margin:0">
-      <input id="checkbox-{{model.id}}" value={{model.id}} type="checkbox">
-      <label></label>
-    </div>
-  </label>
-</td>
-<td {{action 'toggle'}}>
+<td colspan="2" {{action 'toggle'}}>
   <div class="grid grid--6of12" style="margin-bottom:0">
     <div class="grid-cell">
-      {{model.id}} - {{model.type}}
+      <label for="checkbox-{{model.id}}">
+        <input id="checkbox-{{model.id}}" value={{model.id}} type="checkbox">
+        <label></label>
+        <i class="text-{{if (eq model.type 'error') 'danger' 'warning'}} fa fa-fw fa-{{if (eq model.type 'error') 'times' 'warning'}}"></i>
+      </label>
+      <div>
+        {{model.id}} - {{model.type}}
+      </div>
     </div>
     <div class="grid-cell text-right">
       {{moment-format model.datetime 'L LT'}}

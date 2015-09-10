@@ -2,6 +2,21 @@
   hyphens: auto;
 }
 
+.app-version {
+  position: fixed;
+  bottom: 0;
+  right: 1rem;
+  pointer-events: none;
+}
+
+.app-version--production {
+  color: transparent;
+}
+
+.app-version::selection {
+  color: black;
+}
+
 .ember-application > .ember-view > .ember-view {
   z-index: 0;
 }

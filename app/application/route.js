@@ -1,6 +1,12 @@
 import Ember from 'ember'
+import config from '../config/environment'
 
 export default Ember.Route.extend({
+  setupController(controller) {
+    this._super(...arguments)
+    controller.set('appVersionClass', `app-version app-version--${config.environment}`)
+  },
+
   actions: {
     willTransition() {
       this.controller.set('expandSidenav', false)

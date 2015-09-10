@@ -45,7 +45,7 @@
     "ember-inflector": "1.9.1",
     "ember-moment": "3.6.2",
     "ember-notify": "4.0.1",
-    "ember-responsive": "1.1.0",
+    "ember-responsive": "topaxi/ember-responsive#ember2.1",
     "ember-sy": "adfinis-sygroup/ember-sy#master",
     "font-awesome": "FortAwesome/Font-Awesome#v4.4.0",
     "liquid-fire": "0.21.2",

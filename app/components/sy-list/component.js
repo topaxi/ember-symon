@@ -1,12 +1,14 @@
-import Ember from 'ember'
+import Component from 'ember-component'
 
-const { computed } = Ember
+import computed, {
+  oneWay
+} from 'ember-computed'
 
-export default Ember.Component.extend({
+export default Component.extend({
   classNames:        [ 'sy-list' ],
   classNameBindings: [ 'syListName' ],
 
-  modelName:  computed.oneWay('model.type.modelName'),
+  modelName:  oneWay('model.type.modelName'),
   syListName: computed('modelName', function() {
     return `sy-list--${this.get('modelName')}`
   }),

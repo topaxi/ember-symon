@@ -1,8 +1,7 @@
-import Ember from 'ember'
+import $     from 'jquery'
+import Mixin from 'ember-metal/mixin'
 
-const { $ } = Ember
-
-export default Ember.Mixin.create({
+export default Mixin.create({
   queryParams: {
     limit:  { refreshModel: true },
     page:   { refreshModel: true },

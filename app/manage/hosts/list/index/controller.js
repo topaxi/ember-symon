@@ -1,4 +1,4 @@
-import Ember from 'ember'
+import Controller     from 'ember-controller'
 import ControllerList from 'ember-symon/mixins/controller-list'
 
-export default Ember.Controller.extend(ControllerList)
+export default Controller.extend(ControllerList)

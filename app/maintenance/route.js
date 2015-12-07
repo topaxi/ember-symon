@@ -1,5 +1,5 @@
-import Ember from 'ember'
-import WithSidebar from 'ember-symon/mixins/with-sidebar'
+import Route           from 'ember-route'
+import RouteWithSubnav from 'ember-sy/mixins/route-with-subnav'
 
-export default Ember.Route.extend(WithSidebar, {
+export default Route.extend(RouteWithSubnav, {
 })

@@ -46,7 +46,7 @@
     "ember-notify": "^4.2.0",
     "ember-resolver": "^2.0.3",
     "ember-responsive": "^1.2.3",
-    "ember-sy": "adfinis-sygroup/ember-sy#master",
+    "ember-sy": "adfinis-sygroup/ember-sy#v0.1.4",
     "liquid-fire": "0.21.3",
     "pagination-pager": "^2.1.1"
   }
